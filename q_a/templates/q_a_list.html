@@ -1,0 +1,62 @@
+{% extends "q_a_bbase.html" %}
+
+{% block content %}
+	<div class="main">
+		<!-- Posts -->
+		<ul>
+			{% for post in posts.object_list %}
+			<div class="posts">
+				<div class="title">
+					{{ post.title }}
+				</div>
+				<ul>
+					<div class="time">
+						{{ post.date }}
+					</div>
+					<div class="body">
+						
+						<a href="{% url q_a.views.vote post.pk 1 %}?from={{ fromUrl|urlencode }}" value=1>Vote up</a>
+						<a href="{% url q_a.views.vote post.pk -1 %}" value=-1>Vote down</a>
+						
+						{{ post.content|linebreaks }}
+					</div>
+				</ul>
+				<!-- Comments -->
+				<div class ="commentlink">
+					<a href="{% url q_a.views.show_comment_form post.pk %}">
+						Comment
+					</a>
+				</div>
+				<!-- Comments/ -->
+			</div>
+			{% endfor %}
+			
+		</ul>
+		
+		<!-- Next/Prev page links -->
+		{% if posts and posts.paginator.num_pages > 1  %}
+		<div class="pagination" style="margin-top: 20px; margin-list: -20px;">
+			<span class="step-links">
+				{% if posts.has_previous %}
+					<a href="?page={{posts.previous_page_number}}">
+						newer entries &lt;&lt;
+					</a>
+				{% endif %}
+				
+				<span class="current">
+					&nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+				</span>
+				{% if posts.has_next %}
+					<a href="?page={{posts.next_page_number}}">
+						&gt;&gt; older entries
+					</a>
+				{% endif %}
+			</span>
+		</div>
+		{% endif %}
+	</div>
+	
+{% endblock %}
+
+
+
