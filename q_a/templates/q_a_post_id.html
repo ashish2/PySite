@@ -1,0 +1,74 @@
+{% extends "q_a_bbase.html" %}
+
+{% block content %}
+
+	<div class="main">
+		
+		<div class="title">
+			<h3>Votes: ({{post.vote_count}})</h3>
+			<h2>Title: {{ post.title }}</h2>
+		</div>
+		<div class="content">
+			Content: 
+			{{ post.content }} 
+		</div>
+		
+		<!-- Replies start -->
+		<div class="replies">
+			<!-- Posts -->
+			<ul>
+				{% for post in replies %}
+				<div class="posts">
+					
+					<div class="title">
+						Votes:({{post.vote_set.all.count}}) 
+						<a href="{% url q_a.views.view_post_id post.id %}">Title: {{ post.title }}</a>
+					</div>
+					<div class="time">
+						<small>Date: {{ post.date }}</small>
+					</div>
+					<div class="body">
+						Content: 
+						{{post.content|linebreaks}}
+						
+						{% if post.has_voted != 1 %}
+							<a href="{% url q_a.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" value=1>Vote up</a>
+						{% endif %}
+						
+						{% if post.has_voted != -1 %}
+							<a href="{% url q_a.views.vote post.pk -1 %}" value=-1>Vote down</a>
+						{% endif %}
+						
+					</div>
+					{% if post.post_set.all %}
+						<ul class="replies">
+							{% for i in post.post_set.all %}
+									<li>
+										{{ i.id }}: {{i.content }}
+										
+									</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+						
+					<!-- Comments -->
+					<div class ="commentlink">
+						<a href="{% url q_a.views.show_comment_form post.pk %}">
+							Comment
+						</a>
+						<a href="{% url q_a.views.share post.pk %}">
+							Share
+						</a>
+					</div>
+					<!-- Comments/ -->
+				</div>
+				{% endfor %}
+			</ul>
+		
+		</div>
+		
+		<!-- Replies end -->
+		
+	</div>
+{% endblock %}
+

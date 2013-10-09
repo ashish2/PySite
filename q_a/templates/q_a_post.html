@@ -1,3 +1,5 @@
+{% extends "q_a_bbase.html" %}
+
 
 {% block extrahead %}
 	{% url 'admin:jsi18n' as jsi18nurl %}
@@ -13,16 +15,15 @@
 	
 {% endblock %}
 
-
-<div id="addc">
-	Add a comment
-</div>
-
 <!-- Post form -->
-{% block fields %}
+{% block content %}
+	<div id="addc">
+		Add a comment
+	</div>
+	
 	<!-- if p is present, then it is getting a post_id, which means this is a comment, so we will add_comment -->
 	{% if pk %}
-		<form action="{% url q_a.views.add_comment pk %}" method="post">
+		<form action="{% url q_a.views.add_comment pk %}?from={{fromUrl|urlencode}}" method="post">
 	{% else %}
 		<form action="{% url q_a.views.add_post %}" method="post">
 	{% endif %}
@@ -44,3 +45,4 @@
 {% endblock %}
 
 
+{# {% extends "q_a_footer.html" %} #}

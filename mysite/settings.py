@@ -1,5 +1,11 @@
 # Django settings for mysite project.
 
+# ADDED
+# Imports
+import os
+import sys
+# ADDED-
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -56,6 +62,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
+#STATIC_ROOT = ''
 STATIC_ROOT = ''
 
 # URL prefix for static files.
@@ -74,7 +81,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -98,9 +105,10 @@ MIDDLEWARE_CLASSES = (
     
     
     # Added
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    
+    #~'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    #~'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     
     # Added-
@@ -127,18 +135,31 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Bootstrapped Admin
+    #'django_admin_bootstrapped',
+    
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     
+    # Tagging
+    'tagging',
+    
     # south
     'south',
+    
+    # Accounts
+    'accounts',
     
     #'polls',
     #'qna',
     'q_a',
     
+    # Email as Username
+    'emailusernames',
     
     
 )
@@ -174,6 +195,13 @@ LOGGING = {
 
 
 # ADDED
+AUTHENTICATION_BACKENDS = (
+	'emailusernames.backends.EmailAuthBackend',
+	# Uncomment the following to make Django tests pass:
+	# 'django.contrib.auth.backends.ModelBackend',
+	
+)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     #"django.core.context_processors.auth",
     "django.contrib.auth.context_processors.auth",
@@ -182,6 +210,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    
+    # Adding static context processor
+    "django.core.context_processors.static",
+    
+    
 )
 
 
@@ -217,6 +250,13 @@ CACHE_MIDDLEWARE_KEY_PREFIX = ''
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 
+# Appending This Dir into the sys.path for python
+sys.path.append(os.path.dirname(__file__))
 
+# models.models.UserProfile
+AUTH_PROFILE_MODULE = "accounts.UserProfile"
+
+# Login
+LOGIN_URL = '/accounts/login/'
 
 # ADDED-

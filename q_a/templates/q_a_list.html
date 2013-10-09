@@ -6,31 +6,48 @@
 		<ul>
 			{% for post in posts.object_list %}
 			<div class="posts">
+				
 				<div class="title">
-					{{ post.title }}
+					<a href="{% url q_a.views.view_post_id post.id %}">{{ post.title }}</a>
 				</div>
-				<ul>
-					<div class="time">
-						{{ post.date }}
-					</div>
-					<div class="body">
-						
-						<a href="{% url q_a.views.vote post.pk 1 %}?from={{ fromUrl|urlencode }}" value=1>Vote up</a>
+				<div class="time">
+					{{ post.date }}
+				</div>
+				<div class="body">
+					{{post.content|linebreaks}}
+					
+					{% if post.has_voted != 1 %}
+						<a href="{% url q_a.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" value=1>Vote up</a>
+					{% endif %}
+					
+					{% if post.has_voted != -1 %}
 						<a href="{% url q_a.views.vote post.pk -1 %}" value=-1>Vote down</a>
-						
-						{{ post.content|linebreaks }}
-					</div>
-				</ul>
+					{% endif %}
+					
+				</div>
+				{% if post.post_set.all %}
+					<ul class="replies">
+						{% for i in post.post_set.all %}
+								<li>
+									{{ i.id }}: {{i.content }}
+									
+								</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+					
 				<!-- Comments -->
 				<div class ="commentlink">
-					<a href="{% url q_a.views.show_comment_form post.pk %}">
+					<a href="{% url q_a.views.show_comment_form post.pk %}?from={{fromUrl|urlencode}}">
 						Comment
+					</a>
+					<a href="{% url q_a.views.share post.pk %}">
+						Share
 					</a>
 				</div>
 				<!-- Comments/ -->
 			</div>
 			{% endfor %}
-			
 		</ul>
 		
 		<!-- Next/Prev page links -->
@@ -42,7 +59,6 @@
 						newer entries &lt;&lt;
 					</a>
 				{% endif %}
-				
 				<span class="current">
 					&nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
 				</span>
@@ -55,8 +71,5 @@
 		</div>
 		{% endif %}
 	</div>
-	
 {% endblock %}
-
-
 

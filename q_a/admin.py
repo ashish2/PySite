@@ -10,7 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 ### Admin
-
 class PostAdmin(admin.ModelAdmin):
 	search_fields = ["id", "title", "content", "slug", "user_ip", "status", "date"]
 	classes = ["wide", "extrapretty"]
@@ -31,6 +30,8 @@ class VoteAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Vote, VoteAdmin)
+
+
 
 
 
