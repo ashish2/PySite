@@ -21,6 +21,8 @@ from django.contrib import auth
 
 from django.db.models import Q
 
+import mysite.settings as s
+
 from q_a.models.models import *
 from q_a.forms import *
 from q_a.func import *

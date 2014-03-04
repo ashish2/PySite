@@ -18,7 +18,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mysite',                      # Or path to database file if using sqlite3.
+        
+        #~'NAME': 'mysite',                      # Or path to database file if using sqlite3.
+        #~'NAME': 'mysite_1',                      # Or path to database file if using sqlite3.
+        'NAME': 'mysite_2',                      # Or path to database file if using sqlite3.
+        
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'pass',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -63,18 +67,29 @@ MEDIA_URL = ''
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 #STATIC_ROOT = ''
-STATIC_ROOT = ''
+STATIC_ROOT = 'static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+
+# ADDED
+current_dir = os.path.dirname( __file__ )
+# ADDED-
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    
+    # ADDED
+    current_dir,
+    # ADDED-
 )
+
+
+
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -82,6 +97,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    
 )
 
 # Make this unique, and don't share it with anybody.
@@ -145,6 +161,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     
+    # ADDED
+    
     # Tagging
     'tagging',
     
@@ -161,6 +179,19 @@ INSTALLED_APPS = (
     # Email as Username
     'emailusernames',
     
+    # users
+    'users',
+    
+    # rest framework
+    # 'rest_framework',
+    'tastypie',
+    
+    # following_followers
+    #'following_followers',
+    
+    
+    
+    # ADDED-
     
 )
 
@@ -193,8 +224,8 @@ LOGGING = {
     }
 }
 
-
 # ADDED
+
 AUTHENTICATION_BACKENDS = (
 	'emailusernames.backends.EmailAuthBackend',
 	# Uncomment the following to make Django tests pass:
@@ -258,5 +289,21 @@ AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
 # Login
 LOGIN_URL = '/accounts/login/'
+
+REST_FRAMEWORK = {
+	# Use hyperlinked styles by default.
+	# Only used if the `serializer_class` attribute is not set on a view.
+	'DEFAULT_MODEL_SERIALIZER_CLASS':
+		'rest_framework.serializers.HyperlinkedModelSerializer',
+	
+	# Use Django's standard `django.contrib.auth` permissions,
+	# or allow read-only access for unauthenticated users.
+	'DEFAULT_PERMISSION_CLASSES': [
+		'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+	]
+	
+	
+}
+
 
 # ADDED-

@@ -5,14 +5,6 @@
 from q_a.includes import *
 
 
-# @login_required
-def userProfile(request, pk):
-	user = request.user.get_profile()
-	
-	
-	return HttpResponse(user)
-	
-
 # DONE
 # @cache_page(60 * 10)
 @login_required
@@ -42,6 +34,15 @@ def view_all_post(request):
 		else:
 			# 0, which means he hasn't voted
 			post.has_voted = 0
+		
+		e = None
+		e = post.share_set.filter( post_id=post.id, by_user=request.user.id )
+		if e:
+			# this means he has voted something
+			post.has_shared = e[0].share
+		else:
+			# 0, which means he hasn't voted
+			post.has_shared = 0
 	
 	fromUrl = request.get_full_path()
 	
@@ -54,21 +55,42 @@ def view_post_id(request, pk):
 	
 	post = Post.objects.get(id=pk)
 	
+	# Getting whether the logged in user is following this Question post
+	# fieldType, typ = 'P' FTM , as this is the Post function, over here we will only view Posts
+	typ = 'P'
+	
+	#~follow = Follow.objects.get( by_user=request.user, fieldTypeId=pk, fieldType=typ )
+	follow = Follow.objects.filter( by_user=request.user, fieldTypeId=pk, fieldType=typ )
+	
 	post.vv = post.vote_set.all().filter(vote=1)
 	post.vote_count = post.vv.count()
 	
 	#~for post in posts.object_list:
 		#~e = post.vote_set.filter(post_id=post.id)
 	
+	
 	replies = Post.objects.filter(parent_id=pk).order_by("-date")
 	
-	d = dict( post = post, replies = replies, )
+	i = None
+	for r in replies:
+		i = r.vote_set.filter(by_user_id=request.user)
+		if i:
+			r.has_voted = i[0].vote
+		else:
+			r.has_voted = 0
+		
+	
+	fromUrl = request.get_full_path()
+	
+	d = dict( post = post, replies = replies, fromUrl=fromUrl, follow=follow)
+	
 	return render_to_response('q_a_post_id.html', d, context_instance = RequestContext(request) )
 	
 
+
 # DONE
 def show_post_form(request):
-	""" Show Post form."""
+	""" Show Post form. """
 	#~post = Post.objects.all()
 	#d = dict( form=pf, user=request.user, context_instance=RequestContext(request), comments=None, )
 	
@@ -80,6 +102,7 @@ def show_post_form(request):
 	
 
 
+# Add a Question
 # DONE
 def add_post(request):
 	if request.POST:
@@ -95,21 +118,25 @@ def add_post(request):
 		user = request.user
 		#~d.update(csrf(request))
 		
-		pk = Post.objects.get_or_create( title=title, content=content, user_ip=ip, slug=slug, user_id = user.id)
+		# Adding all stuff into DB, so i think we shouldn't use,
+		# get_or_create here, but instead, just use create
+		#pk = Post.objects.get_or_create( title=title, content=content, user_ip=ip, slug=slug, user_id = user.id)
+		pk, cr = Post.objects.get_or_create( title=title, content=content, user_ip=ip, user_id = user.id)
 		
 		# True condition, 
 		# If everything goes fine, 
 		# show the primary key For The Moment
 		# Actually supposed to redirect to the page where user came from
-	#~return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk]))
-		return HttpResponse(pk)
+		#~return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk]))
+		return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk.id] ))
+		#~return HttpResponse(pk)
 	
 	# False condition, Else show the form again
 	return HttpResponseRedirect(reverse("q_a.views.show_post_form"))
 	
 
-
-def show_comment_form(request, pk):
+# Form for Comment(reply) to an Answer
+def show_reply_form(request, pk):
 	
 	pk = Post.objects.get(pk=pk)
 	
@@ -118,13 +145,13 @@ def show_comment_form(request, pk):
 	
 	# d = dict( form=PostForm(), user=request.user )
 	
-	
 	d.update(csrf(request))
 	return render_to_response("q_a_post.html", d)
 	#~return HttpResponse(request.user)
 	
 
-def add_comment(request, pk):
+# Add Comment(reply) to an Answer
+def add_reply(request, pk):
 	
 	if request.POST:
 		p = request.POST
@@ -148,8 +175,8 @@ def add_comment(request, pk):
 		return HttpResponseRedirect(f)
 	
 	# else, show the same form again
-	# If its not a post, then just redirect to the comment form again
-	return HttpResponseRedirect(reverse("q_a.views.show_comment_form"))
+	# If its not a post, then just redirect to the reply form again
+	return HttpResponseRedirect(reverse("q_a.views.show_reply_form"))
 	
 
 #@login_required
@@ -158,22 +185,122 @@ def vote(request, pk, vote):
 	Will get the Post id, and +1 or -1 as vote"""
 	
 	vote = int(vote)
-	
 	p = Post.objects.get(pk=pk)
 	
 	# Deactivated for the moment
 	status = static['vote_field_default_status']
-	
 	u = static['root_user_id']
 	
 	# Login required, if we put it in the descriptor, we dont have to use this if condition,
 	# using only FTM
 	if request.user.id:
 		#d = dict( by_user=request.user, vote=vote, status=status )
-		d = dict( by_user=request.user, vote=vote, status=status )
+		d = dict( by_user=request.user, status=status )
+		
+		li = p.vote_set.filter(**d)
+		
+		# if length(li) > 1, then log it to the logs, as it is a problem, as 1 user can only make 1 vote to a particular Post
 		
 		# by default 1 user can vote to a post_id only once
-		obj, cr = p.vote_set.get_or_create(**d)
+		if li:
+			obj = li[0]
+			obj.vote = vote
+			obj = obj.save()
+		else:
+			d["vote"] = vote
+			obj = p.vote_set.create(**d)
+		
+		cr = None
+		# If an object was created
+		if cr:
+			pass
+		# else, if it was not created
+		else:
+			pass
+		
+		#~
+		#~try:
+			#~referer = request.META['HTTP_REFERER']
+		#~except:
+			#~referer = urlsplit(referer, 'http', False)[2]
+		#~else:
+			#~referer = 'No'
+		
+		#~print "request.GET['from']"
+		#~print request.GET['from']
+		
+		f =request.GET['from']
+		
+		
+		return HttpResponseRedirect(f)
+	else:
+		return HttpResponse('Please Login here.')
+	
+
+# DONE
+#@login_required
+def follow(request, pk, follow, typ ):
+	"""Follow: 
+	Will get the Post id, and +1 or -1 as Follow or Unfollow"""
+	
+	#~p = Post.objects.get(pk=pk)
+	
+	follow = int(follow)
+	
+	foll = None
+	foll, cr = Follow.objects.get_or_create( by_user=request.user, fieldTypeId=pk, fieldType=typ )
+	
+	foll.follow = follow
+	foll.save()
+	
+	fromUrl =request.GET['from']
+	
+	return HttpResponseRedirect(fromUrl)
+	#~d = dict( p = post, follow=foll, fromUrl = fromUrl)
+	#~return render_to_response ('q_a_post_id.html', d)
+	
+
+
+#~# Share
+#~def share(request, pk):
+	#~
+	#~# Deactivated for the moment
+	#~status = static['vote_field_default_status']
+	#~
+	#~s = Share.objects.all()
+	#~obj, cr = s.get_or_create( post_id=pk, by_user=request.user, status=status)
+	#~
+	#~cr = 1
+	#~# If an object was created
+	#~if cr:
+		#~pass
+	#~# else, if it was not created
+	#~else:
+		#~pass
+	#~
+	#~#return HttpResponse(cr)
+	#~return HttpResponse(s)
+	#~
+
+def share(request, pk, share):
+	"""Share: Will get the Post id, and +1 or -1 as share"""
+	
+	share = int(share)
+	
+	p = Post.objects.get(pk=pk)
+	
+	# Deactivated for the moment
+	status = static['vote_field_default_status']
+	u = static['root_user_id']
+	
+	# Login required, if we put it in the descriptor, we dont have to use this if condition,
+	# using only FTM
+	if request.user.id:
+		#d = dict( by_user=request.user, vote=vote, status=status )
+		d = dict( by_user=request.user, post=pk, share=share)
+		
+		# by default 1 user can vote to a post_id only once
+		obj, cr = p.share_set.get_or_create(**d)
 		
 		# If an object was created
 		if cr:
@@ -198,24 +325,6 @@ def vote(request, pk, vote):
 		return HttpResponse('Please Login here.')
 	
 
-# Share
-def share(request, pk):
-	
-	# Deactivated for the moment
-	status = static['vote_field_default_status']
-	
-	s = Share.objects
-	obj, cr = s.get_or_create( post_id=pk, by_user=request.user, status=status)
-	
-	# If an object was created
-	if cr:
-		pass
-	# else, if it was not created
-	else:
-		pass
-	
-	return HttpResponse(cr)
-	
 
 # Login for the moment
 def login_view(request):
@@ -237,6 +346,7 @@ def logout_view(request):
 	# Redirect to a success page.
 	return HttpResponseRedirect("/account/loggedout/")
 	
+
 
 
 
@@ -275,9 +385,12 @@ def random(request):
 	#~prof = request.user.get_profile()
 	#~email = prof.email
 	
+	import settings
+	
 	#~return HttpResponse( request._cookies )
 	#~return HttpResponse( request.session )
-	return HttpResponse( st )
+	#~return HttpResponse( st )
+	return HttpResponse( dir(settings) )
 	#~return HttpResponse( r )
 	#~return HttpResponse( t )
 	

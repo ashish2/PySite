@@ -8,15 +8,18 @@
 			</title>
 			
 			<!--
-			For including from application static/ folder,
+			For including from applications static/ folder, With {{STATIC_URL}}
+			not base static folder
 			-->
-			<script type="text/javascript" src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
+			<!--
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
+			-->
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap_cosmo.css">
 			
-			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/all.css">
+			<link rel="stylesheet" type="text/css" href="/static/css/all.css">
 			
 			<!--
-			For including from project static/ folder,
+			For including from project (Base) static/ folder, Without {{STATIC_URL}}
 			-->
 			<!--
 			<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
@@ -30,7 +33,9 @@
 	
 	<body>
 		<!-- Jumbotron .jumbotron starts -->
+<!--
 		<div class="jumbotron">
+-->
 			<!-- .container starts -->
 			<div class="container">
 				
@@ -40,23 +45,68 @@
 				</div>
 				
 				<div id="main">
-					
-					<div id="menu">
-						{% block nav-global %}
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+							<h3 id="navbar">QnA</h3>
+							</div>
+							{% block nav-global %}
 							<!-- MENU -->
-							<h3>QnA</h3>
 							{% if user.is_staff %}
-							<a href="{% url admin:index %}">
-								Admin
-							</a>
-							<a href="">
-								Add post
-							</a>
+							<!-- menu navbar -->
+							<div class="navbar navbar-inverse">
+								<div class="navbar-header">
+									<button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a href="#" class="navbar-brand">Brand</a>
+								</div>
+								<div class="navbar-collapse collapse navbar-responsive-collapse">
+									<ul class="nav navbar-nav">
+										<li class="active">
+											<a href="{% url admin:index %}">
+												Admin
+											</a> 
+										</li>
+										<li>
+											<a href="{% url q_a.views.view_all_post %}">
+												Main Page 
+											</a>
+										</li>
+										<li>
+											<a href="{% url q_a.views.add_post %}">
+												Ask a Question
+											</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+												Dropdown 
+												<b class="caret"></b>
+											</a>
+											<ul class="dropdown-menu">
+												<li><a href="/users/{{request.user.id}}">My Profile</a></li>
+												<li><a href="/followers/{{request.user.id}}">Followers</a></li>
+												<li><a href="/following/{{request.user.id}}">Following</a></li>
+												<li class="divider"></li>
+												<li class="dropdown-header">Dropdown header</li>
+												<li><a href="#">Separated link</a></li>
+												<li><a href="#">One more separated link</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div><!-- /.nav-collapse -->
+							</div><!-- /.navbar -->
+							<!-- menu navbar ends -->
 							{% endif %}
-						{% endblock %}
+							{% endblock %}
+						</div>
 					</div>
 					
-					<div id="content">
+					<!-- ----- -  ------>
+					
+					<div class="row">
 						{% block content %}
 						{% endblock %}
 					</div>
@@ -65,10 +115,21 @@
 				
 			</div>
 			<!-- .container ends -->
+			
+<!--
 		</div>
+-->
 		<!-- .jumbotron ends -->
 	
+	
+	<!-- including from Static folder of Application, with {{STATIC_URL}} -->
 	<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
+	
+	<!-- including from Static folder of Base(Project/Root Static folder), withOUT {{STATIC_URL}} -->
+	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- including from Static folder of Application -->
 	<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
+	
 	
 	</body>

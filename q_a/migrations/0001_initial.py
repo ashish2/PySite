@@ -19,7 +19,7 @@ class Migration(SchemaMigration):
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('user_ip', self.gf('django.db.models.fields.GenericIPAddressField')(max_length=39)),
             ('status', self.gf('django.db.models.fields.IntegerField')(default=None, null=True, blank=True)),
-            ('tags', self.gf('tagging.fields.TagField')()),
+            ('tags', self.gf('tagging.fields.TagField')(default='')),
         ))
         db.send_create_signal('q_a', ['Post'])
 
@@ -39,10 +39,22 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('post', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['q_a.Post'])),
             ('by_user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('share', self.gf('django.db.models.fields.IntegerField')(default=None, null=True)),
             ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('status', self.gf('django.db.models.fields.IntegerField')(default=None, null=True, blank=True)),
         ))
         db.send_create_signal('q_a', ['Share'])
+
+        # Adding model 'Follow'
+        db.create_table('q_a_follow', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('by_user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('follow', self.gf('django.db.models.fields.IntegerField')(default=None, null=True)),
+            ('fieldType', self.gf('django.db.models.fields.CharField')(default=None, max_length=16, null=True)),
+            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('status', self.gf('django.db.models.fields.IntegerField')(default=None, null=True, blank=True)),
+        ))
+        db.send_create_signal('q_a', ['Follow'])
 
 
     def backwards(self, orm):
@@ -54,6 +66,9 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Share'
         db.delete_table('q_a_share')
+
+        # Deleting model 'Follow'
+        db.delete_table('q_a_follow')
 
 
     models = {
@@ -93,6 +108,15 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
+        'q_a.follow': {
+            'Meta': {'object_name': 'Follow'},
+            'by_user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'fieldType': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '16', 'null': 'True'}),
+            'follow': ('django.db.models.fields.IntegerField', [], {'default': 'None', 'null': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {'default': 'None', 'null': 'True', 'blank': 'True'})
+        },
         'q_a.post': {
             'Meta': {'object_name': 'Post'},
             'content': ('django.db.models.fields.TextField', [], {'default': 'None', 'blank': 'True'}),
@@ -101,7 +125,7 @@ class Migration(SchemaMigration):
             'parent_id': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'to': "orm['q_a.Post']", 'null': 'True', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'default': 'None', 'max_length': '128', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': 'None', 'null': 'True', 'blank': 'True'}),
-            'tags': ('tagging.fields.TagField', [], {}),
+            'tags': ('tagging.fields.TagField', [], {'default': "''"}),
             'title': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '512', 'null': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'user_ip': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39'})
@@ -112,6 +136,7 @@ class Migration(SchemaMigration):
             'date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'post': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['q_a.Post']"}),
+            'share': ('django.db.models.fields.IntegerField', [], {'default': 'None', 'null': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': 'None', 'null': 'True', 'blank': 'True'})
         },
         'q_a.vote': {

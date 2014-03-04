@@ -11,6 +11,35 @@ cwd = os.getcwd()
 
 from emailusernames.forms import EmailAuthenticationForm
 
+
+# RESTAPI
+
+### Rest_framework
+
+from django.contrib.auth.models import User, Group
+#~from rest_framework import viewsets, routers
+
+# ViewSets define the view behavior.
+#~class UserViewSet(viewsets.ModelViewSet):
+	#~model = User
+#~
+#~class GroupViewSet(viewsets.ModelViewSet):
+	#~model = Group
+
+
+# Routers provide an easy way of automatically determining the URL conf
+#~router = routers.DefaultRouter()
+#~router.register(r'users', UserViewSet)
+#~router.register(r'groups', GroupViewSet)
+
+
+### Tastypie
+
+
+
+# RESTAPI-
+
+
 urlpatterns = patterns('',
 	# Examples:
 	# url(r'^$', 'mysite.views.home', name='home'),
@@ -26,12 +55,17 @@ urlpatterns = patterns('',
 	# QnA
 	url(r"^qna/", include("qna.urls")),
 	
-	
-	
 	### Testapps 
 	
 	# Q_A
 	url(r"^q_a/", include("q_a.urls")),
+	
+	
+	# Users
+	url(r"^users/", include("users.urls")),
+	
+	# Followers_following
+	url(r"^follow/", include("following_followers.urls")),
 	
 	
 	### Testapps//
@@ -60,9 +94,22 @@ urlpatterns = patterns('',
 	
 	# Login/Logout-
 	
+	# RESTAPI
+	#url("^api/auth/", include('rest_framework.urls', namespace='rest_framework')),
+	#~url(r'^api/', include(router.urls)),
+	
+	#url("^api/", "q_a.views.view_all_post" ),
+	
+	
+	# RESTAPI-
+	
+	
 	
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
+	
+	# Default
+	url(r"", include("q_a.urls") ), 
 	
 )
 

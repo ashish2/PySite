@@ -12,26 +12,43 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 
+# Api
+from django.conf.urls.defaults import *
+from tastypie.api import *
+from q_a.api import *
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(PostResource())
+
+# Api-
+
+
 urlpatterns = patterns('q_a.views', 
 	
+	# Post form to add Question
 	url(r"^post/form/$", "show_post_form"),
 	
-	url(r"^post/comment/(\d+)/?$", "show_comment_form"),
+	# Post form to add Reply to Answers
+	url(r"^post/reply/(\d+)/?$", "show_reply_form"),
 	
-	url(r"^post/add/comment/(\d+)/?", "add_comment"),
+	# Add Reply to Asnwers
+	url(r"^post/add/reply/(\d+)/?", "add_reply"),
+	# Add post, Add question
 	url(r"^post/add/?", "add_post"),
 	
-	url(r"^post/(?P<pk>\d+)", "view_post_id"),
+	# Add an Answer
+	#~url(r"^post/answer/?", "add_answer"),
+	
 	
 	# Share
-	url(r"^post/share/(?P<pk>\d+)", "share"),
+	url(r"^post/share/(?P<pk>\d+)/(?P<share>-?\d+)", "share"),
 	
 	
 	# RANDOM
 	url(r"^post/random", "random"),
 	
 	# RANDOM/-
-	
 	
 	# Static
 	#url(r'^static/(?P<path>.*)$', 'staticfiles.views.serve'),
@@ -42,17 +59,34 @@ urlpatterns = patterns('q_a.views',
 	#url(r"^post/votem/(?P<pk>\d+)/(?P<vote>\d+)/", "votem"),
 	
 	url(r"^post/vote/(?P<pk>\d+)/(?P<vote>-?\d+)/?", "vote"),
+	url(r"^post/follow/(?P<pk>\d+)/(?P<follow>-?\d+)/(?P<typ>\w?)/?", "follow"),
+	
+	
+	url(r"^post/(?P<pk>\d+)", "view_post_id"),
 	
 	# Generic url mappings should go down in the last
 	url(r"^post/?", "view_all_post" ),
 	# Cacheing the same above page with this below
 	# url(r"^post/?", cache_page( view_all_post, 60*10) ), # Here, adding cache to the above function.
 	
+	# q_a Api
+	url(r"^api/", include(v1_api.urls ) ),
+	# Api-
 	
-	
-	
+	# Default
+	url(r"", "view_all_post" ),
 	
 )
+
+
+
+
+
+
+
+
+
+
 
 
 #~urlpatterns = patterns('polls.views',

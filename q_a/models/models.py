@@ -13,6 +13,8 @@ from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 
 from tagging.fields import TagField
 
@@ -21,43 +23,42 @@ from q_a.managers import *
 
 #~from q_a.includes import *
 
-
-
 # Globals
 app_label_q_a = 'q_a'
 
-"""
-So there is a Page,
-there are Posts (QA),
-there will be Vote up/Vote down on posts,
-there will be Tags of each posts,
-there are Users,
 
-so objects are,
-Posts,
-Votes,
-Tags,
-Users,
-Like/Unlike or Emotion object(1-Like, 2-Unlike, 3-Hot, 4-Beautiful) for each post
-
-"""
-
-"""
-Question & Answer table is object:::
-
-question / answer/ post
-title
-description/text/content,
-slug,
-//votes_id - votes (up, down)(related to each answer, related to question also) (OBJECT)
-parent_id(self)
-type ( Q(1) if Question parent_id will be null, A(2) if Answer parent_id will be question_id (SELF OBJECT))(as it is goin to be the same table for q&a, and A will have the id of the question )
-user_id(who created) (OBJECT) ForeiKey(User)
-time_created,
-status (0-deactive, 1-active, )
-user_ip (IPfield())
-"""
+# Question Post
 class Post(models.Model):
+	"""
+	So there is a Page,
+	there are Posts (QA),
+	there will be Vote up/Vote down on posts,
+	there will be Tags of each posts,
+	there are Users,
+
+	so objects are,
+	Posts,
+	Votes,
+	Tags,
+	Users,
+	Like/Unlike or Emotion object(1-Like, 2-Unlike, 3-Hot, 4-Beautiful) for each post
+
+	"""
+	"""
+	Question & Answer table is object:::
+
+	question / answer/ post
+	title
+	description/text/content,
+	slug,
+	//votes_id - votes (up, down)(related to each answer, related to question also) (OBJECT)
+	parent_id(self)
+	type ( Q(1) if Question parent_id will be null, A(2) if Answer parent_id will be question_id (SELF OBJECT))(as it is goin to be the same table for q&a, and A will have the id of the question )
+	user_id(who created) (OBJECT) ForeiKey(User)
+	time_created,
+	status (0-deactive, 1-active, )
+	user_ip (IPfield())
+	"""
 	title = models.CharField(max_length=512, null=True, default=None, blank=False)
 	content = models.TextField(default=None, blank=True)
 	
@@ -84,8 +85,7 @@ class Post(models.Model):
 	
 	# Run syncdb, after Uncommenting tags
 	# Every post will have multiple tags related to it, on which we can search
-	#~tags = TagField(help_text="Separate tags with spaces.")
-	
+	tags = TagField(help_text="Separate tags with spaces.", default='')
 	
 	#~objects = PostManager()
 	
@@ -107,16 +107,16 @@ class Post(models.Model):
 
 
 
-"""
-Vote up
-vote down
-by_uid
-for_which_question_or_answer(QA_id)
-date
-QA_id(QA object)(1 QA can have many instances of this vote object) (ForeignKey)
-status()act, inactive
-"""
 class Vote(models.Model):
+	"""
+	Vote up
+	vote down
+	by_uid
+	for_which_question_or_answer(QA_id)
+	date
+	QA_id(QA object)(1 QA can have many instances of this vote object) (ForeignKey)
+	status()act, inactive
+	"""
 	post = models.ForeignKey(Post)
 	by_user = models.ForeignKey(User)
 	vote = models.IntegerField() # 1 or -1, positive or negative vote
@@ -131,16 +131,17 @@ class Vote(models.Model):
 	
 	
 
-"""
-Shares
 
-This post (post_id) has been shared by this user (user_id) on this date
-
-
-"""
 class Share(models.Model):
+	"""
+	Shares
+
+	This post (post_id) has been shared by this user (user_id) on this date
+
+	"""
 	post = models.ForeignKey(Post)
 	by_user = models.ForeignKey(User)
+	share = models.IntegerField(default=None, null=True) # Share Value, 1 or -1, Shared or has been UnShared back
 	date = models.DateTimeField(auto_now_add=True)
 	status = models.IntegerField(default=None, null=True, blank=True) # values 0-Deactivated, 1-Active, null-probably untouched yet
 	
@@ -152,51 +153,127 @@ class Share(models.Model):
 	
 
 
+class Wall():
+	
+	
+	# STILL TO DO THIS, CHECK
+	#~on_user = models.ForeignKey(User),
+	#~by_user = models.ForeignKey(User),
+	#~
+	#~post = models.TextField(null),
+	#~
+	#~date = models.DateTimeField(),
+	#~
+	#~#Post  associated with this Replies id, (wall_post_reply table ids associated with this wall_post table id)#
+	#~parent_wall_post_id = models.ForeignKey(self, null=True,  ),
+	#~
+	#~#Either a wall_post (1-post) or a wall_post_reply(2-reply), Denoted as, 1-post, 2-reply#
+	#~type = models.tinyint(2) ( null=True ) ,
+	#~
+	#~#Says the status of the comment, whether, 0-Deleted, 1-Activated, 2-Approved, 3-Unmoderated#
+	#~status = models.tinyint(2) ( null=True),
+	
+	
+	
+	print "=============="
+	print "IN q_a Models Wall: "
+	print "Please Check:"
+	print "1] Wall Model"
+	print "2] Include From Root Static Folder, all.css in q_a_bbase.html not coming from Root Static but from Application Static folder, Y?"
+	print "=============="
+	
 
 
-"""
-tags
+class Follow(models.Model):
+	""" 
+	Follow object 
 
-tags realated to Q (QA_id)(ForeignKey())
-tags related to answers, (QA_id)
-name (tag name, given by user) (CharField() unique)
-slug (tag slug)
-create date
-user who created(User_id)
-status(inactive, inactive)
+	Either user is following a Post, Topic anything,
+	else he is not following.
 
-"""
+	"""
+	
+	FIELDTYPES_OF_MODELS = ( 
+		( 'U', 'User' ), 
+		( 'P', 'Post' ), 
+	)
+	
+	by_user = models.ForeignKey(User)
+	follow = models.IntegerField(default=None, null=True) # Follow Value, 1 or -1, Followed or has been UnFollowed back
+	
+	fieldType = models.CharField(max_length=8, default=None, null=True, help_text="Values: U=>Users , P=>Posts") # Values, U=>Users , P=>Posts
+	fieldTypeId = models.IntegerField(default=None, null=True, help_text="Id of the Post of User table, that is represented by above fieldType field")
+	
+	date = models.DateTimeField(auto_now_add=True)
+	status = models.IntegerField(default=None, null=True, blank=True) # Values 0-Deactivated, 1-Active, null-probably untouched yet
+	
+	# In order to have multiple models in this field, like, Followed this type, like, Followed Post, Followed User etc.
+	#content_type = models.ForeignKey(ContentType)
+	#object_id = models.PositiveIntegerField()
+	#content_object = generic.GenericForeignKey('content_type', 'object_id')
+	#-
+	
+	class Meta:
+		app_label = app_label_q_a
+		
+	#~def __unicode__(self):
+		#~return unicode("%s: %d %d" % ( str(self.fieldType), self.by_user, self.follow) )
+		#~return unicode("%s: %s" % ( str(self.fieldType), str(self.follow) ) )
+	
+
+
+
+
 class Tag(models.Model):
+	"""
+	tags
+
+	tags realated to Q (QA_id)(ForeignKey())
+	tags related to answers, (QA_id)
+	name (tag name, given by user) (CharField() unique)
+	slug (tag slug)
+	create date
+	user who created(User_id)
+	date added
+	status(inactive, inactive)
+
+	"""
+	
 	pass
 
 
 
 
-"""
-how much is the Rating of an answer or question (good, bad, ugly)
-will be 1-5
 
-"""
 class Rating():
+	"""
+	how much is the Rating of an answer or question (good, bad, ugly)
+	will be 1-5
+	date added
+	status(inactive, inactive)
+
+	"""
 	pass
 
 
-"""
-Points of a user 
-gets according to number of questions he answers
-points also given by other users to this user
-starts from 0 - 1000, Million watever...
 
-points_given_to_user
-number_of_points_(how many points)
-by_user
-for_which_question_or_answer(QA_id)
-date
-
-"""
 class Points():
-	pass
+	"""
+	Points of a user 
+	gets according to number of questions he answers
+	points also given by other users to this user
+	starts from 0 - 1000, Million watever...
 
+	points_given_to_user
+	number_of_points_(how many points)
+	by_user
+	for_which_question_or_answer(QA_id)
+	date added
+	status(inactive, inactive)
+
+	"""
+	
+	pass
 
 
 
@@ -214,3 +291,5 @@ class PostManager(models.Manager):
 		return super(PostManager, self).get_query_set().filter(title='t')
 	
 	
+
+
