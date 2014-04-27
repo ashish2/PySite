@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from tagging.models import Tag
 from tagging.fields import TagField
 
 from q_a.managers import *
@@ -95,6 +96,9 @@ class Post(models.Model):
 	def __unicode__(self):
 		return self.title
 	
+	def get_tags(self):
+		return Tag.objects.get_for_object(self)
+	
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = slugify(self.title)
@@ -152,8 +156,24 @@ class Share(models.Model):
 		return unicode("%s: %s" % (self.post, self.by_user) )
 	
 
+# Just for TP, test model
+# so that, we can run pysolr with this.
+class Cities(models.Model):
+	""" Cities table """
+	by_user = models.ForeignKey(User, default=1)
+	country = models.CharField(max_length=4)
+	city_ascii = models.CharField(max_length=100) #accentCity#
+	city = models.CharField(max_length=100)
+	region = models.CharField(max_length=4)
+	population = models.IntegerField(default=0)
+	latitude = models.DecimalField(max_digits=10, decimal_places=6)
+	longitude = models.DecimalField(max_digits=10, decimal_places=6)
+	
+	class Meta:
+		app_label = app_label_q_a
+	
 
-class Wall():
+class Wall(models.Model):
 	
 	
 	# STILL TO DO THIS, CHECK
@@ -175,12 +195,14 @@ class Wall():
 	
 	
 	
-	print "=============="
-	print "IN q_a Models Wall: "
-	print "Please Check:"
-	print "1] Wall Model"
-	print "2] Include From Root Static Folder, all.css in q_a_bbase.html not coming from Root Static but from Application Static folder, Y?"
-	print "=============="
+	#print "=============="
+	#print "IN q_a Models Wall: "
+	#print "Please Check:"
+	#print "1] Wall Model"
+	#print "2] Include From Root Static Folder, all.css in q_a_bbase.html not coming from Root Static but from Application Static folder, Y?"
+	#print "=============="
+	
+	pass
 	
 
 
@@ -223,8 +245,7 @@ class Follow(models.Model):
 
 
 
-
-class Tag(models.Model):
+#class Tag(models.Model):
 	"""
 	tags
 
@@ -239,7 +260,7 @@ class Tag(models.Model):
 
 	"""
 	
-	pass
+	#pass
 
 
 

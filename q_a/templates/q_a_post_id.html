@@ -80,12 +80,12 @@
 								
 								<div class="col-lg-11">
 									<div class="post-title">
-										<a href="{% url q_a.views.view_post_id rep.id %}">Title: {{ rep.title }}</a>
+										<a href="{% url q_a.views.view_post_id rep.id rep.slug %}">Title: {{ rep.title }}</a>
 									</div>
 									
 									<!-- Post Body -->
 									<div class="post-body">
-										{{rep.content|linebreaks}}
+										{{rep.content|striptags|linebreaks}}
 									</div>
 									<!-- Post Body- -->
 									
@@ -127,7 +127,7 @@
 												<li>
 													<span>
 														<span>
-															{{ i.id }}: {{i.content }}
+															{{ i.id }}: {{i.content|striptags }}
 														</span>
 														<span>
 															<small>

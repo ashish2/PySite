@@ -20,7 +20,7 @@
 										{% endif %}
 										
 										<div class="vote-amt">
-												Random THIS Check: 2
+												{{post.vote_count}}
 										</div>
 										
 										{% if post.has_voted != -1 %}
@@ -36,11 +36,11 @@
 							<div class="col-lg-11">
 							
 								<div class="post-title">
-									<a href="{% url q_a.views.view_post_id post.id %}">{{ post.title }}</a>
+									<a href="{% url q_a.views.view_post_id post.id post.slug %}">{{ post.title }}</a>
 								</div>
 								
 								<div class="body">
-									<small>{{user}}</small>
+									<small>{{post.user.username}}</small>
 									{{post.content|striptags|linebreaks}}
 									
 				<!--

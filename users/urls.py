@@ -11,6 +11,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from django.conf import settings
 from django.conf import settings
 
+from users.forms import *
 
 urlpatterns = patterns('users.views',
 	
@@ -19,6 +20,11 @@ urlpatterns = patterns('users.views',
 	#~url(r"^(?P<poll_id>\d+)/results/$", "results"),
 	
 	url(r"^(?P<pk>\d+)/?$", "view_user_profile"),
+	
+	#url(r"edit/$", "user_edit_form" ),
+	#url(r"edit$", "user_edit_form" ),
+	
+	
 	#~url(r"^profile/(?P<pk>\d+)/?", "view_userProfile"),
 	
 	

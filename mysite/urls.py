@@ -89,8 +89,12 @@ urlpatterns = patterns('',
 	
 	#~url(r"^auth/$", include("accounts.urls") ),
 	#~url(r"^auth/logout/?$", "accounts.views.logout_view" ),
-	url(r"^accounts/login/$", "django.contrib.auth.views.login", {'authentication_form': EmailAuthenticationForm}, name = "login" ),
-	url(r"^accounts/logout/$", "django.contrib.auth.views.logout", {'template_name': 'registration/logout.html'}, name = "logout" ),
+	# Login
+	url(r"login/$", "django.contrib.auth.views.login", {'authentication_form': EmailAuthenticationForm}, name = "login" ),
+	# Logout
+	url(r"logout/$", "django.contrib.auth.views.logout", {'template_name': 'registration/logout.html'}, name = "logout" ),
+	
+	url(r"^accounts/", include("accounts.urls") ),
 	
 	# Login/Logout-
 	
@@ -102,8 +106,6 @@ urlpatterns = patterns('',
 	
 	
 	# RESTAPI-
-	
-	
 	
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),

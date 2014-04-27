@@ -9,7 +9,11 @@ def view_user_profile(request, pk):
 	user = request.user
 	profile = request.user.get_profile()
 	
+	print "profile"
+	print profile
+	
 	d = { "user": user , "profile": profile}
 	
 	return render_to_response('user_profile.html', d, context_instance=RequestContext(request) )
 	
+

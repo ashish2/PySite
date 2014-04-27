@@ -1,7 +1,6 @@
 
 from q_a.includes import *
 
-
 from tastypie.authorization import *
 
 from tastypie.resources import ModelResource

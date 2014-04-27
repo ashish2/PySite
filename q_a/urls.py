@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import DetailView, ListView
 
+
 # Importing views
 from q_a.views import *
 
@@ -9,8 +10,9 @@ from django.views.decorators.cache import cache_page
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from django.conf import settings
-from django.conf import settings
+#from django.conf import settings
 
+from mysite.settings import STATIC_URL
 
 # Api
 from django.conf.urls.defaults import *
@@ -20,7 +22,6 @@ from q_a.api import *
 v1_api = Api(api_name='v1')
 v1_api.register(UserResource())
 v1_api.register(PostResource())
-
 # Api-
 
 
@@ -39,7 +40,6 @@ urlpatterns = patterns('q_a.views',
 	
 	# Add an Answer
 	#~url(r"^post/answer/?", "add_answer"),
-	
 	
 	# Share
 	url(r"^post/share/(?P<pk>\d+)/(?P<share>-?\d+)", "share"),
@@ -62,7 +62,7 @@ urlpatterns = patterns('q_a.views',
 	url(r"^post/follow/(?P<pk>\d+)/(?P<follow>-?\d+)/(?P<typ>\w?)/?", "follow"),
 	
 	
-	url(r"^post/(?P<pk>\d+)", "view_post_id"),
+	url(r"^post/(?P<pk>\d+)/(?P<slug>[a-z0-9-]+)", "view_post_id"),
 	
 	# Generic url mappings should go down in the last
 	url(r"^post/?", "view_all_post" ),

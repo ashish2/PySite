@@ -4,11 +4,16 @@
 # all the other modules are imported in includes.py
 from q_a.includes import *
 
+# Search
+# Pysolr
+#import search
+# Pysolr/
 
 # DONE
 # @cache_page(60 * 10)
 @login_required
 def view_all_post(request):
+	
 	# posts = Post.objects.filter(~Q(parent_id=None)).order_by("-date")
 	posts = Post.objects.filter(Q(parent_id=None)).order_by("-date")
 	
@@ -43,15 +48,19 @@ def view_all_post(request):
 		else:
 			# 0, which means he hasn't voted
 			post.has_shared = 0
+		
+		post.vote_count = post.vote_set.count()
+		
 	
 	fromUrl = request.get_full_path()
+	
 	
 	d = dict(posts=posts, fromUrl=fromUrl,)
 	return render_to_response('q_a_list.html', d, context_instance=RequestContext(request) )
 	#~return HttpResponse(request.user)
 	
 
-def view_post_id(request, pk):
+def view_post_id(request, pk, slug):
 	
 	post = Post.objects.get(id=pk)
 	
@@ -98,7 +107,9 @@ def show_post_form(request):
 	d = dict( form=myPostForm(), user=request.user )
 	d.update(csrf(request))
 	
-	return render_to_response("q_a_post.html", d)
+	#print RequestContext(request)
+	
+	return render_to_response("q_a_post.html", d, context_instance = RequestContext(request))
 	
 
 
@@ -146,7 +157,7 @@ def show_reply_form(request, pk):
 	# d = dict( form=PostForm(), user=request.user )
 	
 	d.update(csrf(request))
-	return render_to_response("q_a_post.html", d)
+	return render_to_response("q_a_post.html", d, context_instance = RequestContext(request))
 	#~return HttpResponse(request.user)
 	
 

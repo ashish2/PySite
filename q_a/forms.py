@@ -33,11 +33,20 @@ from django.utils.translation import ugettext_lazy as _
 
 def myPostForm(**kwargs):
 	if kwargs.has_key("exclude_list"):
-		ex = kwargs["exclude_list"]
+		e = kwargs["exclude_list"]
 	else:
-		ex = []
-		
+		e = []
+	
+	ex = ['slug', 'parent_id', 'date', 'user', 'user_ip', 'status']
+	ex.extend(e)
+	
 	class PostForm(ModelForm):
+		
+		def __init__(self, *args, **kwargs):
+			super(PostForm, self).__init__(*args, **kwargs)
+			if self.fields.get('title'):
+				self.fields['title'].label = "List Experiance/Event or Ask Question"
+			
 		class Meta:
 			model = Post
 			exclude = ex
