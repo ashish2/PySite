@@ -29,6 +29,7 @@ urlpatterns = patterns('q_a.views',
 	
 	# Post form to add Question
 	url(r"^post/form/$", "show_post_form"),
+	#url(r"^post/form/$", "show_post_form2"),
 	
 	# Post form to add Reply to Answers
 	url(r"^post/reply/(\d+)/?$", "show_reply_form"),
@@ -42,7 +43,8 @@ urlpatterns = patterns('q_a.views',
 	#~url(r"^post/answer/?", "add_answer"),
 	
 	# Share
-	url(r"^post/share/(?P<pk>\d+)/(?P<share>-?\d+)", "share"),
+	#url(r"^post/share/(?P<pk>\d+)/(?P<share>-?\d+)", "share"),
+	url(r"^post/share/(?P<pk>\d+)/", "share"),
 	
 	
 	# RANDOM

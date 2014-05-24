@@ -47,7 +47,6 @@ class Post(models.Model):
 	"""
 	"""
 	Question & Answer table is object:::
-
 	question / answer/ post
 	title
 	description/text/content,
@@ -86,7 +85,11 @@ class Post(models.Model):
 	
 	# Run syncdb, after Uncommenting tags
 	# Every post will have multiple tags related to it, on which we can search
-	tags = TagField(help_text="Separate tags with spaces.", default='')
+	tags = TagField(help_text="Separate different tags with spaces.", default='')
+	
+	# Images uploaded in the posts
+	#images = models.ForeignKey(Images)
+	
 	
 	#~objects = PostManager()
 	
@@ -100,8 +103,21 @@ class Post(models.Model):
 		return Tag.objects.get_for_object(self)
 	
 	def save(self, *args, **kwargs):
-		if not self.id:
-			self.slug = slugify(self.title)
+		# if not self.id, which means its not an edit of the post but a new creation of the post
+		#if not self.id:
+		self.slug = slugify(self.title)
+		
+		# create tags too, if tag field is field, then, loop on their commas & create tag field. for each comma, we'll hv to clie
+		# just have to check tags for spaces & stuff, & delete spaces, separate them by commas & put those tags in different rows of tag table
+		#self.tags = self.tags
+		#tags = self.tags
+		
+		
+		#if kwargs.get('request'):
+			#form = myPostForm(request.POST)
+			#form.tags = self.cleaned_data["tags"]
+			#form.save()
+		
 		super(Post, self).save(*args, **kwargs)
 	
 	# Someday
@@ -109,6 +125,12 @@ class Post(models.Model):
 	
 	
 
+class Images(models.Model):
+	image = models.ImageField(upload_to="post/")
+	# Images uploaded in the posts
+	post = models.ForeignKey(Post)
+	
+	
 
 
 class Vote(models.Model):
@@ -139,12 +161,10 @@ class Vote(models.Model):
 class Share(models.Model):
 	"""
 	Shares
-
 	This post (post_id) has been shared by this user (user_id) on this date
-
 	"""
-	post = models.ForeignKey(Post)
-	by_user = models.ForeignKey(User)
+	post = models.ForeignKey(Post) # The Post_id that has been shared by the User
+	by_user = models.ForeignKey(User) # The User that has shared the Post
 	share = models.IntegerField(default=None, null=True) # Share Value, 1 or -1, Shared or has been UnShared back
 	date = models.DateTimeField(auto_now_add=True)
 	status = models.IntegerField(default=None, null=True, blank=True) # values 0-Deactivated, 1-Active, null-probably untouched yet

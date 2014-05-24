@@ -27,6 +27,8 @@ from q_a.models.models import *
 from q_a.forms import *
 from q_a.func import *
 
+from django.db.models import Sum
+
 ### Some static values
 from q_a.staticvals import static
 from django.contrib.auth.models import User
@@ -36,8 +38,9 @@ from django.contrib.auth.models import User
 from urlparse import urlsplit
 
 
-
 ### Models
 
 
+### Forms
+from django.forms.formsets import formset_factory
 

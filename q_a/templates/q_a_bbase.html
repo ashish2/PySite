@@ -25,8 +25,9 @@
 			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
 			-->
 			
-			{% block extrahead %}
-			{% endblock %}
+			<!-- show block extrahead here, which will come from other templates -->
+			{% include "q_a_tinymcejs.html" %}
+			<!--/ -->
 			
 		</head>
 	
@@ -80,7 +81,7 @@
 										</li>
 										<li>
 											<a href="{% url q_a.views.add_post %}">
-												List an Experiance/Event in your life 
+												Share a life event/experience with us (and how you overcame it)
 											</a>
 										</li>
 										<li class="dropdown">
@@ -109,11 +110,18 @@
 					<!-- ----- -  ------>
 					
 					<div class="row">
+						<!-- show block content here, which will come from other templates -->
 						{% block content %}
 						{% endblock %}
+						<!-- /-->
 					</div>
-					
+				
 				</div>
+				<!-- .main ends/ -->
+				
+				<!-- FOOTER Template -->
+				{% include "q_a_footer.html" %}
+				<!-- FOOTER Template / -->
 				
 			</div>
 			<!-- .container ends -->
@@ -133,5 +141,6 @@
 		<!-- including from Static folder of Application -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
 		
+	
 	
 	</body>

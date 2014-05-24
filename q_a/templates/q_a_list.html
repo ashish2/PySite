@@ -64,16 +64,19 @@
 											
 											{% if post.has_shared != 1 %}
 					<!--
-											<span>
-											<a href="{% url q_a.views.share post.pk 1 %}?from={{fromUrl|urlencode}}">Share</a>
-											</span>
 					-->
+											<span>
+											<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
+											</span>
 											{% elif post.has_shared != -1 %}
 					<!--
 											<span>
-												<a href="{% url q_a.views.share post.pk -1 %}?from={{fromUrl|urlencode}}" value=-1>UnShare</a>
+												<a href="{# url q_a.views.share post.pk -1 #}?from={{fromUrl|urlencode}}" value=-1>UnShare</a>
 											</span>
 					-->
+											<span>
+												<a href="#" value=-1>Shared</a>
+											</span>
 											{% endif %}
 											
 										</div>

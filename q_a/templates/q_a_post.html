@@ -7,7 +7,6 @@
 		Add a comment
 	</div>
 	
-	
 	<!-- if p is present, then it is getting a post_id, which means this is a comment, so we will add_comment -->
 	{% if pk %}
 		<form action="{% url q_a.views.add_reply pk %}?from={{fromUrl|urlencode}}" method="post">
@@ -23,20 +22,3 @@
 			</div>
 		</form>
 {% endblock %}
-
-{% block extrahead %}
-
-	{% url 'admin:jsi18n' as jsi18nurl %}
-	<script type="text/javascript" src='{{ jsi18nurl|default:"../../../jsi18n/" }}'></script>
-	
-	<script type="text/javascript" src="/tiny_mce/tinymce.min.js"></script>
-	<script type="text/javascript">
-		tinyMCE.init({
-			mode: "textareas",
-			theme: "modern"
-		});
-	</script>
-	
-{% endblock %}
-
-{# {% extends "q_a_footer.html" %} #}

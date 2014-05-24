@@ -20,15 +20,17 @@
 				
 				<div class="btn-follow-answer">
 					<!-- if parent_id is none AND if already not followed -->
-					{% if follow.follow != 1 %}
+					<!-- 
+					{# {% if follow.follow != 1 %} #}
 					<span class="btn-post-follow">
-						<a href="{% url q_a.views.follow post.pk 1 'P' %}?from={{fromUrl|urlencode}}" value=1>Follow Question</a>
+						<a href="{# {% url q_a.views.follow post.pk 1 'P' %} #}?from={{fromUrl|urlencode}}" value=1>Follow Question</a>
 					</span>
-					{% elif follow.follow == 1 %}
+					{# {% elif follow.follow == 1 %} #}
 					<span class="btn-post-unfollow">
-						<a href="{% url q_a.views.follow post.pk -1 'P' %}?from={{fromUrl|urlencode}}" value=1>Unfollow Question</a>
+						<a href="{# {% url q_a.views.follow post.pk -1 'P' %} #}?from={{fromUrl|urlencode}}" value=1>Unfollow Question</a>
 					</span>
-					{% endif %}
+					{# {% endif %} #}
+					-->
 					
 					<span class ="btn-post-answer">
 						<a href="{% url q_a.views.show_reply_form post.pk %}?from={{fromUrl|urlencode}}">
@@ -95,14 +97,18 @@
 											<div class ="btn-post-answer-reply">
 												<span>
 													<a href="{% url q_a.views.show_reply_form rep.pk %}?from={{fromUrl|urlencode}}">
-														Comment
+														Reply
 													</a>
 												</span>
+												<!--  Share commented out FTM -->
+												<!-- 
 												<span>
 													<a href="{% url q_a.views.share rep.pk 1 %}">
 														Share
 													</a>
 												</span>
+												-->
+												
 											</div>
 											<!-- Comments Buttons/ -->
 										</div>

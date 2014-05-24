@@ -1,0 +1,23 @@
+{% extends "q_a_bbase.html" %}
+
+<!-- Post form -->
+{% block content %}
+	
+	<div id="addc">
+		Add a comment
+	</div>
+	
+	<form action="{% url q_a.views.add_post %}" method="post">
+		{% csrf_token %}
+		<div id="cform">
+			{{postform.as_p}}
+		</div>
+		<div id="cform">
+			{{imgform.as_p}}
+		</div>
+		<div id="submit">
+			<input type="submit" value="Submit">
+		</div>
+	</form>
+		
+{% endblock %}

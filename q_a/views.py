@@ -31,26 +31,19 @@ def view_all_post(request):
 	
 	for post in posts.object_list:
 		#~e = post.vote_set.filter( post_id=post.id, by_user=request.user)
+		
 		e = None
 		e = post.vote_set.filter( post_id=post.id, by_user=request.user.id )
-		if e:
-			# this means he has voted something
-			post.has_voted = e[0].vote
-		else:
-			# 0, which means he hasn't voted
-			post.has_voted = 0
+		# this means he has voted something 			# 0, which means he hasn't voted
+		post.has_voted = e[0].vote if e else 0
 		
 		e = None
 		e = post.share_set.filter( post_id=post.id, by_user=request.user.id )
-		if e:
-			# this means he has voted something
-			post.has_shared = e[0].share
-		else:
-			# 0, which means he hasn't voted
-			post.has_shared = 0
+		# this means he has voted something 	# 0, which means he hasn't voted
+		post.has_shared = e[0].share if e else 0
 		
-		post.vote_count = post.vote_set.count()
-		
+		#post.vote_count = post.vote_set.count()
+		post.vote_count = post.vote_set.aggregate(Sum('vote'))['vote__sum'] or 0
 	
 	fromUrl = request.get_full_path()
 	
@@ -77,7 +70,6 @@ def view_post_id(request, pk, slug):
 	#~for post in posts.object_list:
 		#~e = post.vote_set.filter(post_id=post.id)
 	
-	
 	replies = Post.objects.filter(parent_id=pk).order_by("-date")
 	
 	i = None
@@ -96,10 +88,11 @@ def view_post_id(request, pk, slug):
 	return render_to_response('q_a_post_id.html', d, context_instance = RequestContext(request) )
 	
 
+#========
 
 # DONE
 def show_post_form(request):
-	""" Show Post form. """
+	''' Show Post form. '''
 	#~post = Post.objects.all()
 	#d = dict( form=pf, user=request.user, context_instance=RequestContext(request), comments=None, )
 	
@@ -112,11 +105,33 @@ def show_post_form(request):
 	return render_to_response("q_a_post.html", d, context_instance = RequestContext(request))
 	
 
+"""
+# Show post form with Image
+def show_post_form2(request):
+	''' Show Post form. '''
+	
+	post_formset = formset_factory(PostForm)
+	image_formset = formset_factory(ImagesForm)
+	
+	#d = dict( form=PostForm(), user=request.user )
+	d = dict( imgform=image_formset(), postform = post_formset(), user=request.user )
+	d.update(csrf(request))
+	
+	#print RequestContext(request)
+	
+	return render_to_response("q_a_create_post.html", d, context_instance = RequestContext(request))
+	
+
+"""
+
+#========
+
 
 # Add a Question
 # DONE
 def add_post(request):
-	if request.POST:
+	
+	if request.method == 'POST':
 		p = request.POST
 		
 		if p.has_key('content') and p["content"]:
@@ -125,6 +140,9 @@ def add_post(request):
 		if p.has_key('title') and p["title"]:
 			title = p["title"]
 		
+		if p.has_key('tags') and p["tags"]:
+			tags = p["tags"]
+			
 		ip = get_client_ip(request)
 		user = request.user
 		#~d.update(csrf(request))
@@ -132,17 +150,18 @@ def add_post(request):
 		# Adding all stuff into DB, so i think we shouldn't use,
 		# get_or_create here, but instead, just use create
 		#pk = Post.objects.get_or_create( title=title, content=content, user_ip=ip, slug=slug, user_id = user.id)
-		pk, cr = Post.objects.get_or_create( title=title, content=content, user_ip=ip, user_id = user.id)
+		pk, cr = Post.objects.get_or_create( title=title, content=content, user_ip=ip, user_id = user.id, tags=tags)
 		
 		# True condition, 
 		# If everything goes fine, 
 		# show the primary key For The Moment
 		# Actually supposed to redirect to the page where user came from
 		#~return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk]))
-		return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk.id] ))
+		return HttpResponseRedirect(reverse("q_a.views.view_post_id", args=[pk.id, pk.slug] ))
 		#~return HttpResponse(pk)
 	
-	# False condition, Else show the form again
+	#d = {'postform': post_formset, 'imgform': image_formset}
+	# if condition False, Else show the form again
 	return HttpResponseRedirect(reverse("q_a.views.show_post_form"))
 	
 
@@ -293,10 +312,18 @@ def follow(request, pk, follow, typ ):
 	#~return HttpResponse(s)
 	#~
 
-def share(request, pk, share):
-	"""Share: Will get the Post id, and +1 or -1 as share"""
+
+# pk parameter for post_id, & share parameter, bcoz we thought, we can give +1 to share & then -1 to UnShare
+# But, now only, pk parameter for post_id , as share will always happen & User CANNOT UnShare, theres no such thing as UnShare.
+#def share(request, pk, share):
+def share(request, pk):
+	"""#Share: Will get the Post id, and +1 or -1 as share
+	No such thing as UnShare, only Share allowed
+	"""
 	
-	share = int(share)
+	#share = int(share)
+	# FTM
+	share = 1
 	
 	p = Post.objects.get(pk=pk)
 	
@@ -308,17 +335,19 @@ def share(request, pk, share):
 	# using only FTM
 	if request.user.id:
 		#d = dict( by_user=request.user, vote=vote, status=status )
-		d = dict( by_user=request.user, post=pk, share=share)
+		#d = dict( by_user=request.user, post=pk, share=share)
+		d = dict( by_user=request.user, post=p, share=share)
 		
 		# by default 1 user can vote to a post_id only once
-		obj, cr = p.share_set.get_or_create(**d)
+		#obj, cr = p.share_set.get_or_create(**d)
+		obj, cr = Share.objects.get_or_create(**d)
 		
 		# If an object was created
-		if cr:
-			pass
+		#if cr:
+			#pass
 		# else, if it was not created
-		else:
-			pass
+		#else:
+			#pass
 		
 		#~
 		#~try:
@@ -328,9 +357,7 @@ def share(request, pk, share):
 		#~else:
 			#~referer = 'No'
 		
-		
 		f =request.GET['from']
-		
 		return HttpResponseRedirect(f)
 	else:
 		return HttpResponse('Please Login here.')

@@ -4,6 +4,16 @@
 # Imports
 import os
 import sys
+
+# Not Working
+# Appending a few directories in environment var PYTHONPATH, 
+# as we are now in virtualenv & these modules aren't installed in virtualenv.
+#sys.path.append('/usr/local/lib/python2.7/dist-packages')
+#print sys.path
+
+# importing some more settings
+import extra_settings
+
 # ADDED-
 
 DEBUG = True
@@ -51,12 +61,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/uploads/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://localhost:8000/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
