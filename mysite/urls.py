@@ -11,6 +11,11 @@ cwd = os.getcwd()
 
 from emailusernames.forms import EmailAuthenticationForm
 
+# for Haystack
+from django.core import management
+import mysite.settings as settings
+management.setup_environ(settings)
+#-
 
 # RESTAPI
 
@@ -106,6 +111,10 @@ urlpatterns = patterns('',
 	
 	
 	# RESTAPI-
+	
+	# Haystack Search
+	#(r'^haystack_search/', include('haystack.urls')),
+	# Haystack Search-
 	
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),

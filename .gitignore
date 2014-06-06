@@ -1,5 +1,9 @@
 # Folders to ignore
 ignore/
+housex/
+
+*.pyc
+staticfiles
 
 # Files to ignore from here
 #now

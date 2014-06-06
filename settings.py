@@ -12,7 +12,8 @@ import sys
 #print sys.path
 
 # importing some more settings
-import extra_settings
+#import extra_settings
+from extra_settings import *
 
 # ADDED-
 
@@ -167,6 +168,11 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     
+    # Added
+    # Haystack Search
+    #'haystack',
+    #'six',
+    
     # Tagging
     'tagging',
     
@@ -184,7 +190,10 @@ INSTALLED_APPS = (
     'emailusernames',
     
     
+    # Added-
+    
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -281,5 +290,9 @@ AUTH_PROFILE_MODULE = "accounts.UserProfile"
 # Login
 LOGIN_URL = '/accounts/login/'
 
+
+
+# importing some more settings at the End
+from extra_end_settings import *
 
 # ADDED-
