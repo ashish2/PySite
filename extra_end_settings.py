@@ -7,10 +7,9 @@ from settings import DATABASES
 import dj_database_url
 #DATABASES['default'] = dj_database_url.config()
 #DATABASES['default'] = dj_database_url.config()
-DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-
-print "DATABASES"
-print DATABASES
+#DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+DATABASES = {'default': dj_database_url.config(default='postgres://ivvmabgfrysfgo:hJJ_2qRdime4SRRH9AeiY-GqYz@ec2-50-17-207-54.compute-1.amazonaws.com:5432/df4n1vasgl12gv')}
+#DATABASES = {'default': dj_database_url.config(default=os.environ['POSTGRES_PURPLE_URL'])}
 
 
 # honor the 'x_forwarded_proto' header for request.is_secure()
