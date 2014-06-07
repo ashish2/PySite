@@ -1,3 +1,0 @@
-from tagging.fields import *
-
-
