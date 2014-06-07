@@ -27,8 +27,9 @@ STATIC_URL = '/static/'
 current_dir = os.path.dirname( __file__ )
 
 STATICFILES_DIRS = (
-	os.path.join(BASE_DIR, 'static'),
+	#os.path.join(BASE_DIR, 'static'),
 	current_dir,
 )
 
 #postgres://hpyhbrdkfhuyde:w5JW3maVZAiKBdWbuYQG_dqM2_@ec2-54-204-2-255.compute-1.amazonaws.com:5432/d7kett2c1qs016
+
