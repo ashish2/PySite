@@ -27,14 +27,27 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
+    #'default': {
+        #'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'NAME': 'mysite',                      # Or path to database file if using sqlite3.
+        #'USER': 'root',                      # Not used with sqlite3.
+        #'PASSWORD': 'pass',                  # Not used with sqlite3.
+        #'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        #'PORT': '3308',                      # Set to empty string for default. Not used with sqlite3.
+    #}
+    
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mysite',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'NAME': 'mysite',                      # Or path to database file if using sqlite3.
+        #~'NAME': 'mysite_1',                      # Or path to database file if using sqlite3.
+        'NAME': 'mysite_2',                      # Or path to database file if using sqlite3.
+        #'USER': 'root',                      # Not used with sqlite3.
+        'USER': 'postgres',                      # Not used with sqlite3.
         'PASSWORD': 'pass',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '3308',                      # Set to empty string for default. Not used with sqlite3.
+        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
+    
 }
 
 # Local time zone for this installation. Choices can be found here:
