@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+		<head>
+			<title>
+				{% block title %}QnA{% endblock %}
+			</title>
+			
+			<!--
+			For including from applications static/ folder, With {{STATIC_URL}}
+			not base static folder
+			-->
+			<!--
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
+			-->
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap_cosmo.css">
+			
+			<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+			
+			<!--
+			For including from project (Base) static/ folder, Without {{STATIC_URL}}
+			-->
+			<!--
+			<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+			-->
+			
+			{% block extrahead %}
+			{% endblock %}
+			
+		</head>
+	
+	<body>
+		<!-- Jumbotron .jumbotron starts -->
+<!--
+		<div class="jumbotron">
+-->
+			<!-- .container starts -->
+			<div class="container">
+				
+				<div id="sidebar">
+					{% block sidebar %}
+					{% endblock %}
+				</div>
+				
+				<div id="main">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+							<h3 id="navbar">QnA</h3>
+							</div>
+							{% block nav-global %}
+							<!-- MENU -->
+							{% if user.is_staff %}
+							<!-- menu navbar -->
+							<div class="navbar navbar-inverse">
+								<div class="navbar-header">
+									<button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a href="#" class="navbar-brand">Brand</a>
+								</div>
+								<div class="navbar-collapse collapse navbar-responsive-collapse">
+									<ul class="nav navbar-nav">
+										<li class="active">
+											<a href="{% url admin:index %}">
+												Admin
+											</a> 
+										</li>
+										<li>
+											<a href="{% url q_a.views.view_all_post %}">
+												Main Page 
+											</a>
+										</li>
+										<li>
+											<a href="{% url q_a.views.add_post %}">
+												Ask a Question
+											</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+												Dropdown 
+												<b class="caret"></b>
+											</a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Action</a></li>
+												<li><a href="#">Another action</a></li>
+												<li><a href="#">Something else here</a></li>
+												<li class="divider"></li>
+												<li class="dropdown-header">Dropdown header</li>
+												<li><a href="#">Separated link</a></li>
+												<li><a href="#">One more separated link</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div><!-- /.nav-collapse -->
+							</div><!-- /.navbar -->
+							<!-- menu navbar ends -->
+							{% endif %}
+							{% endblock %}
+						</div>
+					</div>
+					
+					<!-- ----- -  ------>
+					
+					<div class="row">
+						{% block content %}
+						{% endblock %}
+					</div>
+					
+				</div>
+				
+			</div>
+			<!-- .container ends -->
+			
+<!--
+		</div>
+-->
+		<!-- .jumbotron ends -->
+	
+	
+	<!-- including from Static folder of Application, with {{STATIC_URL}} -->
+	<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
+	
+	<!-- including from Static folder of Base(Project/Root Static folder), withOUT {{STATIC_URL}} -->
+	<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- including from Static folder of Application -->
+	<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
+	
+	
+	</body>

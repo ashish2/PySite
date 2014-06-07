@@ -1,0 +1,31 @@
+
+.posts {
+    border: 1px solid red;
+}
+
+
+.body {
+    border: 1px solid black;
+}
+
+
+/* Posts */
+
+.each-posts {
+    border-bottom: 1px solid lightgrey;
+}
+
+
+/* Posts- */
+
+
+/* Votes */
+
+.votes {
+    text-align: center;
+}
+
+/* Votes- */
+
+
+

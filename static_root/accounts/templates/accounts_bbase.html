@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+		<head>
+			<title>
+				{% block title %}QnA{% endblock %}
+			</title>
+			
+			<!--
+			For including from application static/ folder,
+			-->
+			<script type="text/javascript" src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
+			
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/all.css">
+			
+			<!--
+			For including from project static/ folder,
+			-->
+			<!--
+			<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+			-->
+			
+		</head>
+	
+	<body>
+		<!-- Jumbotron .jumbotron starts -->
+		<div class="jumbotron">
+			<!-- .container starts -->
+			<div class="container">
+				
+				<div id="sidebar">
+					{% block sidebar %}
+					{% endblock %}
+				</div>
+				
+				<div id="main">
+					
+					<div id="menu">
+						{% block nav-global %}
+							<!-- MENU -->
+							<h3>QnA</h3>
+							{% if user.is_staff %}
+							<a href="{% url admin:index %}">
+								Admin
+							</a>
+							<a href="">
+								Add post
+							</a>
+							{% endif %}
+						{% endblock %}
+					</div>
+					
+					<div id="content">
+						{% block content %}
+						{% endblock %}
+					</div>
+					
+				</div>
+				
+			</div>
+			<!-- .container ends -->
+		</div>
+		<!-- .jumbotron ends -->
+	
+	<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
+	
+	</body>
