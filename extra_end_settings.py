@@ -14,7 +14,7 @@ ALLOW_HOST = ['*']
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #STATIC_ROOT = 'staticfiles'
-STATIC_ROOT = ''
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 current_dir = os.path.dirname( __file__ )
