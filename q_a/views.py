@@ -140,6 +140,7 @@ def add_post(request):
 		if p.has_key('title') and p["title"]:
 			title = p["title"]
 		
+		tags =None
 		if p.has_key('tags') and p["tags"]:
 			tags = p["tags"]
 			
