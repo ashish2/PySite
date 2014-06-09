@@ -87,7 +87,7 @@ MEDIA_URL = 'http://localhost:8000/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 #STATIC_ROOT = ''
-STATIC_ROOT = ''
+STATIC_ROOT = 'static_root'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
