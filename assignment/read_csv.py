@@ -7,57 +7,35 @@ import sys
 import os
 from collections import *
 
-companies = OrderedDict()
-separator = ','
+separator = ';'
 
-def read_csv(csv_file):
-	"""Read a passed csv file
-	as a Generator object
-	"""
+def read_csv(csv_file, companies):
+	"""Read a passed csv file as a Generator object"""
 	fobj = open(csv_file, "rb")
 	first_line = fobj.readline().strip()
-	
 	for i in first_line.split(separator)[2:]:
-		companies[i] = [[], [], []]
-		
+		companies[i] = [ 0, 0, 0 ]
 	for line in fobj:
 		yield line
 	
-
-def loop(csv_file):
+def loop(csv_file, companies):
+	"""Loops over a generator object & fills an OrderedDict of companies"""
 	y = 0
-	for i in read_csv(csv_file):
+	for i in read_csv(csv_file, companies):
 		lis = i.strip().split(separator)
 		z = 0
 		for comp_name, val in companies.items():
-			val[0].append( int( lis[0] ) )
-			val[1].append( lis[1] )
-			val[2].append( int( lis[z+2] ) )
+			numb = z+2
+			if val[2] < int( lis[numb] ):
+				( val[0], val[1], val[2] ) = ( int( lis[0] ) , lis[1], int( lis[numb] ) )
 			z = z+1
 	
-	string = ''
-	for comp_name, val in companies.items():
-		"""Max out
-		Since we are asked to print just the 1 'Month' of the 'Highest' share price and not Months,
-		we are assuming that there is only 1 occurence of the highest share price in the csv file, 
-		and not multiple occurence, 
-		so in this scenario we can safely Max out, 
-		if there were multiple occurences & we were asked to print all the 'Months' for the multiple Highest share prices,  
-		we would go for a different approach.
-		"""
-		mx = max(val[2])
-		indx = val[2].index(mx)
-		g0 = val[0][indx]
-		g1 = val[1][indx]
-		
-		companies[comp_name] = zip( [g0], [g1], [mx] )
-		string += str(comp_name) + ": " + str(g0) + " " + g1 + ", " + str(mx) + '\n'
-	
-	return string
-	"""return companies"""
+	return companies
 
 def format_csv(companies):
-	pass
+	"""Formats a Dict into a string to make it printable"""
+	string =  ''.join([str(comp_name)+": "+ ', '.join(map(str, val))+'\n' for comp_name, val in companies.items()])
+	return string
 
 def print_results(companies):
 	
@@ -67,8 +45,11 @@ def print_results(companies):
 
 
 def run_procedure(csv_file):
+	companies = OrderedDict()
+	
 	#genobj = read_csv(csv_file)
-	result = loop( csv_file)
+	ret_companies = loop(csv_file, companies)
+	result = format_csv(ret_companies)
 	print_results(result)
 	
 
@@ -77,15 +58,19 @@ if __name__ == "__main__":
 	"""Takes in a csv filename from command line & starts the procedure
 	cd into this directory & run python read_csv.py 'test_shares_data.csv'
 	"""
-	try:
-		if len(sys.argv) == 2:
-			try:
-				csv_file = sys.argv[1]
-				is_file = os.path.isfile(csv_file)
-				if is_file: 
-					run_procedure(csv_file)
-			except:
-				raise Exception("Not a valid file")
-	except:
-		raise Exception("No file given")
+	
+	#compute
+	#run_tests
+	
+	#try:
+	if len(sys.argv) == 2:
+		#try:
+			csv_file = sys.argv[1]
+			is_file = os.path.isfile(csv_file)
+			if is_file: 
+				run_procedure(csv_file)
+		#except:
+			#raise Exception("Not a valid file")
+	#except:
+		#raise Exception("No file given")
 	

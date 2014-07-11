@@ -33,7 +33,7 @@ class OurCsvTest(unittest.TestCase):
 	def test_pass(self):
 		self.assertTrue(True)
 	
-	def test_read_csv_type(self):
+	def test_read_csv_return_type(self):
 		"""
 		Tests return type: 
 		Tests that our read_csv function returns a 
@@ -41,6 +41,21 @@ class OurCsvTest(unittest.TestCase):
 		"""
 		gen = rc.read_csv( self.csv_file )
 		self.assertIsInstance( gen, type( ( i for i in range(1) ) ) )
+	
+	def test_loop_return_type(self):
+		"""
+		Tests return type:
+		our loop function takes in a generator object and
+		returns a string
+		"""
+		gen = rc.read_csv(self.csv_file)
+		loop = rc.loop(gen)
+		log.debug( "this= %s", gen )
+		log.debug( "that= %s", loop )
+		di = OrderedDict()
+		self.assertIsInstance( loop, type(di) )
+		
+	
 	
 
 if __name__ == '__main__':
@@ -65,6 +80,7 @@ if __name__ == '__main__':
 	
 	#unittest.main()
 	suite = unittest.TestSuite()
-	suite.addTest(OurCsvTest("test_read_csv_type", csv_file ))
+	suite.addTest(OurCsvTest("test_read_csv_return_type", csv_file ))
+	suite.addTest(OurCsvTest("test_loop_return_type", csv_file ))
 	unittest.TextTestRunner().run(suite)
 		
