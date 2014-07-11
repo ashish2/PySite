@@ -18,13 +18,13 @@ def read_csv(csv_file):
 	for i in first_line.split(separator)[2:]:
 		companies[i] = [[], [], []]
 		
-	genobj = ( line for line in fobj )
+	for line in fobj:
+		yield line
 	
-	return genobj
 
-def loop(genobj):
+def loop(csv_file):
 	y = 0
-	for i in genobj:
+	for i in read_csv(csv_file):
 		lis = i.strip().split(separator)
 		z = 0
 		for comp_name, val in companies.items():
@@ -58,8 +58,8 @@ def print_results(companies):
 
 
 def run_procedure(csv_file):
-	genobj = read_csv(csv_file)
-	result = loop(genobj)
+	#genobj = read_csv(csv_file)
+	result = loop( csv_file)
 	print_results(result)
 	
 

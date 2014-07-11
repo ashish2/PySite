@@ -41,24 +41,6 @@ class OurCsvTest(unittest.TestCase):
 		"""
 		gen = rc.read_csv( self.csv_file )
 		self.assertIsInstance( gen, type( ( i for i in range(1) ) ) )
-		
-	
-	def test_loop_type(self):
-		"""
-		Tests return type: 
-		our loop function takes in a generator object and
-		returns a string
-		"""
-		gen = rc.read_csv(self.csv_file)
-		
-		loop = rc.loop(gen)
-		
-		log.debug( "this= %s", gen )
-		log.debug( "that= %s", loop )
-	
-		di = OrderedDict()
-		self.assertIsInstance( loop, type('') )
-	
 	
 
 if __name__ == '__main__':
@@ -68,7 +50,7 @@ if __name__ == '__main__':
 	
 	logging.basicConfig( stream=sys.stderr )
 	logging.getLogger( "OurCsvTest" ).setLevel( logging.DEBUG )
-	log= logging.getLogger( "SomeTest.testSomething" )
+	log= logging.getLogger( "OurCsvTest" )
 	
 	try:
 		if len(sys.argv) == 2:
@@ -84,6 +66,5 @@ if __name__ == '__main__':
 	#unittest.main()
 	suite = unittest.TestSuite()
 	suite.addTest(OurCsvTest("test_read_csv_type", csv_file ))
-	suite.addTest(OurCsvTest("test_loop_type", csv_file ))
 	unittest.TextTestRunner().run(suite)
 		
