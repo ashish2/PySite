@@ -37,7 +37,14 @@ def loop(csv_file):
 	
 	string = ''
 	for comp_name, val in companies.items():
-		"""Max out"""
+		"""Max out
+		Since we are asked to print just the 1 'Month' of the 'Highest' share price and not Months,
+		we are assuming that there is only 1 occurence of the highest share price in the csv file, 
+		and not multiple occurence, 
+		so in this scenario we can safely Max out, 
+		if there were multiple occurences & we were asked to print all the 'Months' for the multiple Highest share prices,  
+		we would go for a different approach.
+		"""
 		mx = max(val[2])
 		indx = val[2].index(mx)
 		g0 = val[0][indx]
