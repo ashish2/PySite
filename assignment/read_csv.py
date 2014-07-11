@@ -8,7 +8,7 @@ import os
 from collections import *
 
 companies = OrderedDict()
-separator = ';'
+separator = ','
 
 def read_csv(csv_file):
 	"""Read a passed csv file"""
