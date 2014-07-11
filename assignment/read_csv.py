@@ -11,7 +11,9 @@ companies = OrderedDict()
 separator = ','
 
 def read_csv(csv_file):
-	"""Read a passed csv file"""
+	"""Read a passed csv file
+	as a Generator object
+	"""
 	fobj = open(csv_file, "rb")
 	first_line = fobj.readline().strip()
 	
