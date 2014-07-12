@@ -10,77 +10,48 @@ import logging
 import sys
 import os
 from collections import *
-import read_csv as rc
+from read_csv import ComputeData
 
-class SimpleTest(unittest.TestCase):
-	def test_basic_addition(self):
-		"""
-		Tests that 1 + 1 always equals 2.
-		"""
-		self.assertEqual(1 + 1, 2)
-		
 
 class OurCsvTest(unittest.TestCase):
 	"""
 	Test Cases for the functions in our read_csv.py
 	"""
+	csv_file = 'test_shares_data.csv'
 	
-	def __init__(self, testname, csv_file):
-		super(OurCsvTest, self).__init__(testname)
-		self.csv_file = csv_file
-		
+	expected_data = OrderedDict([
+		('Company-A', [2000, 'Mar', 1000]), 
+		('Company-B', [2007, 'Mar', 986]), 
+		('Company-C', [1993, 'Jun', 995]), 
+		('Company-D', [2002, 'Apr', 999]), 
+		('Company-E', [2008, 'Oct', 997])
+	])
 	
 	def test_pass(self):
 		self.assertTrue(True)
 	
-	def test_read_csv_return_type(self):
+	def test_compute_return_type(self):
 		"""
-		Tests return type: 
-		Tests that our read_csv function returns a 
+		Tests return Type: 
+		Tests that our compute function returns a 
 		generator object after taking in a file
 		"""
-		gen = rc.read_csv( self.csv_file )
-		self.assertIsInstance( gen, type( ( i for i in range(1) ) ) )
+		companies = OrderedDict()
+		ret = ComputeData().compute( self.csv_file, companies )
+		self.assertIsInstance(ret, OrderedDict)
 	
-	def test_loop_return_type(self):
+	def test_compute_return_value(self):
 		"""
-		Tests return type:
-		our loop function takes in a generator object and
-		returns a string
+		Tests return Value: 
+		Tests that our compute function returns a 
+		generator object after taking in a file
 		"""
-		gen = rc.read_csv(self.csv_file)
-		loop = rc.loop(gen)
-		log.debug( "this= %s", gen )
-		log.debug( "that= %s", loop )
-		di = OrderedDict()
-		self.assertIsInstance( loop, type(di) )
+		companies = OrderedDict()
+		ret_companies = ComputeData().compute(self.csv_file, companies)
+		self.assertEqual(ret_companies, self.expected_data)
 		
-	
 	
 
 if __name__ == '__main__':
-	"""Takes in a csv filename from command line & starts the procedure
-	cd into this directory & run python read_csv.py 'test_shares_data.csv'
-	"""
+	unittest.main()
 	
-	logging.basicConfig( stream=sys.stderr )
-	logging.getLogger( "OurCsvTest" ).setLevel( logging.DEBUG )
-	log= logging.getLogger( "OurCsvTest" )
-	
-	try:
-		if len(sys.argv) == 2:
-			try:
-				csv_file = sys.argv[1]
-				is_file = os.path.isfile(csv_file)
-			except:
-				raise Exception("Not a valid file")
-	except:
-		raise Exception("No file given")
-	
-	
-	#unittest.main()
-	suite = unittest.TestSuite()
-	suite.addTest(OurCsvTest("test_read_csv_return_type", csv_file ))
-	suite.addTest(OurCsvTest("test_loop_return_type", csv_file ))
-	unittest.TextTestRunner().run(suite)
-		
