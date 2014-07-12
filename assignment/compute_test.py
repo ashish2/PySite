@@ -96,7 +96,7 @@ class OurComputeDataTest(unittest.TestCase):
 	
 
 def show_usage():
-	print ("Usage: \n1) python read_csv.py compute <csv_filename>: to compute data in csv file. \n2) python read_csv.py -v: to run unittests")
+	print ("Usage: \n1) python read_csv.py compute <csv_filename>: to compute data in csv file. \n2) python read_csv.py runtest: to run unittests")
 	sys.stdout.flush()
 
 if __name__ == "__main__":
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 	cd into this directory & run python read_csv.py 'test_shares_data.csv'
 	"""
 	if len(sys.argv) > 1:
-		if len(sys.argv) == 2 and str(sys.argv[1]).lower() == '-v':
+		if len(sys.argv) == 2 and str(sys.argv[1]).lower() == 'runtest':
 			unittest.main()
 		elif len(sys.argv) == 3 and str(sys.argv[1]).lower() == 'compute':
 			try:
