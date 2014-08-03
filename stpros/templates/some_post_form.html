@@ -1,0 +1,20 @@
+{% extends "q_a_bbase.html" %}
+
+<!-- Post form -->
+{% block content %}
+	
+	{% if fromUrl %}
+	<form action="{{form_action}}?from={{fromUrl}}" method="post">
+	{% else %}
+	<form action="{{form_action}}" method="post">
+	{% endif %}
+		{% csrf_token %}
+		<div id="cform">
+			{{form.as_p}}
+		</div>
+		<div id="submit">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+		
+{% endblock %}

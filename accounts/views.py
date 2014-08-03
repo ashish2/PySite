@@ -1,6 +1,6 @@
 # Create your views here.
 
-from q_a.includes import *
+from minbase.includes import *
 
 #~def login(request, template_name):
 	#~
@@ -15,20 +15,24 @@ from q_a.includes import *
 	
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from emailusernames.utils import create_user, create_superuser
+from emailusernames.forms import user_exists
+
+from accounts.forms import RegistrationForm
+
 
 def register(request):
 	#create_superuser('admin@example.com', 'password')
 	
+	
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = RegistrationForm(request.POST)
 		
 		if form.is_valid():
-			from emailusernames.utils import create_user, create_superuser
-			from emailusernames.forms import user_exists
-			
 			# Check this, change it to email in html template
 			# in html, the input element has name as 'username', but we are showing label as email, so we will accept it as 'email'
 			email = request.POST.get('username')
@@ -46,14 +50,13 @@ def register(request):
 				#v.login(request)
 				pass
 			
-			
 			return HttpResponseRedirect("/")
 			
 		else:
-			form = UserCreationForm(request.POST)
+			form = RegistrationForm(request.POST)
 		
 	else:
-		form = UserCreationForm()
+		form = RegistrationForm()
 		
 	#return render(request, "registration/register.html", { 'form': form, })
 	return render(request, 'registration/registration.html', { 'form': form, }, context_instance=RequestContext(request))

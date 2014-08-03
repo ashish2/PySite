@@ -1,6 +1,9 @@
 # Folders to ignore
 ignore/
 housex/
+homex/
+assignment/
+django-blog-zinnia-0.14.1/
 
 #static_root/*.py
 #static_root/*.pyc
@@ -11,4 +14,7 @@ housex/
 
 # Files to ignore from here
 #now
+
+# FTM, Undo these later
+static/js/fb_sdk.js
 

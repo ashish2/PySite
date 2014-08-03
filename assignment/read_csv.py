@@ -9,10 +9,10 @@ from collections import *
 
 separator = ','
 
-class ComputeData():
+class ComputeData(object):
 	
 	def compute(self, csv_file, companies):
-		"""Read a passed csv file as a Generator object"""
+		"""Read a passed csv file, returning computed data"""
 		fobj = open(csv_file, "rb")
 		first_line = fobj.readline().strip()
 		for i in first_line.split(separator)[2:]: companies[i] = [ 0, 0, 0 ]
@@ -96,25 +96,27 @@ class OurComputeDataTest(unittest.TestCase):
 	
 
 def show_usage():
-	print ("Usage: \n1) python read_csv.py compute <csv_filename>: to compute data in csv file. \n2) python read_csv.py -v: to run unittests")
+	print ("Usage: \n1) python read_csv.py compute <csv_filename>: to compute data in csv file. \n2) python read_csv.py runtest: to run unittests")
 	sys.stdout.flush()
 
 if __name__ == "__main__":
 	"""Takes in a csv filename from command line & starts the procedure
 	cd into this directory & run python read_csv.py 'test_shares_data.csv'
 	"""
-	if len(sys.argv) > 1:
-		if len(sys.argv) == 2 and str(sys.argv[1]).lower() == '-v':
-			unittest.main()
-		elif len(sys.argv) == 3 and str(sys.argv[1]).lower() == 'compute':
-			try:
-				csv_file = sys.argv[2]
-				is_file = os.path.isfile(csv_file)
-				if is_file: 
-					ComputeData().run_procedure(csv_file)
-			except:
-				raise Exception("Not a valid file")
-		else:
-			show_usage()
+	if len(sys.argv) == 2 and str(sys.argv[1]).lower() == 'runtest':
+		#sys.argv.append(sys.argv[1])
+		sys.argv[1] = '-v'
+		unittest.main()
+	elif len(sys.argv) == 3 and str(sys.argv[1]).lower() == 'compute':
+		try:
+			csv_file = sys.argv[2]
+			is_file = os.path.isfile(csv_file)
+			if is_file: 
+				ComputeData().run_procedure(csv_file)
+		except:
+			raise Exception("Not a valid file")
+	else:
+		show_usage()
+			
 	
 	

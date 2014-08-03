@@ -57,16 +57,14 @@
 										<!-- Comments -->
 										<div class ="btn-post-answer-reply commentlink">
 											<span>
-												<a href="{% url q_a.views.show_reply_form post.pk %}?from={{fromUrl|urlencode}}">
-													Reply
-												</a>
+												<a href="{% url q_a.views.show_reply_form post.pk %}?from={{fromUrl|urlencode}}">Reply</a>
 											</span>
 											
 											{% if post.has_shared != 1 %}
 					<!--
 					-->
 											<span>
-											<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
+												<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
 											</span>
 											{% elif post.has_shared != -1 %}
 					<!--

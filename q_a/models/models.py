@@ -22,7 +22,7 @@ from tagging.fields import TagField
 from q_a.managers import *
 
 
-#~from q_a.includes import *
+#~from minbase.includes import *
 
 # Globals
 app_label_q_a = 'q_a'

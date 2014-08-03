@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from q_a.includes import *
+from minbase.includes import *
 
 class Following(models.Model):
 	user = models.ForeignKey(User, related_name="by_user")

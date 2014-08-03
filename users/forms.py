@@ -2,7 +2,7 @@ from django import forms
 
 # Create your models here.
 
-from q_a.includes import *
+from minbase.includes import *
 from emailusernames.forms import *
 
 

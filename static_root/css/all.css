@@ -1,18 +1,26 @@
 
 .posts {
-    border: 1px solid red;
+	border: 1px solid red;
 }
 
 
 .body {
-    border: 1px solid black;
+/*
+	border: 1px solid black;
+*/
+}
+
+.border-1-black {
+/*
+	border: 1px solid black;
+*/
 }
 
 
 /* Posts */
 
 .each-posts {
-    border-bottom: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
 }
 
 
@@ -22,10 +30,25 @@
 /* Votes */
 
 .votes {
-    text-align: center;
+	text-align: center;
+}
+
+.vote-up>a:hover{
+	color: green;
+}
+
+.vote-down>a:hover{
+	color: red;
 }
 
 /* Votes- */
+
+
+.form-signin {
+	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+}
 
 
 

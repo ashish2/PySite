@@ -1,5 +1,5 @@
 
-from q_a.includes import *
+from minbase.includes import *
 
 from tastypie.authorization import *
 

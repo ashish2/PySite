@@ -1,0 +1,99 @@
+{# load parse_content_bbcode #}
+{% load bbcode %}
+					{% for post in somelist %}
+					<div class="each-posts">
+						<div class="row">
+							<div class="col-lg-1">
+									<div class="votes">
+										{% if post.has_voted != 1 %}
+										<div class="vote-up">
+											<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote Up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
+										</div>
+										{% endif %}
+										<div class="vote-amt">
+												{{post.vote_count}}
+										</div>
+										{% if post.has_voted != -1 %}
+										<div class="vote-down">
+											<a href="{% url stpros.views.vote post.pk -1 %}?from={{fromUrl|urlencode}}" title="Vote down" value=-1><span class="glyphicon glyphicon-thumbs-down"></span></a>
+										</div>
+										{% endif %}
+									</div>
+							</div>
+							<div class="col-lg-11">
+								
+								<div class="post-title">
+									<h4>
+										<b>
+											<a href="{% url stpros.views.read post.id %}">{{ post.problem }}</a>
+										</b>
+									</h4>
+								</div>
+								
+								<div class="border-1-black">
+									<small><a href="{% url users.views.view_user_profile post.user.pk %}">{{post.user.username}}</a></small>
+									<div>
+										{# post.answer|striptags|linebreaks #}
+										{% bbcode post.answer %}
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-lg-2">
+										<!-- Comments -->
+										<div class ="btn-post-answer-reply commentlink">
+											<!--
+											-->
+											<span>
+												<a href="{% url stpros.views.add_reply post.pk %}?from={{fromUrl|urlencode}}">
+													Reply
+												</a>
+											</span>
+											
+											<!--
+											Share
+											{# if post.has_shared != 1 #}
+											<span>
+											<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
+											</span>
+											{# elif post.has_shared != -1 #}
+											<span>
+												<a href="#" value=-1>Shared</a>
+											</span>
+											{# endif #}
+											-->
+											
+										</div>
+										<!-- Comments/ -->
+									</div>
+									<div class="col-lg-4">
+										<!-- Time -->
+										<div class="post-time">
+											<small>
+												{{ post.date }}
+											</small>
+										</div>
+										<!-- Time- -->
+									</div>
+								</div>
+								<!-- 
+								Replies start
+								Commenting right now,
+								can UnComment it later.
+								-->
+								<!--
+								{% if post.post_set.all %}
+									<ul class="replies">
+										{% for i in post.post_set.all %}
+												<li>
+													{{i.content|striptags }}
+												</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+								-->
+								<!-- Replies ends -->
+							</div>
+						</div>
+					</div>
+					{% endfor %}

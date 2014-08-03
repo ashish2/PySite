@@ -1,6 +1,21 @@
 {% url 'admin:jsi18n' as jsi18nurl %}
 <script type="text/javascript" src='{{ jsi18nurl|default:"../../../jsi18n/" }}'></script>
 
+<!--
+-->
+<!--
+<script src="{{STATIC_URL}}wysibb/jquery.wysibb.min.js"></script>
+-->
+<script src="/wysibb/jquery.wysibb.min.js"></script>
+<link rel="stylesheet" href="/wysibb/theme/default/wbbtheme.css" />
+<script type="text/javascript">
+	$(function() {
+		$("#id_answer").wysibb();
+	});
+</script>
+
+
+<!--
 <script type="text/javascript" src="/tiny_mce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinyMCE.init({
@@ -9,3 +24,4 @@
 	});
 </script>
 
+-->

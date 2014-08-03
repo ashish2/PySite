@@ -2,7 +2,7 @@
 
 # Only 1 import here, which is the include file, 
 # all the other modules are imported in includes.py
-from q_a.includes import *
+from minbase.includes import *
 
 # Search
 # Pysolr
@@ -18,12 +18,10 @@ def view_all_post(request):
 	posts = Post.objects.filter(Q(parent_id=None)).order_by("-date")
 	
 	paginator = Paginator(posts, 5)
-	
 	try:
 		page = int(request.GET.get("page", "1"))
 	except ValueError:
 		page = 1
-	
 	try:
 		posts = paginator.page(page)
 	except (InvalidPage, EmptyPage):
@@ -50,13 +48,12 @@ def view_all_post(request):
 	
 	d = dict(posts=posts, fromUrl=fromUrl,)
 	return render_to_response('q_a_list.html', d, context_instance=RequestContext(request) )
+	#return render(request, 'q_a_list.html', d, )
 	#~return HttpResponse(request.user)
 	
 
 def view_post_id(request, pk, slug):
-	
 	post = Post.objects.get(id=pk)
-	
 	# Getting whether the logged in user is following this Question post
 	# fieldType, typ = 'P' FTM , as this is the Post function, over here we will only view Posts
 	typ = 'P'
@@ -178,7 +175,6 @@ def show_reply_form(request, pk):
 	
 	d.update(csrf(request))
 	return render_to_response("q_a_post.html", d, context_instance = RequestContext(request))
-	#~return HttpResponse(request.user)
 	
 
 # Add Comment(reply) to an Answer

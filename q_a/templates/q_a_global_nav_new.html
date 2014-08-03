@@ -1,0 +1,95 @@
+	{% block nav-global %}
+		<!-- MENU -->
+			<!-- menu navbar -->
+			<div class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/users/{{user.id}}" class="navbar-brand">Hi {% if user %}, {{user}} {% endif %}</a>
+				</div>
+				<div class="navbar-collapse collapse navbar-responsive-collapse">
+					<ul class="nav navbar-nav">
+					{% if user.is_authenticated %}
+						{% if user.is_superuser %}
+						<li class="active">
+							<a href="{% url admin:index %}">
+								Admin
+							</a> 
+						</li>
+						{% endif %}
+						<li>
+							<a href="{% url stpros.views.list_all %}">
+								Main Page 
+							</a>
+						</li>
+						<li>
+							<a href="{% url q_a.views.add_post %}" title="Share a life event/experience with us (and how you overcame it)">
+								Share a life event/experience
+							</a>
+						</li>
+						<li>
+							<a href="{% url stpros.views.create %}" title="How i solved a problem, list down the steps to the solution">
+								Path to problem solve
+							</a>
+						</li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								Dropdown 
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/users/{{request.user.id}}">My Profile</a></li>
+								<li><a href="/followers/{{request.user.id}}">Followers</a></li>
+								<li><a href="/following/{{request.user.id}}">Following</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Dropdown header</li>
+								<li><a href="/logout/">Logout</a></li>
+							</ul>
+						</li>
+					{% endif %}
+					</ul>
+				</div><!-- /.nav-collapse -->
+			</div><!-- /.navbar -->
+			<!-- menu navbar ends -->
+	{% endblock %}
+
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand">QnA</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+

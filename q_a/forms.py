@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from q_a.models import *
+from q_a.models.models import *
 
 from django.contrib import admin
 from django.forms import ModelForm

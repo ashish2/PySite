@@ -72,11 +72,29 @@ urlpatterns = patterns('',
 	# Followers_following
 	url(r"^follow/", include("following_followers.urls")),
 	
+	# Stpros
+	url(r"^stpros/", include("stpros.urls")),
+	
+	# FB
+	url(r"^hi_from_fb", "stpros.views.hi_from_fb"),
+	
+	#Minbase
+	url(r"^minbase/", include("minbase.urls")),
+	url(r"^privacypolicy/$", "minbase.views.privacypolicy"),
+	#Minbase-
+	
+	# async
+	url(r"^async/", include("async.urls")),
+	
 	
 	### Testapps//
 	
 	# Tiny mce
 	(r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/tinymce/js/tinymce'} ),
+	
+	# wysibb
+	(r'^wysibb/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/wysibb'} ),
+	
 	
 	# Static
 	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/'} ),
@@ -120,7 +138,8 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 	
 	# Default
-	url(r"", include("q_a.urls") ), 
+	#url(r"", include("q_a.urls") ), 
+	url(r"", include("stpros.urls") ), 
 	
 )
 
@@ -138,4 +157,11 @@ if settings.DEBUG:
 	
 """
 	
+
+#from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #urlpatterns += staticfiles_urlpatterns()
+
+
+
+
+

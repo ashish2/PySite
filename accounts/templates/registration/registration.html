@@ -2,44 +2,60 @@
 {% load url from future %}
 
 
-<!-- Registeration --->
+<!-- Registeration - -->
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
-	<h1>Create an account</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	    	Please register or if you have an account you can also login <a href="/login/">here</a>.
+	    </div>
+		<form class="form-signin" action="" method="post">
+			{% csrf_token %}
+			<!--
+				<input id="id_username" type="text" name="username" maxlength="30"/>
+			-->
+			<div class="form-group">
+				<label for="id_username">Email:</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope"></span>
+					</span>
+					{{ form.username }}
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="id_username">Password:</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</span>
+				{{ form.password1 }}
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="id_username">Password confirmation:</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</span>
+					{{ form.password2 }}
+				</div>
+			</div>
+	<!--
+			<input type="submit" value="Create the account">
+	-->
+			<button type="submit" class="btn btn-lg btn-primary btn-block" value="Create the account">Create account</button>
 
-	<form action="" method="post">
-		{% csrf_token %}
-		{# form.as_p #}
-		
-		
-		<p>
-			<label for="id_username">Email:</label>
-<!--
-			<input id="id_username" type="text" name="username" maxlength="30"/>
--->
-			{{ form.username }}
-		</p>
-		<p>
-			<label for="id_username">Password:</label>
-			{{ form.password1 }}
-		</p>
-		<p>
-			<label for="id_username">Confirm password:</label>
-			{{ form.password2 }}
-		</p>
-		
-		
-		
-		<input type="submit" value="Create the account">
-	</form>
-
-
+		</form>
+	</div>
 
 {% endblock %}
 
 
-<!--- Registeration/ --->
+<!--- Registeration/ - -->
 
 
 

@@ -3,40 +3,54 @@
 
 {% block content %}
 
-<a href="/accounts/register">Register</a>
-
 {# {% if form.errors %} #}
 {% if user.id %}
-<p>Awesome! You're logged in!</p>
+<p>You're logged in!</p>
+<p>Please click <a href="/">here</a> to go to the main page.</p>
 {% else %}
-<!-- 
-<p>Your username and password didn't match. Please try again.</p>
--->
-<p>
-Please Login.
-</p>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	    		Please log in or if you do not have an account already you can register <a href="/accounts/register">here</a>.
+	    </div>
+	    <div class="panel-body">
+			<form class="form-signin" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+				{% csrf_token %}
+				{% if form.errors%}
+					Errors:
+					{{form.errors}}
+				{% endif %}
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-envelope"></span>
+						</span>
+						<input type="text" autofocus="" placeholder="Email address" class="form-control" id="id_email" type="text" name="email" maxlength="30">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>
+						</span>
+						<input type="password" placeholder="Password" class="form-control" id="id_password" name="password">
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+		<!--
+				<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+				<input type="submit" value="login" />
+		-->
+				<input type="hidden" name="next" value="{{ next }}" />
+			</form>
+	    </div>
+	</div>
+
 {% endif %}
 
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-	{% csrf_token %}
-	<table>
-	<tr>
-		{# <td> form.email.label_tag #}</td> 
-		{# <td> form.email </td> #}
-		
-		<td><label for="id_email">Email:</label></td>
-		<td><input id="id_email" type="text" name="email" maxlength="30"/></td>
-	</tr>
-	
-	<tr>
-		<td>{{ form.password.label_tag }}</td>
-		<td>{{ form.password }}</td>
-	</tr>
-	</table>
-
-	<input type="submit" value="login" />
-	<input type="hidden" name="next" value="{{ next }}" />
-</form>
 
 {% endblock %}
 

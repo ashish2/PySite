@@ -155,6 +155,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # FTM
+    #'django.contrib.comments',
+    # FTM/
+    
+    
     # Bootstrapped Admin
     #'django_admin_bootstrapped',
     
@@ -166,8 +171,22 @@ INSTALLED_APPS = (
     
     # ADDED
     
+    'async',
+    
+    #minbase
+    'minbase',
+    
     # Tagging
     'tagging',
+    
+    # Social
+    #'social',
+    'fb',
+    
+    # BBcode
+    #'precise_bbcode',
+    #'content_bbcode',
+    'bbcode',
     
     # south
     'south',
@@ -195,6 +214,8 @@ INSTALLED_APPS = (
     # following_followers
     'following_followers',
     
+    # stpros
+    'stpros',
     
     
     # ADDED-
@@ -234,6 +255,7 @@ LOGGING = {
 
 AUTHENTICATION_BACKENDS = (
 	'emailusernames.backends.EmailAuthBackend',
+	'fb.backends.EmailAuthBackend',
 	# Uncomment the following to make Django tests pass:
 	# 'django.contrib.auth.backends.ModelBackend',
 	
@@ -293,6 +315,11 @@ sys.path.append(os.path.dirname(__file__))
 # models.models.UserProfile
 AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
+ASYNC_URL = '/async/'
+
+# CSRF
+CSRF_COOKIE_NAME='csrftoken'
+
 # Login
 LOGIN_URL = '/accounts/login/'
 
@@ -311,5 +338,6 @@ REST_FRAMEWORK = {
 	
 }
 
+APPEND_SLASH=True
 
 # ADDED-

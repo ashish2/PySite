@@ -16,6 +16,7 @@
 			-->
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap_cosmo.css">
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/all.css">
+			<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
 			
 			<!--
 			For including from project (Base) static/ folder, Without {{STATIC_URL}}
@@ -26,12 +27,13 @@
 			-->
 			
 			<!-- show block extrahead here, which will come from other templates -->
-			{% include "q_a_tinymcejs.html" %}
+			{# include "q_a_tinymcejs.html" #}
 			<!--/ -->
 			
 		</head>
 	
 	<body>
+
 		<!-- Jumbotron .jumbotron starts -->
 <!--
 		<div class="jumbotron">
@@ -43,67 +45,31 @@
 					{% block sidebar %}
 					{% endblock %}
 				</div>
-				
+
 				<div id="main">
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="page-header">
-							<h3 id="navbar">QnA</h3>
-							</div>
-							{% block nav-global %}
-							<!-- MENU -->
-							{% if user.is_authenticated %}
-							<!-- menu navbar -->
-							<div class="navbar navbar-inverse">
-								<div class="navbar-header">
-									<button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
-									<a href="/users/{{user.id}}" class="navbar-brand">Hi, {{user}}</a>
+							
+							<div class="row">
+								<div class="col-lg-2">
+									<div class="page-header">
+										<h3 id="navbar"><a href="/">QnA</a></h3>
+									</div>
 								</div>
-								<div class="navbar-collapse collapse navbar-responsive-collapse">
-									<ul class="nav navbar-nav">
-										
-										{% if user.is_superuser %}
-										<li class="active">
-											<a href="{% url admin:index %}">
-												Admin
-											</a> 
-										</li>
-										{% endif %}
-										
-										<li>
-											<a href="{% url q_a.views.view_all_post %}">
-												Main Page 
-											</a>
-										</li>
-										<li>
-											<a href="{% url q_a.views.add_post %}">
-												Share a life event/experience with us (and how you overcame it)
-											</a>
-										</li>
-										<li class="dropdown">
-											<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-												Dropdown 
-												<b class="caret"></b>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a href="/users/{{request.user.id}}">My Profile</a></li>
-												<li><a href="/followers/{{request.user.id}}">Followers</a></li>
-												<li><a href="/following/{{request.user.id}}">Following</a></li>
-												<li class="divider"></li>
-												<li class="dropdown-header">Dropdown header</li>
-												<li><a href="/logout/">Logout</a></li>
-											</ul>
-										</li>
-									</ul>
-								</div><!-- /.nav-collapse -->
-							</div><!-- /.navbar -->
-							<!-- menu navbar ends -->
-							{% endif %}
-							{% endblock %}
+								<div class="col-lg-8">
+									<div class="search-bar">
+										<form action="/search" method="post">
+											<input type="text" id="search" class="form-control">
+												<span class="input-group-btn">
+													<span class=".glyphicon .glyphicon-search"></span>
+													<button class="btn btn-default" type="button">Go!</button>
+												</span>	
+										</form>
+									</div>
+								</div>								
+							</div>
+
+							{% include "q_a_global_nav.html" %}
 						</div>
 					</div>
 					
@@ -133,7 +99,9 @@
 		
 		
 		<!-- including from Static folder of Application, with {{STATIC_URL}} -->
+<!--
 		<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
+-->
 		
 		<!-- including from Static folder of Base(Project/Root Static folder), withOUT {{STATIC_URL}} -->
 		<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
@@ -141,6 +109,9 @@
 		<!-- including from Static folder of Application -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
 		
+		<!-- show block extrahead here, which will come from other templates -->
+		{% include "q_a_tinymcejs.html" %}
+		<!--/ -->
 	
 	
 	</body>
