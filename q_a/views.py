@@ -49,7 +49,7 @@ def view_post_id(request, pk, slug):
 	# Getting whether the logged in user is following this Question post
 	# fieldType, typ = 'P' FTM , as this is the Post function, over here we will only view Posts
 	typ = 'P'
-	follow = Follow.objects.filter( by_user=request.user, fieldTypeId=pk, fieldType=typ )
+	follow = Follow.objects.filter( by_user=request.user.id, fieldTypeId=pk, fieldType=typ )
 	
 	post.vv = post.vote_set.all().filter(vote=1)
 	post.vote_count = post.vv.count()
