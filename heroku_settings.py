@@ -186,8 +186,25 @@ INSTALLED_APPS = (
     #'haystack',
     #'six',
     
+    'async',
+    
+    #minbase
+    'minbase',
+        
     # Tagging
     'tagging',
+
+    # Social
+    #'social',
+    'fb',
+    
+    # BBcode
+    #'precise_bbcode',
+    #'content_bbcode',
+    'bbcode',
+        
+    # Search, Solr
+    'pysolr',
     
     # south
     'south',
@@ -202,6 +219,18 @@ INSTALLED_APPS = (
     # Email as Username
     'emailusernames',
     
+    # users
+    'users',
+    
+    # rest framework
+    # 'rest_framework',
+    'tastypie',
+    
+    # following_followers
+    'following_followers',
+    
+    # stpros
+    'stpros',
     
     # Added-
     
