@@ -14,9 +14,14 @@
 			<!--
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css">
 			-->
+			<!--
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap_cosmo.css">
+			-->
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.css">
+
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/all.css">
 			<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
+
 			
 			<!--
 			For including from project (Base) static/ folder, Without {{STATIC_URL}}
@@ -32,12 +37,8 @@
 			
 		</head>
 	
-	<body>
+	<body ng-app="MyApp">
 
-		<!-- Jumbotron .jumbotron starts -->
-<!--
-		<div class="jumbotron">
--->
 			<!-- .container starts -->
 			<div class="container">
 				
@@ -49,69 +50,70 @@
 				<div id="main">
 					<div class="row">
 						<div class="col-lg-12">
-							
-							<div class="row">
-								<div class="col-lg-2">
-									<div class="page-header">
-										<h3 id="navbar"><a href="/">QnA</a></h3>
-									</div>
-								</div>
-								<div class="col-lg-8">
-									<div class="search-bar">
-										<form action="/search" method="post">
-											<input type="text" id="search" class="form-control">
-												<span class="input-group-btn">
-													<span class=".glyphicon .glyphicon-search"></span>
-													<button class="btn btn-default" type="button">Go!</button>
-												</span>	
-										</form>
-									</div>
-								</div>								
-							</div>
-
-							{% include "q_a_global_nav.html" %}
+							{% include "q_a_global_nav_new2.html" %}
 						</div>
 					</div>
-					
 					<!-- ----- -  ------>
 					
 					<div class="row">
-						<!-- show block content here, which will come from other templates -->
-						{% block content %}
-						{% endblock %}
-						<!-- /-->
+						<div class="col-lg-12">
+							<!-- show block content here, which will come from other templates -->
+							{% block content %}
+							{% endblock %}
+							<!-- /-->
+						</div>
 					</div>
 				
+
+
+				<!-- Footer starts -->
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- FOOTER Template -->
+						{% include "q_a_footer.html" %}
+						<!-- FOOTER Template / -->						
+					</div>
+				</div>
+				<!-- Footer ends/ -->
+
+
 				</div>
 				<!-- .main ends/ -->
-				
-				<!-- FOOTER Template -->
-				{% include "q_a_footer.html" %}
-				<!-- FOOTER Template / -->
-				
+
+
 			</div>
 			<!-- .container ends -->
 			
-<!--
-		</div>
--->
-		<!-- .jumbotron ends -->
-		
-		
+
 		<!-- including from Static folder of Application, with {{STATIC_URL}} -->
-<!--
+
+		<!--
 		<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
--->
-		
+		-->
 		<!-- including from Static folder of Base(Project/Root Static folder), withOUT {{STATIC_URL}} -->
 		<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-		
+
+
+		<!-- Angular Files -->
+<!-- 
+		<script type="text/javascript" src="{{STATIC_URL}}js/lib/angular.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/ng_files/app.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/ng_files/MyCtrl.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/ng_files/AjaxCtrl.js"></script>
+-->		
+
+		<!-- Angular Files/ -->
+
+
 		<!-- including from Static folder of Application -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/all.js"></script>
 		
 		<!-- show block extrahead here, which will come from other templates -->
 		{% include "q_a_tinymcejs.html" %}
 		<!--/ -->
-	
-	
+		
 	</body>
+</html>
+
+

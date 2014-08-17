@@ -19,7 +19,7 @@ urlpatterns = patterns( 'accounts.views',
 	#accounts.views
 	
 	#
-	url(r"register/?$",  "register" ),
+	url(r"register/$",  "register", name="register"),
 	# Login
 	#url(r"login/$", "django.contrib.auth.views.login", {'authentication_form': EmailAuthenticationForm}, name = "login" ),
 	# Logout

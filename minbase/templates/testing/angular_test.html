@@ -1,0 +1,23 @@
+{% extends "q_a_bbase.html" %}
+
+<!-- Post form -->
+{% block content %}
+
+<!-- Angular TP -->
+
+	<div class="timepass-NG" ng-app="MyApp" ng-controller="MyCtrl" ng-init="person=[ { firstname: 'A', lastname: 'O' }, { firstname: 'V', lastname: 'Oj' } ]">
+		Hi
+		<br />
+		<p ng-repeat="p in person">
+			This is p: {{p}}
+		</p>
+		<br />		
+		<input type="text" ng-model="person[0].firstname">
+		<br />
+		<button ng-click="changeName()">Click</button>
+		<br />
+	</div>
+
+<!-- Angular TP/ -->
+
+{% endblock %}

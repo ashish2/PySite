@@ -19,10 +19,25 @@
 
 /* Posts */
 
-.each-posts {
-	border-bottom: 1px solid lightgrey;
+.main-post{
+	margin: 0 1em;
+	padding: 0 1em;	
 }
 
+.each-posts {
+	/*border-bottom: 1px solid lightgrey;*/
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 0.1em solid #DCE7EA;
+    box-shadow: 0 0 1em #E5E5E5;
+    margin: 0.5em 0;
+    padding: 1em 1em 2em;
+    position: relative;
+}
+
+.each-posts:hover {
+    border: 0.1em solid #CCCCCC;
+    box-shadow: 0 0 1em #E0E0E0;
+}
 
 /* Posts- */
 
@@ -57,5 +72,67 @@
 a:hover, a:focus {
 	text-decoration: none;
 }
+
+
+/* Footer */
+#footer {
+	/*background-color: #F5F5F5;*/
+	background-color: #BDBDBD;
+	height: 60px;
+	margin-top: 7px;
+}
+
+.container .credit {
+	margin: 20px 0;
+}
+
+
+/*Nav*/
+
+
+#nav-search{
+	width: 50%;
+}
+#search input[type="text"] {
+    background: url("../img/search.png?1343882941") no-repeat scroll 4px center white;
+    padding: 7px 10px 3px 20px;
+}
+
+.width-auto{
+	width: auto;
+}
+
+
+#nav-sub-btn-span{
+	line-height: 1.428571429;
+}
+
+/*Nav-*/
+
+
+/*General*/
+
+.padding-top-5{
+	padding-top: 5px;
+}
+
+.margin-top-7{
+	margin-top: 7px;
+}
+
+/*General-*/
+
+
+/*<language>-<tablename>-<area> <css>-<pts>-<footer>*/
+.c-pts-footer{}
+
+
+
+.header-user-img {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+}
+
 
 

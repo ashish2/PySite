@@ -1,4 +1,4 @@
-{% extends "accounts_bbase.html" %}
+{% extends "q_a_bbase.html" %}
 {% load url from future %}
 
 {# {% block breadcrumbs %} #}
@@ -6,15 +6,15 @@
 {# {% endblock %} #}
 
 {% block content %}
-	
-	<p>Thanks for spending some quality time with the Web site today.</p>
-	
-	{% if form.errors %}
-		<p>Your username and password didn't match. Please try again.</p>
+
+	<p>Thanks for spending some quality time on our Website.</p>
+
+	{% if not user.is_authenticated %}
+		<p>You have been logged out!</p>
 	{% else %}
-		<p>Logged out!</p>
+		<p>Something went wrong, please try logging out again <a href="/logout/">here</a>.</p>
 	{% endif %}
-	
+
 	<p><a href="{% url 'django.contrib.auth.views.login' %}">Log in again</a></p>
 	
 {% endblock %}

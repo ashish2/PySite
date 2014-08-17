@@ -19,7 +19,9 @@ urlpatterns = patterns('users.views',
 	#~url(r"^(?P<poll_id>\d+)/$", "detail"),
 	#~url(r"^(?P<poll_id>\d+)/results/$", "results"),
 	
-	url(r"^(?P<pk>\d+)/?$", "view_user_profile"),
+	url(r"^profile/edit/(?P<pk>\d+)/?$", "edit_user_profile", name="edit_user_profile"),
+	url(r"^(?P<pk>\d+)/?$", "view_user_profile", name="view_user_profile"),
+
 	
 	#url(r"edit/$", "user_edit_form" ),
 	#url(r"edit$", "user_edit_form" ),

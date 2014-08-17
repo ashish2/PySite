@@ -30,7 +30,27 @@ class PathToSolution(BaseModel):
 	
 	def __unicode__(self):
 		return unicode(self.problem) or u''
-	
+
+	def get_pts_answers(self):
+		"Takes an pts instance id, returns answers"
+		replies = PathToSolution.objects.filter(parent_id__pk=self.id).order_by("-date")
+		return replies
+		
+
+	def get_votes(self):
+		pass
+
+	def get_sum_of_votes():
+		pass
+
+	def is_user_in_votes():
+		pass
+
+	def get_vote_for_pts(self):
+		pts_instance = PathToSolution.objects.get(pk=pts_instance_pk)
+		votes = pts_instance.vote_set.filter( pts_id=pts_instance_pk, user=request.user.id )
+		return votes
+
 	
 
 # To be added and synced

@@ -28,28 +28,21 @@ def view_all_post(request):
 		posts = paginator.page(paginator.num_pages)
 	
 	for post in posts.object_list:
-		#~e = post.vote_set.filter( post_id=post.id, by_user=request.user)
-		
 		e = None
 		e = post.vote_set.filter( post_id=post.id, by_user=request.user.id )
-		# this means he has voted something 			# 0, which means he hasn't voted
+		# this means he has voted something # 0, which means he hasn't voted
 		post.has_voted = e[0].vote if e else 0
 		
 		e = None
 		e = post.share_set.filter( post_id=post.id, by_user=request.user.id )
 		# this means he has voted something 	# 0, which means he hasn't voted
 		post.has_shared = e[0].share if e else 0
-		
-		#post.vote_count = post.vote_set.count()
 		post.vote_count = post.vote_set.aggregate(Sum('vote'))['vote__sum'] or 0
 	
 	fromUrl = request.get_full_path()
 	
-	
 	d = dict(posts=posts, fromUrl=fromUrl,)
 	return render_to_response('q_a_list.html', d, context_instance=RequestContext(request) )
-	#return render(request, 'q_a_list.html', d, )
-	#~return HttpResponse(request.user)
 	
 
 def view_post_id(request, pk, slug):
@@ -57,8 +50,6 @@ def view_post_id(request, pk, slug):
 	# Getting whether the logged in user is following this Question post
 	# fieldType, typ = 'P' FTM , as this is the Post function, over here we will only view Posts
 	typ = 'P'
-	
-	#~follow = Follow.objects.get( by_user=request.user, fieldTypeId=pk, fieldType=typ )
 	follow = Follow.objects.filter( by_user=request.user, fieldTypeId=pk, fieldType=typ )
 	
 	post.vv = post.vote_set.all().filter(vote=1)
@@ -88,17 +79,11 @@ def view_post_id(request, pk, slug):
 #========
 
 # DONE
+@login_required
 def show_post_form(request):
 	''' Show Post form. '''
-	#~post = Post.objects.all()
-	#d = dict( form=pf, user=request.user, context_instance=RequestContext(request), comments=None, )
-	
-	#d = dict( form=PostForm(), user=request.user )
-	d = dict( form=myPostForm(), user=request.user )
+	d = dict( form=PostForm(), user=request.user )
 	d.update(csrf(request))
-	
-	#print RequestContext(request)
-	
 	return render_to_response("q_a_post.html", d, context_instance = RequestContext(request))
 	
 

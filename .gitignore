@@ -14,6 +14,7 @@ django-blog-zinnia-0.14.1/
 
 # Files to ignore from here
 #now
+q_a/templates/q_a_test.html
 
 # FTM, Undo these later
 static/js/fb_sdk.js

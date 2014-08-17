@@ -1,4 +1,5 @@
 {% extends "q_a_bbase.html" %}
+{% load bbcode %}
 
 {% block content %}
 	
@@ -8,39 +9,47 @@
 		<div class="col-lg-12">
 			<!-- .start-content starts -->
 			<div class="start-content">
-				<div class="post-title">
-<!--
-					<h4>Votes: ({{some_id.vote_count}})</h4>
--->
-					<h4>Q: {{ some_id.problem }}</h4>
+
+				<div class="main-post">
+
+					<div class="page-header post-title">
+						<!--<h4>Votes: ({{some_id.vote_count}})</h4>-->
+						<h4>{{ some_id.problem }}</h4>
+					</div>
+					<div class="post-content">
+						{% bbcode some_id.answer %}
+					</div>
+					
+					<div class="btn-follow-answer">
+						<span class ="btn-post-answer">
+							<a href="{% url stpros.views.add_reply some_id.pk %}" data-toggle="tooltip" data-placement="left" data-original-title="Answer" title="Answer">
+								Answer
+							</a>
+						</span>
+					</div>
+	<!--
+					<div class="well">
+						{{replies.count}} Answers
+					</div>
+	-->
 				</div>
-				<div class="post-content">
-					<b>
-						{{ some_id.answer|striptags }} 
-					</b>
+
+				<div class="error">
 				</div>
-				
-				<div class="btn-follow-answer">
-					<span class ="btn-post-answer">
-						<a href="{% url stpros.views.add_reply some_id.pk %}?from={{fromUrl|urlencode}}">
-							Answer
-						</a>
-					</span>
+
+<!-- 
+				Answers from Ajax
+
+				<div class="post-answers" ng-controller="AjaxCtrl">
+					<div ng-repeat="for i in data">
+					</div>
 				</div>
-<!--
-				
-				<div class="well">
-					{{replies.count}} Answers
-				</div>
-				
--->
-				
-				
+ -->
 				<!-- Replies start -->
 				<div class="post-answers">
 					<!-- Posts -->
 						{% for rep in replies %}
-						<div class="each-posts">
+						<div class="each-posts" id="{{rep.pk}}">
 							<div class="row">
 								<!-- .col-lg-1 -->
 								<div class="col-lg-1">
@@ -48,22 +57,21 @@
 									<div class="votes">
 										{% if rep.has_voted != 1 %}
 											<div class="vote-up">
-												<a href="{% url stpros.views.vote rep.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote Up" value=1>
-													<span class="glyphicon glyphicon-hand-up"></span>
+												<a href="{% url stpros.views.vote rep.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1>
+													<span class="glyphicon glyphicon-thumbs-up"></span>
 												</a>
 											</div>
 										{% endif %}
-										<div class="vote-amt" title="{{post.vote_set.all.count}} votes">
-												{{rep.vote_set.all.count}}
+										<div class="vote-amt" title="{{rep.vote_sum}} vote(s)">
+												{{rep.vote_sum}}
 										</div>
 										{% if rep.has_voted != -1 %}
 											<div class="vote-down">
 												<a href="{% url stpros.views.vote rep.pk -1 %}?from={{fromUrl|urlencode}}" value=-1 title="Vote down">
-													<span class="glyphicon glyphicon-hand-down"></span>
+													<span class="glyphicon glyphicon-thumbs-down"></span>
 												</a>
 											</div>
-										{% endif %}
-										
+										{% endif %}										
 									</div>
 									<!-- Votes- -->
 								</div>
@@ -75,7 +83,6 @@
 										<a href="{# url stpros.views.view_post_id rep.id rep.slug #}">Answer: </a>
 									</div>
 									-->
-									
 									<!-- Post Body -->
 									<div class="post-body">
 										{{rep.answer|striptags|linebreaks}}
@@ -101,15 +108,24 @@
 											</div>
 											<!-- Comments Buttons/ -->
 										</div>
-										<div class="col-lg-4">
+										<div class="col-lg-2">
 											<!-- Post Date -->
-											<div>
-												<small class="post-by-user">
-													<a href="{% url users.views.view_user_profile rep.user.pk %}">{{rep.user.email}}</a>
-												</small>
-												<small class="post-time">{{ rep.date }}</small>
-											</div>
+												<div class="post-by-user">
+													<small>
+														<a href="{% url users.views.view_user_profile rep.user.pk %}">
+															{{rep.user.email}}
+														</a>
+													</small>
+												</div>
 											<!-- Post Date- -->
+										</div>
+										<div class="col-lg-2">
+											<div class="post-time">
+												<small>														
+													<a href="#{{rep.pk}}">{{ rep.date }}</a>
+												</small>
+
+											</div>
 										</div>
 									</div>
 									

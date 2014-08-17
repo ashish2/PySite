@@ -4,9 +4,10 @@
 // Algos
 
 // Select all checkbox Algo
-function sel_all_chk_box(sel_all_id, chkbox_coll_name, this_el_id = null)
+// function sel_all_chk_box(sel_all_id, chkbox_coll_name, this_el_id = null)
+function sel_all_chk_box(sel_all_id, chkbox_coll_name, this_el_id)
 {
-	if(this_el_id != null)
+	if( this_el_id != null || this_el_id != "undefined" )
 	{
 		// Case 1 DONE
 		// if this_el_id is false, then, set select all false
@@ -53,4 +54,3 @@ function sendGet(url, params)
 {
 	
 }
-

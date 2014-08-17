@@ -1,60 +1,159 @@
-{% extends "accounts_bbase.html" %}
-{% load url from future %}
-
+{% extends "q_a_bbase.html" %}
 
 <!-- Registeration - -->
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
+
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
-	    	Please register or if you have an account you can also login <a href="/login/">here</a>.
-	    </div>
-		<form class="form-signin" action="" method="post">
-			{% csrf_token %}
-			<!--
-				<input id="id_username" type="text" name="username" maxlength="30"/>
-			-->
-			<div class="form-group">
-				<label for="id_username">Email:</label>
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-envelope"></span>
-					</span>
-					{{ form.username }}
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="id_username">Password:</label>
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-lock"></span>
-					</span>
-				{{ form.password1 }}
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="id_username">Password confirmation:</label>
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-lock"></span>
-					</span>
-					{{ form.password2 }}
-				</div>
-			</div>
-	<!--
-			<input type="submit" value="Create the account">
-	-->
-			<button type="submit" class="btn btn-lg btn-primary btn-block" value="Create the account">Create account</button>
+			Please register or if you already have an account you can login 
+			<a href="{% url login %}">here</a>.
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-12">
+<!-- 
+					<form class="form-signin" action="{% url register %}" method="post">
+						{% if form.errors %}			
+							<div class="error">
+								{{form.errors}}
+							</div>
+						{%endif%}
 
-		</form>
+						{% csrf_token %}
+						<div class="form-group">
+							<label for="id_username">Email:</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-envelope"></span>
+								</span>
+								{{ form.username }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="id_username">Password:</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+							{{ form.password1 }}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="id_username">Password confirmation:</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+								{{ form.password2 }}
+							</div>
+						</div>
+						<button type="submit" class="btn btn-lg btn-primary btn-block" value="Create the account">Create account</button>
+
+					</form>
+
+ -->
+ 						<div id="form-login-registeration">
+
+
+							<div class="padding-top-4">
+								<div id="form-login-registeration-links">
+
+									<a href="#" class="no-underline" data-hide="form-registeration" data-show="form-login">Login</a>
+									or 
+									<a href="#" class="no-underline" data-hide="form-login" data-show="form-registeration">Register</a>
+									with you Email id.
+								</div>
+							</div>
+							
+							<div id="form-registeration">
+								<h5>Register</h5>
+								<form class="form-signin" action="{% url register %}" method="post">
+									{% if form.errors %}
+										<div class="error">
+											{{form.errors}}
+										</div>
+									{%endif%}
+
+									{% csrf_token %}
+									<div class="form-group">
+										<label for="id_username">Email:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-envelope"></span>
+											</span>
+											{{ form.username }}
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="id_username">Password:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											{{ form.password1 }}
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="id_username">Password confirmation:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											{{ form.password2 }}
+										</div>
+									</div>
+									<button type="submit" class="btn btn-lg btn-primary btn-block" value="Create account">Register</button>
+								</form>
+							</div>
+
+							<div id="form-login" style="display:none;">
+								<h5>Login</h5>
+								<form class="form-signin" method="post" action="{% url login %}">
+									{% if form.errors %}
+									<div class="alert alert-danger">
+										{{form.errors}}
+									</div>
+									{%endif%}
+
+									{% csrf_token %}				
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-envelope"></span>
+											</span>
+											<input type="text" autofocus="" placeholder="Email address" class="form-control" id="id_email" type="text" name="email" maxlength="30">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											<input type="password" placeholder="Password" class="form-control" id="id_password" name="password">
+										</div>
+									</div>						
+									<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+									<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							</div>
+
+
+						</div>
+
+
+				</div>
+			</div>
+		</div>
 	</div>
 
 {% endblock %}
-
-
 <!--- Registeration/ - -->
 
 

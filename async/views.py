@@ -2,6 +2,7 @@
 from minbase.includes import *
 
 from fb.views import *
+from stpros.views import *
 
 
 # Whereas, it is supposed to be an
@@ -9,14 +10,24 @@ from fb.views import *
 # should be decided here.
 def main(request):
 	
-	funcs = { 
+	# funcs dict can be removed
+	funcs = {
 		"fb_data": fb_data,
+		"get_pts_answers_ajax_call": get_pts_answers_ajax_call,
 	}
 	
+	# if request.method == "POST":
+	# 	return HttpResponse( funcs[request.POST.get('func_to_run')](request) )
+
 	if request.method == "POST":
-		return HttpResponse( funcs[request.POST.get('func_to_run')](request) )
-		
+		if request.POST.get('func_to_run') == 'fb_data':
+			return HttpResponse( funcs[request.POST.get('func_to_run')](request) )
+		# if request.POST.get('func_to_run') == 'get_pts_answers':
+		# 	return HttpResponse( funcs[request.POST.get('func_to_run')](pts_instance_pk) )
+	
+	
 	return HttpResponse("Nothing To Show here at the moment")
 
 
-#accessToken=CAAG6DSHRbK0BALWIz6RcAZCN3oNoqkZBs0dXR3MPKZB8X77dZCj3k3efvPQ1zuMpM5idVQtS2r1JsFN9TwDi4yQSGCGU3P2sGRXuPGRdLXjS9b4l6eLvSsiFYFAeYeUruIF6rKUaq1lmaOw0I3VDBgUN44TapKNnZCL45eR2cOXVq4TAA6bCGW13WsNbNRKJZAoBvE0SJCNLF6aSchj6rftlApRcZAzEHAZD
+
+

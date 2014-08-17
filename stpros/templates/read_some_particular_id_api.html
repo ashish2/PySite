@@ -1,0 +1,149 @@
+{% extends "q_a_bbase.html" %}
+{% load bbcode %}
+
+{% block content %}
+	
+	<!-- .row starts -->
+	<div class="content">
+		<!-- .col starts -->
+		<div class="col-lg-12">
+			<!-- .start-content starts -->
+			<div class="start-content">
+
+				<div class="main-post">
+
+					<div class="post-title">
+						<!--<h4>Votes: ({{some_id.vote_count}})</h4>-->
+						<h4>Q: {{ some_id.problem }}</h4>
+					</div>
+					<div class="post-content">
+						<b>
+							{% bbcode some_id.answer %}
+						</b>
+					</div>
+					
+					<div class="btn-follow-answer">
+						<span class ="btn-post-answer">
+							<a href="{% url stpros.views.add_reply some_id.pk %}" data-toggle="tooltip" data-placement="left" data-original-title="Answer">
+								Answer
+							</a>
+						</span>
+					</div>
+	<!--
+					<div class="well">
+						{{replies.count}} Answers
+					</div>
+	-->
+				</div>
+
+				<!-- Replies start -->
+				<div class="post-answers" data-ng-controller="AjaxCtrl" data-ng-init="runAjax()">
+
+					<!-- Posts -->
+					{% for rep in replies %}
+						<div class="each-posts" data-ng-repeat="for i in data">
+
+							<div class="row">
+								<!-- .col-lg-1 -->
+								<div class="col-lg-1">
+									<!-- Votes -->
+									<div class="votes">
+										{% if rep.has_voted != 1 %}
+											<div class="vote-up">
+												<a href="{% url stpros.views.vote rep.pk 1 %}?from={{fromUrl|urlencode}}" data-toggle="tooltip" data-placement="left" data-original-title="Vote Up" title="Vote Up" value=1>
+													<span class="glyphicon glyphicon-hand-up"></span>
+												</a>
+											</div>
+										{% endif %}
+										<div class="vote-amt" title="{{rep.vote_sum}} vote(s)">
+												{{rep.vote_sum}}
+										</div>
+										{% if rep.has_voted != -1 %}
+											<div class="vote-down">
+												<a href="{% url stpros.views.vote rep.pk -1 %}?from={{fromUrl|urlencode}}" value=-1 title="Vote down">
+													<span class="glyphicon glyphicon-hand-down"></span>
+												</a>
+											</div>
+										{% endif %}										
+									</div>
+									<!-- Votes- -->
+								</div>
+								<!-- .col-lg-1- -->
+								
+								<div class="col-lg-11">
+									<!--
+									<div class="post-title">
+										<a href="{# url stpros.views.view_post_id rep.id rep.slug #}">Answer: </a>
+									</div>
+									-->
+									<!-- Post Body -->
+									<div class="post-body">
+										{{rep.answer|striptags|linebreaks}}
+									</div>
+									<!-- Post Body- -->
+									<div class="row">
+										<div class="col-lg-2">
+											<!-- Comments Buttons -->
+											<div class ="btn-post-answer-reply">
+												<span>
+													<a href="{% url stpros.views.add_reply rep.pk %}?from={{fromUrl|urlencode}}">
+														Reply
+													</a>
+												</span>
+												<!--  Share commented out FTM -->
+												<!-- 
+												<span>
+													<a href="{# url q_a.views.share rep.pk 1 #}">
+														Share
+													</a>
+												</span>
+												-->
+											</div>
+											<!-- Comments Buttons/ -->
+										</div>
+										<div class="col-lg-4">
+											<!-- Post Date -->
+											<div>
+												<small class="post-by-user">
+													<a href="{% url users.views.view_user_profile rep.user.pk %}">{{rep.user.email}}</a>
+												</small>
+												<small class="post-time">{{ rep.date }}</small>
+											</div>
+											<!-- Post Date- -->
+										</div>
+									</div>
+									
+									{% if rep.post_set.all %}
+										<ul class="post-replies">
+											{% for i in rep.post_set.all %}
+												<li>
+													<span>
+														<span>
+															{{ i.id }}: {{i.content|striptags }}
+														</span>
+														<span>
+															<small>
+																<small>
+																	<a href="{% url users.views.view_user_profile rep.user.pk %}">{{i.user.email}}</a>
+																</small>
+																<small>
+																	{{i.date}}
+																</small>
+															</small>
+														</span>
+													</span>
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}									
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div> 				<!-- Replies end -->
+			</div> 			<!-- .start-content ends -->
+		</div> 		<!-- .col ends -->
+	</div>
+	<!-- .row ends -->
+{% endblock %}
+

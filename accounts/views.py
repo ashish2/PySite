@@ -28,7 +28,7 @@ from accounts.forms import RegistrationForm
 def register(request):
 	#create_superuser('admin@example.com', 'password')
 	
-	
+	form = RegistrationForm()
 	if request.method == 'POST':
 		form = RegistrationForm(request.POST)
 		
@@ -54,10 +54,7 @@ def register(request):
 			
 		else:
 			form = RegistrationForm(request.POST)
-		
-	else:
-		form = RegistrationForm()
-		
+	
 	#return render(request, "registration/register.html", { 'form': form, })
 	return render(request, 'registration/registration.html', { 'form': form, }, context_instance=RequestContext(request))
 	

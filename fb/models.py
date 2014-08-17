@@ -77,6 +77,8 @@ class FBUserProfile(BaseModel):
 	def get_profile(self):
 		pass
 	
+	def userprofile(self):
+		return self
 	
 	#def save(self, *ar, **kw):
 		#self.username = self.email

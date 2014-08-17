@@ -55,7 +55,7 @@ from accounts.models import UserProfile
 from django.forms.formsets import formset_factory
 from stpros.forms import *
 from django.forms import TextInput
-
+from accounts.forms import *
 
 ### Formatting
 from django.utils.translation import ugettext_lazy as _

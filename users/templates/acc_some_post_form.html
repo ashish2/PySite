@@ -1,0 +1,31 @@
+{% extends "q_a_bbase.html" %}
+
+<!-- Post form -->
+{% block content %}
+	
+	{% if fromUrl %}
+	<form enctype="multipart/form-data" action="?from={{fromUrl}}" method="post">
+	{% else %}
+	<form enctype="multipart/form-data" action="" method="post">
+	{% endif %}
+		{% csrf_token %}
+		<div class="form-group">
+			<div id="uform">
+				{{user_form.as_p}}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div id="upform">
+				{{user_profile_form.as_p}}
+			</div>
+		</div>
+
+		<div id="submit">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+	
+
+
+{% endblock %}

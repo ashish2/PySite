@@ -3,6 +3,7 @@
 from minbase.includes import *
 import urllib2
 from fb.forms import FBUserProfileForm
+from fb.models import FBUserProfile
 from django.contrib.auth import authenticate, login
 
 
@@ -48,6 +49,9 @@ def pull_user_image():
 	url_pic = graph_url+'/me/picture?access_token='+access_token+'&height=200&type=normal&width=200&redirect=false'
 	#req_data_me_pic = u.Request(url_pic)
 	
+	# import urllib
+	# urllib.urlretrieve("http://domain.name/folder/media/some-pic.jpg", "save-as-local-file.jpg")
+
 
 def pull_user_me():
 	""" Call `/me` endpoint get data of the user by passing access_token & echo data here,  # which the js function will then show."""
@@ -57,46 +61,62 @@ def pull_user_me():
 def fb_data(response):
 	"""All these will just return their respective json data"""
 	
+	print 1
+
 	accesstoken = response.POST.get('fb_response[authResponse][accessToken]')
 	endpoint = pull_user_me()
 	url = prepare_url_to_call_graph_api(endpoint, accesstoken)
 	resp = call_graph_api_get_data(url)
 	di = prepare_json_data(resp)
 	
+	print 2
+
 	di['fb_id'] = di.get('id')
 	di['accesstoken'] = accesstoken
 	di['response'] = str( resp.read() )
 	# Settings is_active to True for the moment
 	di['is_active'] = True
 	
-	form = FBUserProfileForm(di)
-	if form.is_bound and not form.errors and form.is_valid():
-		#create fbuser
-		#enter fb_id, accesstoken, & then pass the POST variable to see if all fields are filled,
-		#& then save, other wise u will hav to manually save each field by doing a save(commit=False)
-		fb_new_user = form.save()
-		
-		
-		print "fb_new_user"
-		print fb_new_user
-		
-		#then, #authenticate #&login #& redirect to '/'
-		fb_user = authenticate(email=fb_new_user.email, password=fb_new_user.password)
-		
-		print "fb_user"
-		print fb_user
-		
-		if fb_user is not None:
-			if fb_user.is_active:
-				print "Login"
-				#login(request, fb_user)
-				login(response, fb_user)
-				HttpResponseRedirect(reverse("/"))
-				return "Login"
-			else:
-				print "Not active"
+
+	print di
+
+
+	# if create happens only then create User
+	# otherwise, just set session & redirect 
+	# u = form.get_or_create()
+
+	#create fbuser
+	user = FBUserProfile.objects.filter(fb_id=di['fb_id'])
+	# If not user create a user
+	if not user:
+		form = FBUserProfileForm(di)
+
+		print "bound", form.is_bound
+		print "errors", form.errors
+		print "valid", form.is_valid()
+
+		# and not form.errors
+		if form.is_bound and form.is_valid():
+			#enter fb_id, accesstoken, & then pass the POST variable to see if all fields are filled,
+			#& then save, other wise u will hav to manually save each field by doing a save(commit=False)
+			user = form.save()
 		else:
-			print 'fb_user is None'
-	
+			print "Some errors while logging in."
+	else:
+		user = user[0]
+
+	#then, #authenticate #&login #& redirect to '/'
+	fb_user = authenticate(email=user.email, password=user.password)
+
+	if fb_user is not None:
+		if fb_user.is_active:
+			#login(request, fb_user)
+			login(response, fb_user)
+			return HttpResponseRedirect(reverse("stpros.views.list_all"))
+		else:
+			print "Not active"
+	else:
+		print 'fb_user is None'
+
 	return di
 

@@ -1,51 +1,173 @@
-{% extends "accounts_bbase.html" %}
-{% load url from future %}
+{% extends "q_a_bbase.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
-{# {% if form.errors %} #}
-{% if user.id %}
-<p>You're logged in!</p>
-<p>Please click <a href="/">here</a> to go to the main page.</p>
+	<p>You're logged in!</p>
+	<p>Please click <a href="/">here</a> to go to the main page.</p>
+
 {% else %}
 
-	<div class="panel panel-default">
+	<div class="panel panel-default">		
 		<div class="panel-heading">
-	    		Please log in or if you do not have an account already you can register <a href="/accounts/register">here</a>.
+	    		Please log in or if you do not have an account already you can register 
+	    		<a href="{% url accounts.views.register %}">here</a>.
 	    </div>
 	    <div class="panel-body">
-			<form class="form-signin" method="post" action="{% url 'django.contrib.auth.views.login' %}">
-				{% csrf_token %}
-				{% if form.errors%}
-					Errors:
-					{{form.errors}}
-				{% endif %}
-				
-				<div class="form-group">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-envelope"></span>
-						</span>
-						<input type="text" autofocus="" placeholder="Email address" class="form-control" id="id_email" type="text" name="email" maxlength="30">
+	    	<div class="row">
+	    		<div class="col-lg-12">
+<!-- 
+					<form class="form-signin" method="post" action="{% url login %}">
+						{% if form.errors %}
+						<div class="alert alert-danger">
+							{{form.errors}}
+						</div>
+						{%endif%}
+
+						{% csrf_token %}				
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-envelope"></span>
+								</span>
+								<input type="text" autofocus="" placeholder="Email address" class="form-control" id="id_email" type="text" name="email" maxlength="30">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+								<input type="password" placeholder="Password" class="form-control" id="id_password" name="password">
+							</div>
+						</div>						
+						<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+						<input type="hidden" name="next" value="{{ next }}" />
+					</form>
+ -->
+
+						<div id="form-login-registeration">
+
+
+							<div class="padding-top-4">
+								<div id="form-login-registeration-links">
+
+									<a href="javascript: return false;" class="no-underline" data-hide="form-registeration" data-show="form-login">Login</a>
+									or 
+									<a href="javascript: return false;" class="no-underline" data-hide="form-login" data-show="form-registeration">Register</a>
+									with you Email id.
+								</div>
+							</div>
+							
+							<div id="form-login">
+								<h5>Login</h5>
+								<form class="form-signin" method="post" action="{% url login %}">
+									{% if form.errors %}
+									<div class="alert alert-danger">
+										{{form.errors}}
+									</div>
+									{%endif%}
+
+									{% csrf_token %}				
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-envelope"></span>
+											</span>
+											<input type="text" autofocus="" placeholder="Email address" class="form-control" id="id_email" type="text" name="email" maxlength="30">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											<input type="password" placeholder="Password" class="form-control" id="id_password" name="password">
+										</div>
+									</div>						
+									<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+									<input type="hidden" name="next" value="{{ next }}" />
+								</form>
+							</div>
+
+							<div id="form-registeration" style="display:none;">
+								<h5>Register</h5>
+								<form class="form-signin" action="{% url register %}" method="post">
+									{% if form.errors %}
+										<div class="error">
+											{{form.errors}}
+										</div>
+									{%endif%}
+
+									{% csrf_token %}
+									<div class="form-group">
+										<label for="id_username">Email:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-envelope"></span>
+											</span>
+											<input name="username" maxlength="30" placeholder="Email" type="text" class="form-control" id="id_username">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="id_username">Password:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											<input id="id_password1" type="password" placeholder="Password" class="form-control" name="password1">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="id_username">Password confirmation:</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-lock"></span>
+											</span>
+											<input id="id_password2" type="password" placeholder="Password confirmation" class="form-control" name="password2">
+										</div>
+									</div>
+									<button type="submit" class="btn btn-lg btn-primary btn-block" value="Create account">Register</button>
+								</form>
+							</div>
+							
+
+						</div>
+
+				</div> <!-- .col ends/ -->
+
+
+				<!--
+				<div class="col-lg-6">
+					<div>
+						<h4>FB Login</h4>
+						<!-- FB Login -->
+<!-- 						
+						<div class="fb-login">
+ -->
+ 							<!--
+							Below we include the Login Button social plugin. This button uses
+							the JavaScript SDK to present a graphical Login button that triggers
+							the FB.login() function when clicked.
+							-->
+							<!--
+							<script type="text/javascript" src="{{STATIC_URL}}js/my_fb_login.js"></script>
+							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+							</fb:login-button>							
+							<div id="status">
+							</div>
+						</div>
+					-->
+						<!-- FB Login/ -->
+				<!--
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-lock"></span>
-						</span>
-						<input type="password" placeholder="Password" class="form-control" id="id_password" name="password">
-					</div>
-				</div>
-				
-				<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-		<!--
-				<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-				<input type="submit" value="login" />
-		-->
-				<input type="hidden" name="next" value="{{ next }}" />
-			</form>
+	    		</div>
+		    	-->
+
+
+	    	</div>
 	    </div>
 	</div>
 

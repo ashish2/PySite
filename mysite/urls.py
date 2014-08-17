@@ -80,7 +80,11 @@ urlpatterns = patterns('',
 	
 	#Minbase
 	url(r"^minbase/", include("minbase.urls")),
-	url(r"^privacypolicy/$", "minbase.views.privacypolicy"),
+	url(r"^about/$", "minbase.views.about", name="about"),
+	url(r"^team/$", "minbase.views.team", name="team"),
+	url(r"^contact/$", "minbase.views.contact", name="contact"),
+	url(r"^terms/$", "minbase.views.terms", name="terms"),
+	url(r"^privacypolicy/$", "minbase.views.privacypolicy", name="privacypolicy"),
 	#Minbase-
 	
 	# async
@@ -99,6 +103,9 @@ urlpatterns = patterns('',
 	# Static
 	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/'} ),
 	# Static/
+
+	# uploads
+	(r'^uploads/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/uploads/'} ),
 	
 	# Login/Logout
 	#~(r'^accounts/login/$',  login),
@@ -113,9 +120,9 @@ urlpatterns = patterns('',
 	#~url(r"^auth/$", include("accounts.urls") ),
 	#~url(r"^auth/logout/?$", "accounts.views.logout_view" ),
 	# Login
-	url(r"login/$", "django.contrib.auth.views.login", {'authentication_form': EmailAuthenticationForm}, name = "login" ),
+	url(r"^login/$", "django.contrib.auth.views.login", {'authentication_form': EmailAuthenticationForm}, name="login" ),
 	# Logout
-	url(r"logout/$", "django.contrib.auth.views.logout", {'template_name': 'registration/logout.html'}, name = "logout" ),
+	url(r"^logout/$", "django.contrib.auth.views.logout", {'template_name': 'registration/logout.html'}, name="logout" ),
 	
 	url(r"^accounts/", include("accounts.urls") ),
 	
@@ -134,6 +141,9 @@ urlpatterns = patterns('',
 	#(r'^haystack_search/', include('haystack.urls')),
 	# Haystack Search-
 	
+	# The Search
+	url(r"^search/", include("search.urls") ),
+
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
 	

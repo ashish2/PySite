@@ -72,10 +72,19 @@ def myPostForm(**kwargs):
 class PostForm(ModelForm):
 	
 	def __init__(self, *args, **kwargs):
+		
+		e = []
+		if kwargs.has_key("exclude_list"):
+			e = kwargs.pop("exclude_list")
+		# ex = ['slug', 'parent_id', 'date', 'user', 'user_ip', 'status', 'tags']
+		# ex.extend(e)
+
 		super(PostForm, self).__init__(*args, **kwargs)
+		self.Meta.exclude += e
 		if self.fields.get('title'):
 			#self.fields['title'].label = "List Experience or an Event that you went through or Ask Question about an Experience that yuo think you will go through and you need an answer to it before hand"
 			self.fields['title'].label = "List Life Experience or Life Event that you would like to share"
+			self.fields['title'].widget.attrs['class'] = "form-control"
 	
 	class Meta:
 		model = Post

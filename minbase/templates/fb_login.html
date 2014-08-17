@@ -1,7 +1,10 @@
 {% extends "q_a_bbase.html" %}
 
 {% block content %}
+
 <script>
+
+/*
 
 function getCookie(name) {
 	var cookieValue = null;
@@ -33,14 +36,14 @@ function statusChangeCallback(response) {
 	if (response.status === 'connected') {
 		ajaxCall( {{ASYNC_URL}}, "fb_data", "POST", response );
 		// Logged into your app and Facebook.
-		/* testAPI(); */
+		// testAPI();
 	} else if (response.status === 'not_authorized') {
 		// The person is logged into Facebook, but not your app.
 		document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
 	} else {
 		// The person is not logged into Facebook, so we're not sure if
 		// they are logged into this app or not.
-		/* document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.'; */
+		// document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
 		checkLoginState();
 	}
 }
@@ -76,11 +79,10 @@ window.fbAsyncInit = function() {
 	//
 	// These three cases are handled in the callback function.
 	
-	/*
-	FB.getLoginStatus(function(response) {
-		statusChangeCallback(response);
-	});
-	*/
+	// FB.getLoginStatus(function(response) {
+	// 	statusChangeCallback(response);
+	// });
+
 	checkLoginState();
 	
 };
@@ -131,7 +133,12 @@ function ajaxCall(ASYNC_URL, func_to_run, method, response, successCallBack, err
 		
 	});
 }
+
+*/
+
 </script>
+
+<script type="text/javascript" src="{{STATIC_URL}}js/my_fb_login.js"></script>
 
 <!--
 	csrfmiddlewaretoken: {# csrf_token|stringformat: "s" #},
