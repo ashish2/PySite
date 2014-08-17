@@ -11,7 +11,6 @@ from minbase.includes import *
 
 # DONE
 # @cache_page(60 * 10)
-@login_required
 def view_all_post(request):
 	
 	# posts = Post.objects.filter(~Q(parent_id=None)).order_by("-date")
@@ -111,6 +110,7 @@ def show_post_form2(request):
 
 # Add a Question
 # DONE
+@login_required
 def add_post(request):
 	
 	if request.method == 'POST':
@@ -149,6 +149,7 @@ def add_post(request):
 	
 
 # Form for Comment(reply) to an Answer
+@login_required
 def show_reply_form(request, pk):
 	
 	pk = Post.objects.get(pk=pk)
@@ -163,6 +164,7 @@ def show_reply_form(request, pk):
 	
 
 # Add Comment(reply) to an Answer
+@login_required
 def add_reply(request, pk):
 	
 	if request.POST:
@@ -192,6 +194,7 @@ def add_reply(request, pk):
 	
 
 #@login_required
+@login_required
 def vote(request, pk, vote):
 	"""VOTES: 
 	Will get the Post id, and +1 or -1 as vote"""
@@ -251,6 +254,7 @@ def vote(request, pk, vote):
 
 # DONE
 #@login_required
+@login_required
 def follow(request, pk, follow, typ ):
 	"""Follow: 
 	Will get the Post id, and +1 or -1 as Follow or Unfollow"""
@@ -298,6 +302,7 @@ def follow(request, pk, follow, typ ):
 # pk parameter for post_id, & share parameter, bcoz we thought, we can give +1 to share & then -1 to UnShare
 # But, now only, pk parameter for post_id , as share will always happen & User CANNOT UnShare, theres no such thing as UnShare.
 #def share(request, pk, share):
+@login_required
 def share(request, pk):
 	"""#Share: Will get the Post id, and +1 or -1 as share
 	No such thing as UnShare, only Share allowed
