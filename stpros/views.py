@@ -13,6 +13,7 @@ def hi_from_fb(request):
 	return HttpResponse("Hi from FB")
 
 
+@login_required
 def list_all(request):
 	
 	listToShow = PathToSolution.objects.filter(parent_id=None).order_by("-date")
