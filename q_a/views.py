@@ -11,7 +11,6 @@ from minbase.includes import *
 
 # DONE
 # @cache_page(60 * 10)
-@login_required
 def view_all_post(request):
 	
 	# posts = Post.objects.filter(~Q(parent_id=None)).order_by("-date")

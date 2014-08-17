@@ -330,10 +330,12 @@ sys.path.append(os.path.dirname(__file__))
 AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
 # Login
-LOGIN_URL = '/accounts/login/'
+# LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 
 
 # importing some more settings at the End
 from extra_heroku_end_settings import *
+
 
 # ADDED-
