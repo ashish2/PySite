@@ -61,7 +61,7 @@ def view_post_id(request, pk, slug):
 	
 	i = None
 	for r in replies:
-		i = r.vote_set.filter(by_user_id=request.user)
+		i = r.vote_set.filter(by_user_id=request.user.id)
 		if i:
 			r.has_voted = i[0].vote
 		else:

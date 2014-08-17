@@ -322,7 +322,8 @@ ASYNC_URL = '/async/'
 CSRF_COOKIE_NAME='csrftoken'
 
 # Login
-LOGIN_URL = '/accounts/login/'
+# LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 
 REST_FRAMEWORK = {
 	# Use hyperlinked styles by default.
