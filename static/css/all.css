@@ -44,10 +44,6 @@
 
 /* Votes */
 
-.votes {
-	text-align: center;
-}
-
 .vote-up>a:hover{
 	color: green;
 }
@@ -115,12 +111,29 @@ a:hover, a:focus {
 .padding-top-5{
 	padding-top: 5px;
 }
-
 .margin-top-7{
 	margin-top: 7px;
 }
+.margin-top-10{
+	margin-top: 10px;
+}
+
+.c-color-777{
+	color: #777;
+}
+
+.c-color-777:hover{
+	color: #333;
+}
+
+.c-text-align-center {
+	text-align: center;
+}
+
+
 
 /*General-*/
+
 
 
 /*<language>-<tablename>-<area> <css>-<pts>-<footer>*/

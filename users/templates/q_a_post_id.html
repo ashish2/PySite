@@ -53,7 +53,7 @@
 								<!-- .col-lg-1 -->
 								<div class="col-lg-1 well">
 									<!-- Votes -->
-									<div class="votes">
+									<div class="c-text-align-center">
 										{% if post.has_voted != 1 %}
 											<div class="vote-up">
 												<a href="{% url q_a.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote Up" value=1>
