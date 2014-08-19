@@ -47,7 +47,7 @@
 								<!-- .col-lg-1 -->
 								<div class="col-lg-1">
 									<!-- Votes -->
-									<div class="votes">
+									<div class="c-text-align-center">
 										{% if rep.has_voted != 1 %}
 											<div class="vote-up">
 												<a href="{% url stpros.views.vote rep.pk 1 %}?from={{fromUrl|urlencode}}" data-toggle="tooltip" data-placement="left" data-original-title="Vote Up" title="Vote Up" value=1>
