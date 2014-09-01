@@ -39,7 +39,10 @@
 
 		<ul class="nav navbar-nav navbar-left">
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Path to problem solve: How i solved a problem, listing down the steps to the solution. Compare solutions. Let us know if you know any other kind of solution. (What you did? &amp; Why you did what you did?)">
+<!-- 			
+				Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?). Compare solutions. Let us know if you know any other kind of solution.
+ -->				
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?).">
 					Problem solve
 					<b class="caret"></b>
 				</a>
@@ -73,7 +76,7 @@
 			</div>
 		</form>
 
-		{% if not user.is_authenticated %}
+		{% if not request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li>
 				<a href="{% url login %}" title="Login">
@@ -89,15 +92,15 @@
 		</ul>
 		{% endif %}
 
-		{% if user.is_authenticated %}
+		{% if request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
-				<a data-toggle="dropdown" href="/users/{{user.id}}" class="navbar-brand dropdown-toggle">
-					{% if user.is_authenticated %} 
-						{% if user.userprofile.avatar %}
-							<img class="img-rounded img-responsive header-user-img" alt="{{user}}" title="{{user}}" src="/{{user.userprofile.avatar}}">
+				<a data-toggle="dropdown" href="/users/{{request.user.id}}" class="navbar-brand dropdown-toggle">
+					{% if request.user.is_authenticated %} 
+						{% if request.user.userprofile.avatar %}
+							<img class="img-rounded img-responsive header-user-img" alt="{{request.user}}" title="{{request.user}}" src="/{{request.user.userprofile.avatar}}">
 						{% else %}
-							<img class="img-rounded img-responsive header-user-img" alt="{{user}}" title="{{user}}" src="/uploads/avatar/random.jpg">
+							<img class="img-rounded img-responsive header-user-img" alt="{{request.user}}" title="{{request.user}}" src="/uploads/avatar/random.jpg">
 						{% endif %}
 					{% else %}
 						{{user}} 

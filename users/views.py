@@ -4,6 +4,9 @@
 # all the other modules are imported in includes.py
 from minbase.includes import *
 
+def ret_first_elem_of_a_list_tup(el):
+	return el[0]
+
 @login_required
 def view_user_profile(request, pk):
 	# User or FBUser or TwitterUser, request.user, which?
@@ -16,11 +19,13 @@ def view_user_profile(request, pk):
 
 	user = user[0]
 	profile = user.get_profile()
-
 	user_pts_questions = PathToSolution.objects.filter(user=user, parent_id=None)
 	user_pts_answers = PathToSolution.objects.filter(user=user).filter(~Q(parent_id=None))
+	fromUrl = request.get_full_path()
 
-	d = { "user": user , "profile": profile, "user_pts_questions": user_pts_questions, "user_pts_answers": user_pts_answers}
+	fwers = map(ret_first_elem_of_a_list_tup, user.fwing.values_list('followers_id') )
+	user.followers_list = fwers
+	d = { "user": user , "profile": profile, "user_pts_questions": user_pts_questions, "user_pts_answers": user_pts_answers, "fromUrl":fromUrl}
 
 	return render_to_response('user_profile.html', d, context_instance=RequestContext(request) )
 

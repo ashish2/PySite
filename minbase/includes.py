@@ -10,6 +10,7 @@ from mysite.settings import *
 import os
 import sys
 
+
 #from django.views.decorators.cache import cache_page
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import Context, loader
@@ -26,9 +27,11 @@ from django.contrib.auth import logout
 
 from django.contrib import auth
 
-from django.db.models import Q
-
+# Settings
 from mysite import settings
+
+# Models
+from django.db.models import Q
 
 from q_a.models.models import *
 from q_a.forms import *
@@ -50,6 +53,8 @@ from django.utils import timezone
 ### Models
 from django.contrib.auth.models import User
 from accounts.models import UserProfile
+
+from relations.models import *
 
 ### Forms
 from django.forms.formsets import formset_factory

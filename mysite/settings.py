@@ -218,7 +218,8 @@ INSTALLED_APPS = (
     # stpros
     'stpros',
     
-    
+    'relations',
+
     # ADDED-
     
 )

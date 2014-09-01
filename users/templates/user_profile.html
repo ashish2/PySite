@@ -3,23 +3,27 @@
 
 {% block content %}
 
-
 	<div class="main">
-		<div class="col-lg-12">
-			<div class="start-user-details">
 
-				<ul class="nav nav-tabs" id="user-details-tab">
-					<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-					<li><a href="#wall" data-toggle="tab">Wall</a></li>
-					<li><a href="#questions" data-toggle="tab">Questions</a></li>
-					<li><a href="#answers" data-toggle="tab">Answers</a></li>					
-				</ul>
+		<div class="row">
+
+			<div class="col-lg-10">
+				<div class="start-user-details margin-top-10">
+
+					<ul class="nav nav-tabs" id="user-details-tab">
+						<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+						<li><a href="#wall" data-toggle="tab">Wall</a></li>
+						<li><a href="#questions" data-toggle="tab" title="Questions posted.">Questions</a></li>
+						<li><a href="#answers" data-toggle="tab" title="Answers given.">Answers</a></li>
+						<li><a href="#followers" data-toggle="tab">Followers</a></li>
+						<li><a href="#following" data-toggle="tab">Following</a></li>
+						<li><a href="#catch_r" data-toggle="tab">Catches Received</a></li>
+						<li><a href="#catch_t" data-toggle="tab">Catches Taken</a></li>
+					</ul>
 
 
-				<div class="tab-content">
-
-					<div class="tab-pane margin-top-7 active" id="profile">
-
+					<div class="tab-content">
+						<div class="tab-pane margin-top-7 active" id="profile">
 							<!-- user-details -->
 							<div>
 								Email: 
@@ -44,43 +48,107 @@
 								{{profile.biography}}
 							</div>
 
-					</div>
 
-
-					<div class="tab-pane margin-top-7" id="wall">Wall
-
-					</div>
-
-					<div class="tab-pane margin-top-7" id="questions">
-						{%for q in user_pts_questions %}
-						<div>
-							<p>
-								<a href="{% url stpros.views.read q.pk %}">{{q.problem}}</a>
-							</p>
-							<p>
-								{% bbcode q.answer %}
-							</p>
 						</div>
-						{%endfor%}
-					</div>
 
-					<div class="tab-pane margin-top-7" id="answers">
-						{%for q in user_pts_answers %}
-						<div>
-							<p>
-								<a href="{% url stpros.views.read q.parent_id.pk %}">{{q.parent_id.problem}}</a>
-							</p>
-							<p>
-								{% bbcode q.answer %}
-							</p>
+
+						<div class="tab-pane margin-top-7" id="wall">Wall
+
 						</div>
-						{%endfor%}
-					</div>
 
+
+						<div class="tab-pane margin-top-7" id="questions">
+							{%for q in user_pts_questions %}
+							<div>
+								<p>
+									<a href="{% url stpros.views.read q.pk %}">{{q.problem}}</a>
+								</p>
+								<p>
+									{% bbcode q.answer %}
+								</p>
+							</div>
+							{%endfor%}
+						</div>
+
+						<div class="tab-pane margin-top-7" id="answers">
+							{%for q in user_pts_answers %}
+							<div>
+								<p>
+									<a href="{% url stpros.views.read q.parent_id.pk %}">{{q.parent_id.problem}}</a>
+								</p>
+								<p>
+									{% bbcode q.answer %}
+								</p>
+							</div>
+							{%endfor%}
+						</div>
+
+						<div class="tab-pane margin-top-7" id="followers">
+							{%for q in user.fwing.all %}
+							<div>
+								<p>
+									<a href="{% url users.views.view_user_profile q.followers.pk %}">
+										<img class="img-rounded img-responsive header-user-img" alt="{{q.followers}}" title="{{q.followers.email}}" src="/{{q.followers.userprofile.avatar}}">
+									</a>
+								</p>
+							</div>
+							{%endfor%}
+						</div>
+
+						<div class="tab-pane margin-top-7" id="following">
+							{%for q in user.fwers.all %}
+							<div>
+								<p>
+									<a href="{% url users.views.view_user_profile q.following.pk %}">
+										<img class="img-rounded img-responsive header-user-img" alt="{{q.following}}" title="{{q.following.email}}" src="/{{q.following.userprofile.avatar}}">
+									</a>
+								</p>
+							</div>
+							{%endfor%}
+						</div>
+
+						<div class="tab-pane margin-top-7" id="catch_r">
+							None yet!
+							<br />
+							Check <a href="#">here</a> y u havent recvd any catches yet?
+						</div>
+
+						<div class="tab-pane margin-top-7" id="catch_t">
+							Catches Taken.
+							<br />
+							None yet!
+							<br />
+
+						</div>
+						
+
+					</div>
+					
 				</div>
-				
 			</div>
+
+			<div class="col-lg-2">
+				<div class="some-btns ">
+					<div class="f-unf-btn">
+						{% if request.user.pk != user.pk %}
+							{% if request.user.pk not in user.followers_list %}
+							<a class="btn btn-primary" href="{% url relations.views.follow request.user.pk user.pk %}?from={{fromUrl}}">
+								Follow
+							</a>
+							{% else %}
+							<a class="btn btn-default" href="{% url relations.views.unfollow request.user.pk user.pk %}?from={{fromUrl}}">
+								UnFollow
+							</a>
+							{%endif%}
+						{%endif%}
+					</div>
+				</div>
+			</div>
+
+
 		</div>
+
+
 	</div>
 
 {% endblock %}

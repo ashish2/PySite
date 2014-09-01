@@ -33,6 +33,7 @@ class UserProfile(models.Model):
 	avatar = models.ImageField(upload_to="uploads/avatar", default="", blank=True)
 	biography = models.TextField(default="", blank=True)
 	
+	
 	def __unicode__(self):
 		return self.user.username
 	
