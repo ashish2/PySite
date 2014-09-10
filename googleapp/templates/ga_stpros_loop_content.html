@@ -1,7 +1,6 @@
 {# load parse_content_bbcode #}
 {% load bbcode %}
 	
-	{% if somelist %}
 	{% for post in somelist %}
 		<div class="each-posts">
 			<div class="row">
@@ -153,9 +152,4 @@
 			</div>
 		</div>
 	{% endfor %}
-	{%else%}
-	<div>
-		Nothing to show here at the moment.
-	</div>
-	{%endif%}
 

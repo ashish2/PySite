@@ -78,7 +78,7 @@ class AttendanceForm(ModelForm):
 		
 	def save(self, request, commit=True):
 		instance = super(AttendanceForm, self).save(commit=False)
-		instance.guser_id = request.user.pk
+		instance.guser_id = request.user.guser.pk
 		if commit:
 			instance.save()
 		return instance
