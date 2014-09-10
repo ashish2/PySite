@@ -197,6 +197,7 @@ INSTALLED_APPS = (
     # Social
     #'social',
     'fb',
+    'googleapp'
     
     # BBcode
     #'precise_bbcode',
