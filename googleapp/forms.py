@@ -72,6 +72,7 @@ class AttendanceForm(ModelForm):
 		# 	exclude_list = kwargs.pop('exclude')
 		super(AttendanceForm, self).__init__(*args, **kwargs)
 		self.fields['pub_date'].widget = widgets.AdminSplitDateTime()
+		self.fields['pub_date'].help_text = "<small>(Time in format hh:mm:ss)</small>"
 
 		# Removing Form Fields
 		# if exclude_list:
