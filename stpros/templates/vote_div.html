@@ -1,0 +1,17 @@
+
+{% if post.has_voted != 1 %}
+	<div class="vote-up">
+		<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
+	</div>
+{% endif %}
+<div class="vote-amt">
+	{{post.vote_count}}
+</div>
+{% if post.has_voted != -1 %}
+	<div class="vote-down">
+		<a href="{% url stpros.views.vote post.pk -1 %}?from={{fromUrl|urlencode}}" title="Vote down" value=-1>
+			<span class="glyphicon glyphicon-thumbs-down"></span>
+		</a>
+	</div>
+{% endif %}
+

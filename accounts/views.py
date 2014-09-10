@@ -19,7 +19,7 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from emailusernames.utils import create_user, create_superuser
+from emailusernames.utils import create_user, create_superuser, get_user
 from emailusernames.forms import user_exists
 
 from accounts.forms import RegistrationForm

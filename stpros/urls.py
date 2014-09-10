@@ -86,13 +86,3 @@ urlpatterns = patterns('stpros.views',
 
 
 
-#mausiji
-#01123354161
-#9868511971
-#205, adishvara apt,
-#34 ferozshah rd,
-#new delhi 110001
-
-#TO FIR SKYPE KI VOLUMN SETTINGS CHECK KARO 
-
-

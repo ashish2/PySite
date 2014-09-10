@@ -1,4 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 		<head>
 			<title>
@@ -51,7 +53,7 @@
 					<!-- Navbar  -->
 					<div class="row">
 						<div class="col-lg-12">
-							{% include "q_a_global_nav_new2.html" %}
+							{% include "ga_global_nav_new2.html" %}
 						</div>
 					</div>
 					<!-- Navbar-  -->
@@ -70,7 +72,7 @@
 						<div class="col-lg-12">
 							<!-- FOOTER Template -->
 							{% include "q_a_footer.html" %}
-							<!-- FOOTER Template / -->						
+							<!-- FOOTER Template / -->
 						</div>
 					</div>
 					<!-- Footer ends/ -->
@@ -116,27 +118,8 @@
 
 
 		<!-- including from Static folder of Application -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js?v=1"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}js/all.js"></script>
-
-		<script type="text/javascript">
-			// Load the SDK asynchronously
-			// (function() {
-			// 	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-			// 	po.src = 'https://apis.google.com/js/client:plusone.js';
-			// 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-			// })();
-
-			(function () {
-				var po = document.createElement('script');
-				po.type = 'text/javascript';
-				po.async = true;
-				po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(po, s);
-			})();			
-		</script>
-
 		
 		<!-- show block extrahead here, which will come from other templates -->
 		{% include "q_a_tinymcejs.html" %}

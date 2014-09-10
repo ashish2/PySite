@@ -22,7 +22,29 @@ class FBUserProfileForm(ModelForm):
 		#self.instance.fb_id = kwargs.get('id')
 		# Dont know y kwargs is not working & args is working
 		#self.instance.fb_id = args[0].get('id')
+		# self.instance.user = user
 		
 	class Meta:
 		model = FBUserProfile
+		exclude = ['user']
 		
+	# def save(self, request, user=None, commit=True):
+	# 	if user:
+	# 		user = user
+	# 	else:
+	# 		user = request.user
+
+	# 	print "UU"
+	# 	print user
+
+	# 	instance = super(FBUserProfileForm, self).save(commit=False)
+		
+	# 	print "instance"
+	# 	print instance
+
+	# 	instance.user = user
+	# 	if commit:
+	# 		instance.save()
+	# 	return instance
+		
+

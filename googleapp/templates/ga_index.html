@@ -1,0 +1,17 @@
+{% if latest_poll_list %}
+    <ul>
+    {% for poll in latest_poll_list %}
+        <li> {{poll.guser.username}} <a href="/polls/{{ poll.id }}/">{{ poll.pub_date }}</a> {{poll.hours}} hrs </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+
+
+
+
+
+

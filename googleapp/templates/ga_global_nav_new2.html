@@ -62,34 +62,6 @@
 				</ul>
 			</li>
 		</ul>
-
-
-		<ul class="nav navbar-nav navbar-left">
-			<li class="dropdown">
-<!-- 			
-				Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?). Compare solutions. Let us know if you know any other kind of solution.
--->				
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Attendance.">
-					Attendance
-					<b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="{% url googleapp_attendance_list_all %}" title="Attendance List.">
-							<i class="glyphicon glyphicon-list"></i>
-							List
-						</a>
-					</li>
-					<li>
-						<a href="{% url googleapp.views.create %}" title="Attendance Create.">
-							<i class="glyphicon glyphicon-edit"></i>
-							Add
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-
 		
 		<form class="navbar-form navbar-right" role="search" action="{% url search.views.main %}">
 			<div class="form-group">
@@ -119,7 +91,7 @@
 			</li>
 		</ul>
 		{% endif %}
-
+		
 		{% if request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">

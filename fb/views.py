@@ -6,6 +6,9 @@ from fb.forms import FBUserProfileForm
 from fb.models import FBUserProfile
 from django.contrib.auth import authenticate, login
 
+from emailusernames.utils import create_user, create_superuser, get_user
+from emailusernames.forms import user_exists
+
 
 def prepare_url_to_call_graph_api(endpoint, access_token):
 	graph_url = 'https://graph.facebook.com'
@@ -27,12 +30,15 @@ def prepare_json_data(req):
 def create_fb_user(di):
 	pass
 	fb_id = di.pop('id')
-	user, create = FBUserProfile.objects.get_or_create(pk=fb_id)
-	
-	if create:
-		pass
-		#create a UserProfile and input details
-		#request.POST.get('fb_response[id]')
+	email = di.pop("email")
+	# user, create = FBUserProfile.objects.get_or_create(pk=fb_id)
+	# user, create = User.objects.get_or_create(email=email)
+
+	password = None
+
+	if not user_exists(email):
+		create_user(email, password)
+
 	else:
 		pass
 		#do nothing
@@ -61,15 +67,13 @@ def pull_user_me():
 def fb_data(response):
 	"""All these will just return their respective json data"""
 	
-	print 1
-
-	accesstoken = response.POST.get('fb_response[authResponse][accessToken]')
+	accesstoken = response.POST.get('response[authResponse][accessToken]')
 	endpoint = pull_user_me()
+
 	url = prepare_url_to_call_graph_api(endpoint, accesstoken)
 	resp = call_graph_api_get_data(url)
 	di = prepare_json_data(resp)
 	
-	print 2
 
 	di['fb_id'] = di.get('id')
 	di['accesstoken'] = accesstoken
@@ -77,41 +81,55 @@ def fb_data(response):
 	# Settings is_active to True for the moment
 	di['is_active'] = True
 	
-
-	print di
-
-
 	# if create happens only then create User
 	# otherwise, just set session & redirect 
 	# u = form.get_or_create()
 
 	#create fbuser
-	user = FBUserProfile.objects.filter(fb_id=di['fb_id'])
-	# If not user create a user
-	if not user:
-		form = FBUserProfileForm(di)
+	email = di.pop("email")
+	password = "!"
 
-		print "bound", form.is_bound
-		print "errors", form.errors
-		print "valid", form.is_valid()
+	# If not user, then create
+	if not user_exists(email):
+		# Create User		
+		create_user(email, password)
+		user = get_user(email)
 
-		# and not form.errors
-		if form.is_bound and form.is_valid():
-			#enter fb_id, accesstoken, & then pass the POST variable to see if all fields are filled,
-			#& then save, other wise u will hav to manually save each field by doing a save(commit=False)
-			user = form.save()
-		else:
-			print "Some errors while logging in."
+		# Create UserProfile
+		user_p, cr = UserProfile.objects.get_or_create(user=user)
+		# Create FBUserProfile
+		fb_user_p = FBUserProfile.objects.filter(user=user, fb_id=di['fb_id'])
+
+		# If not user create a user
+		if not fb_user_p:
+			form = FBUserProfileForm(di)
+
+			fb_user_p = form.save(commit=False)
+			fb_user_p.user = user
+
+			# and not form.errors
+			if form.is_bound and form.is_valid():
+				#enter fb_id, accesstoken, & then pass the POST variable to see if all fields are filled,
+				#& then save, other wise u will hav to manually save each field by doing a save(commit=False)
+				form.save(commit=True)
+
+			else:
+				print "Some FB Form invalid error errors while logging in."
 	else:
-		user = user[0]
+		# user = User.objects.filter(email=email)
+		# user = user[0]
+		user = get_user(email)
+		
 
 	#then, #authenticate #&login #& redirect to '/'
-	fb_user = authenticate(email=user.email, password=user.password)
+	# fb_user = authenticate(email=user.email, password=user.password)
+	fb_user = authenticate(email=user.email, password=password)
 
 	if fb_user is not None:
 		if fb_user.is_active:
 			#login(request, fb_user)
 			login(response, fb_user)
+			# redirect here
 			return HttpResponseRedirect(reverse("stpros.views.list_all"))
 		else:
 			print "Not active"

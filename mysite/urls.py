@@ -77,6 +77,9 @@ urlpatterns = patterns('',
 	
 	# Stpros
 	url(r"^stpros/", include("stpros.urls")),
+
+	# GoogleApp
+	url(r"^googleapp/", include("googleapp.urls")),
 	
 	# FB
 	url(r"^hi_from_fb", "stpros.views.hi_from_fb"),

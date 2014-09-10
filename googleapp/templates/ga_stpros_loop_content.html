@@ -1,5 +1,7 @@
 {# load parse_content_bbcode #}
 {% load bbcode %}
+	
+	{% if somelist %}
 	{% for post in somelist %}
 		<div class="each-posts">
 			<div class="row">
@@ -7,11 +9,25 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="c-text-align-center">
-								{% include "vote_div.html" %}
-							</div>
+<!-- 								{# if post.has_voted != 1 #}
+								<div class="vote-up">
+									<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
+								</div>
+								{# endif #}
+								<div class="vote-amt">
+									{#post.vote_count#}
+								</div>
+								{# if post.has_voted != -1 #}
+								<div class="vote-down">
+									<a href="{% url stpros.views.vote post.pk -1 %}?from={{fromUrl|urlencode}}" title="Vote down" value=-1>
+										<span class="glyphicon glyphicon-thumbs-down"></span>
+									</a>
+								</div>
+								{# endif #}
+ -->							</div>
 						</div>
 					</div>
-					<div class="row">
+<!-- 					<div class="row">
 						<div class="col-lg-12">
 							<div class="c-text-align-center margin-top-7">
 								<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#myModal">
@@ -20,8 +36,8 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="row">
+ -->
+<!-- 					<div class="row">
 						<div class="col-lg-12">
 							<div class="c-text-align-center margin-top-7">
 								<ul class="nav">
@@ -48,33 +64,31 @@
 							</div>
 						</div>
 					</div>
-
+ -->
 				</div>
 				<div class="col-lg-11">					
 					<div class="post-title">
-						<h4>
-							<b>
-								<a href="{% url stpros.views.read post.id %}">{{ post.problem }}</a>
-							</b>
-						</h4>
-					</div>
-					
-					<div class="border-1-black">
-						<small><a href="{% url users.views.view_user_profile post.user.pk %}">{{post.user.username}}</a></small>
 						<div>
-							{# post.answer|striptags|linebreaks #}
-							{% bbcode post.answer %}
+							User: {{post.guser.name}}
+						</div>
+						<div>
+							Date: {{ post.date }}
+						</div>
+						<div>
+							Hours: {{post.hours}}
 						</div>
 					</div>
-					
+										
 					<div class="row margin-top-10">
 						<div class="col-lg-2">
 							<!-- Comments -->
 							<div class ="btn-post-answer-reply commentlink">
+
 								<small>
 									<span>
-										<a href="{% url stpros.views.add_reply post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777 j-ttip" data-toggle="tooltip" title="Reply">
-											<span class="fa fa-reply"></span>
+										<a href="{% url googleapp.views.edit post.pk %}" class="c-color-777 j-ttip" data-toggle="tooltip" data-placement="left" title="Edit">
+<!-- 											<span class="fa fa-reply"></span>
+ -->											Edit
 										</a>
 									</span>
 								</small>
@@ -96,7 +110,7 @@
 							<!-- Comments/ -->
 						</div>
 
-						<div class="col-lg-2">
+<!-- 						<div class="col-lg-2">
 							<div>
 								<small>
 									<a href="{% url stpros.views.read post.id %}" class="label label-warning j-ttip" title="{{post.get_pts_answers.count}} answer(s)" data-toggle="tooltip">
@@ -106,6 +120,7 @@
 								</small>
 							</div>
 						</div>
+ -->						
 
 						<div class="col-lg-4">
 							<!-- Time -->
@@ -138,3 +153,9 @@
 			</div>
 		</div>
 	{% endfor %}
+	{%else%}
+	<div>
+		Nothing to show here at the moment.
+	</div>
+	{%endif%}
+
