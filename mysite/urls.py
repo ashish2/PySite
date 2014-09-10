@@ -52,8 +52,8 @@ urlpatterns = patterns('',
 
 	# Uncomment the admin/doc line below to enable admin documentation:
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	
-	
+	url(r'^my_admin/jsi18n', 'django.views.i18n.javascript_catalog'),
+
 	# Polls
 	url(r"^polls/", include("polls.urls")),
 	
@@ -112,6 +112,12 @@ urlpatterns = patterns('',
 
 	# uploads
 	(r'^uploads/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/uploads/'} ),
+
+	# FTM
+	(r'^missing-admin-media-prefix/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/admin/'} ),
+	# FTM-
+	
+
 	
 	# Login/Logout
 	#~(r'^accounts/login/$',  login),

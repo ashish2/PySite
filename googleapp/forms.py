@@ -13,6 +13,7 @@ from django.template.defaultfilters import slugify
 #from minbase.includes import *
 # from django.forms import TextInput, DateTimeInput, SplitDateTimeWidget
 from django.forms import *
+from django.contrib.admin import widgets 
 
 
 #from django import forms 
@@ -70,6 +71,7 @@ class AttendanceForm(ModelForm):
 		# if kwargs.get('exclude'):
 		# 	exclude_list = kwargs.pop('exclude')
 		super(AttendanceForm, self).__init__(*args, **kwargs)
+		self.fields['pub_date'].widget = widgets.AdminSplitDateTime()
 
 		# Removing Form Fields
 		# if exclude_list:

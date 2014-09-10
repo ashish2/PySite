@@ -1,8 +1,32 @@
 {% extends "q_a_bbase.html" %}
 
+
+			{% load adminmedia %} /* At the top of the template. */
+
+			/* In the head section of the template. */
+			<script type="text/javascript" language="javascript">
+				window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";
+				console.log("window.__admin_media_prefix__");
+				console.log(window.__admin_media_prefix__);
+			</script>
+
+
 <!-- Post form -->
 {% block content %}
-	
+
+<script type="text/javascript" src="/my_admin/jsi18n/"></script>
+<script type="text/javascript" src="{{STATIC_URL}}admin/js/core.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/actions.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/calendar.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/DateTimeShortcuts.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}admin/css/forms.css"/>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}admin/css/widgets.css"/>
+
 	{% if fromUrl %}
 	<form action="{{form_action}}?from={{fromUrl}}" method="post">
 	{% else %}
