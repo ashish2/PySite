@@ -76,6 +76,8 @@ STATIC_ROOT = 'static_root'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
 # ADDED
 #current_dir = os.path.dirname( __file__ )
 current_dir = os.path.abspath('./static')

@@ -1,8 +1,38 @@
 {% extends "q_a_bbase.html" %}
 
+
+<!-- 			/* At the top of the template. */
+ -->			
+			{% load adminmedia %} 
+
+			<!-- /* In the head section of the template. */ -->
+
+			<script type="text/javascript" language="javascript">
+				// window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";
+				// console.log("window.__admin_media_prefix__");
+				// console.log(window.__admin_media_prefix__);
+			</script>
+
+
 <!-- Post form -->
 {% block content %}
-	
+
+<script type="text/javascript" src="/my_admin/jsi18n/"></script>
+<script type="text/javascript" src="{{STATIC_URL}}admin/js/core.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/RelatedObjectLookups.js"></script>
+
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}admin/js/jquery.init.js"></script> -->
+
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/actions.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/calendar.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/DateTimeShortcuts.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}admin/css/forms.css"/>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}admin/css/widgets.css"/>
+
 	{% if fromUrl %}
 	<form action="{{form_action}}?from={{fromUrl}}" method="post">
 	{% else %}
@@ -16,5 +46,34 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</div>
 	</form>
+	
+
+
+<!--
+<br>
+<br>
+
+<div ng-app="MyApp" ng-controller="MyCtrl">
+	<button ng-click="changeName()">Toggle</button>
+
+	<p>
+		First Name: <input type="text" ng-model="person.firstname"><br>
+		Last Name: <input type="text" ng-model="person.lastname"><br>
+		<br>
+	</p>
+	<br>
+	<br>
+	<br>
+
+	<div id='content' ng-controller='MainController'>
+		<select ng-model='selectedPerson' ng-options='obj.name for obj in people'></select>
+		<select ng-model='selectedGenre'>
+			<option ng-repeat='label in people[selectedPerson.id].music' value="{{selectedPerson.id}}">{{label}}</option>
+		</select>
+	</div>
+
+</div>
+ -->
+
 
 {% endblock %}
