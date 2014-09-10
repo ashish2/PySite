@@ -6,12 +6,19 @@ from googleapp.forms import *
 def list_all(request):
 	try:
 		user = Guser.objects.get(user=request.user)
-		listToShow = Attendance.objects.filter(guser=request.user.guser).order_by('-pub_date'),
+		listToShow = Attendance.objects.filter(guser=request.user.guser).order_by('-pub_date')
 		# listing = RealEstateListing.objects.get(slug_url=slug)
+		template = 'ga_some_list.html'
 	except Guser.DoesNotExist:
 		listToShow = []
+		template = 'nothing_here.html'
+	if not listToShow:
+		listToShow = []
+		template = 'nothing_here.html'
+
 	d = dict(somelist = listToShow, )
-	return render_to_response("ga_some_list.html", d, context_instance=RequestContext(request) )
+	return render_to_response(template, d, context_instance=RequestContext(request) )
+
 
 
 def add_reply(request, pk):
