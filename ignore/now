@@ -1,0 +1,237 @@
+
+
+Django tutorial
+
+now,
+here
+https://docs.djangoproject.com/en/1.4/intro/tutorial03/#raising-404
+
+
+q_a app, 
+views.py file, 
+# Do VOTES now  -DONE
+
+Like,  -DONE
+
+
+qna:
+Community Problem Solving
+
+profile question:
+everyday problem u face in life and how you solved it or have you even solved it yet?
+
+these are the problems i face everyday:
+what can be possible solutions for it?
+
+Ask your doubts, 
+And Clear them.
+
+And possibly have a clearer view things going forward.
+
+
+
+:::Recommender/Taging System:::
+Recommend/Tag someone:
+if u know, someone, who can 
+post a reply with good insights, or someone who is 
+a ninja on the topic, and this question hasn't reached him..
+or he hasn't been able to reach to this question, 
+but u think he can add value here, and be of good help, 
+u can just tag him here, 
+& he will come to know.
+
+==================
+pysite software:
+
+now:
+
+:::Topics Table:::
+there will be a topics table & 
+
+User are following a Topic. U -> T
+One user can folow many topics.
+A Topic can be followed by many Users
+
+Users are following a Post.
+so, updates in those Posts go as notifications(probably) to Users
+
+Post is inside a Topic, 
+so Post table has a foreign key Topic_id which refers to a Topic in Topic table. 
+P -> T, so, the table Post(Topic_id) table has the Topic(id) as foreign key.
+A Post is inside a Topic.
+A Topic can have Many Posts.
+
+::Share Table:: ( Now Share )
+User shares a Post.
+So, Share table has User_id & Post_id.
+Saying this User has shared this Post , at this time etc etc,
+which shows up in the Users wall/profile page.
+this Post has been shared by Many Users
+
+:::UserProfile:::
+
+then,
+:::Followers(Your):::
+
+:::Following(You are):::
+
+LIKE question and Answers PHP sfware
+:::Recent Questions(activity)::: on Main Page
+Main page also hving these likns,
+	Recent, Hot!, Most votes, Most answers, Most views
+
+
+:::Wall (Simple one, no reply/likes, just post for now):::
+
+:::Userlist::: (and their points, based on answers given etc.)
+
+:::User Profile Page:::
+	:::User details(profile):::
+	:::User Favorites::: a question or a user etc
+	Question asked by this user,
+	Answers given by this user,
+	add this user as friend
+	receive updates from this user ( big feature, maybe do later )
+	
+
+:::See Search:::
+
+:::Tagging::: feature, then just goto to a particular tag page, to see all questions contained in that TagName
+
+:::Answer and Comment(reply) editing feature:::
+
+show little glypicons for comment answer etc
+
+
+-------------
+if i want to comment i can comment,
+if i want to like the Answer i can like, or a comment Reply i can like that too,
+i wanna see User Profile,
+addd my website on  my profile,
+
+=======================
+Eventia.com: (eventis, )
+
+Share Experiance/Events:
+
+What i hv made in Q_a:
+is mostly: 
+
+Form show,
+post form
+show list of the post's
+this can all be done in 
+models, forms.py 
+
+
+---just download these modules & run the site, no need to reall code everything:---
+post & comments system, django-comments
+tagging
+voting
+
+
+now, add:
+media files, for photos etc,
+form to upload media, & put them in amazon, & render them from there.
+
+
+
+=================
+TO DO: (try to understand):
+
+>
+How to have Sitewise STATIC FILEs in django
+
+
+=============================
+
+#House-X.com
+HomeX.com
+
+so some tables,
+
+`Like` should be another app... so you can like `table`(model) & `table_pk` (pk of the table) (Generic key (*maybe))
+same way,
+`Images` (app)
+`Rating` (app)
+`Share` (app)
+`Voting` (app)
+`Comments` (Can be on a HouseListing, An Image, A WallPost, etc.)
+etc...
+
+
+=============================
+
+Steps to Problem Solve ( Stpros):
+
+if u face a problem & u hv solved it,
+then write about it, 
+just write down all the steps involved and the way u solved it...
+this helps you remember the solution to a big extent,
+to help you face the same problem, if in case you face it again.
+
+now,
+Login with FB ( FB Users Table) ( add social network stuff, share(fb) & likes too )
+Comments on the Answers.
+Design ( like PasteBin )
+
+	
+https://news.ycombinator.com/item?id=5786118
+dysoco 419 days ago | link
+
+Is there any kind of streaming service like Twitch.tv but for programmers?
+Maybe it's weird... but I really like watching other people writing a project (Like in the Ludum Dare), I like to see how they tackle the design, how they work, what cool tricks they use, etc.
+You can even interact with them via chat, and not only help but also ask questions about what they are doing... is great for people who are still learning.
+Any?
+
+
+so there is a solution posted by 1 peson,
+& then, there are 5 more solutions posted by different people,
+then when X (person X) solves it & he posts his solution,
+he can see,
+his answer & tries to match with answers from others,
+& see with who's answer his answer matches most,
+& probably these 2 person have the same way of 
+logic & analysing of problems,
+we can get to understand,
+how the brains of people function,
+wen analysing a problem,
+& who's brain matches with each other.
+
+
+
+
+list_page:
+panels
+	then, comments as list ( 2 comments)
+
+show_is page
+	1 big panel,
+	then comments as li's
+
+take header up -- NO
+
+Mon 21 July, 2014:
+Stpros:
+	Comments -- DONE
+	Votes, -- DONE
+		and, 
+	Check, FB Login, and implement it if possible. -- Dint Even Touch
+	
+Wed 23 July:
+	Check, FB Login, and implement it if possible.
+	User's Profile
+	
+	Friends points
+	Add Friend (Only,  More points wala can add less pointwala, if lesss pointwala is adding, the morepointwala will not get added, but he will be notified, that less point wala person was trying to add u)
+	
+	
+
+
+
+
+
+
+
+
+
