@@ -15,7 +15,7 @@
 	    </div>
 	    <div class="panel-body">
 	    	<div class="row">
-	    		<div class="col-lg-12">
+	    		<div class="col-lg-6">
 <!-- 
 					<form class="form-signin" method="post" action="{% url login %}">
 						{% if form.errors %}
@@ -140,32 +140,71 @@
 
 
 				<!--
-				<div class="col-lg-6">
+		    	-->
+				<div class="col-lg-3">
 					<div>
 						<h4>FB Login</h4>
 						<!-- FB Login -->
-<!-- 						
 						<div class="fb-login">
- -->
  							<!--
 							Below we include the Login Button social plugin. This button uses
 							the JavaScript SDK to present a graphical Login button that triggers
 							the FB.login() function when clicked.
 							-->
-							<!--
 							<script type="text/javascript" src="{{STATIC_URL}}js/my_fb_login.js"></script>
+
 							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-							</fb:login-button>							
+							</fb:login-button>
+							
 							<div id="status">
 							</div>
 						</div>
-					-->
 						<!-- FB Login/ -->
-				<!--
 					</div>
-	    		</div>
-		    	-->
+				</div>
 
+				<div class="col-lg-3">
+					<div>
+						<h4>G+ Login</h4>
+						<!-- GP Login -->
+						<div class="gp-login">
+ 							<!--
+							Below we include the Login Button social plugin. This button uses
+							the JavaScript SDK to present a graphical Login button that triggers
+							the FB.login() function when clicked.
+							-->
+							<script type="text/javascript" src="{{STATIC_URL}}js/my_gp_login.js"></script>
+									<!-- data-requestvisibleactions="http://schemas.google.com/AddActivity" -->
+
+<!-- 									https://www.googleapis.com/auth/plus.profile.emails.read
+ -->
+							<button class="g-signin"
+									data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
+									data-clientid="874514271696-28jvsre44909p210nul82r5imhrk3i7f.apps.googleusercontent.com"
+									data-callback="signInCallback"
+									data-theme="dark"
+									data-cookiepolicy="single_host_origin"
+									data-width="wide">
+							</button>
+						
+							<!-- Add where you want your sign-in button to render -->
+									<!-- data-accesstype="offline" -->
+<!-- 							<div id="signinButton">
+								<span class="g-signin"
+									data-scope="https://www.googleapis.com/auth/plus.login"
+									data-clientid="874514271696-28jvsre44909p210nul82r5imhrk3i7f.apps.googleusercontent.com"
+									data-accesstype="offline"
+									data-redirecturi="postmessage"
+									data-cookiepolicy="single_host_origin"
+									data-callback="signInCallback">
+								</span>
+							</div>
+ -->							<div id="result"></div>
+
+						</div>
+						<!-- GP Login/ -->
+					</div>
+				</div>
 
 	    	</div>
 	    </div>

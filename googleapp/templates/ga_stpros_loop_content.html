@@ -1,0 +1,161 @@
+{# load parse_content_bbcode #}
+{% load bbcode %}
+	
+	{% if somelist %}
+	{% for post in somelist %}
+		<div class="each-posts">
+			<div class="row">
+				<div class="col-lg-1">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center">
+<!-- 								{# if post.has_voted != 1 #}
+								<div class="vote-up">
+									<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
+								</div>
+								{# endif #}
+								<div class="vote-amt">
+									{#post.vote_count#}
+								</div>
+								{# if post.has_voted != -1 #}
+								<div class="vote-down">
+									<a href="{% url stpros.views.vote post.pk -1 %}?from={{fromUrl|urlencode}}" title="Vote down" value=-1>
+										<span class="glyphicon glyphicon-thumbs-down"></span>
+									</a>
+								</div>
+								{# endif #}
+ -->							</div>
+						</div>
+					</div>
+<!-- 					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center margin-top-7">
+								<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#myModal">
+									<span class="glyphicon glyphicon-share-alt"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+ -->
+<!-- 					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center margin-top-7">
+								<ul class="nav">
+									<li class="dropdown">
+										<a data-toggle="dropdown" class="dropdown-toggle c-color-777" href="#" title="Options">
+											<b class="fa fa-ellipsis-v"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="/" title="">
+													<i class="fa fa-circle-thin"></i>
+													Some_Option_1
+												</a>
+											</li>
+											<li>
+												<a href="/create/" title="">
+													<i class="fa fa-circle-thin"></i>
+													Some_Option_2
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+ -->
+				</div>
+				<div class="col-lg-11">					
+					<div class="post-title">
+						<div>
+							User: {{post.guser.name}}
+						</div>
+						<div>
+							Date: {{ post.date }}
+						</div>
+						<div>
+							Hours: {{post.hours}}
+						</div>
+					</div>
+										
+					<div class="row margin-top-10">
+						<div class="col-lg-2">
+							<!-- Comments -->
+							<div class ="btn-post-answer-reply commentlink">
+
+								<small>
+									<span>
+										<a href="{% url googleapp.views.edit post.pk %}" class="c-color-777 j-ttip" data-toggle="tooltip" data-placement="left" title="Edit">
+<!-- 											<span class="fa fa-reply"></span>
+ -->											Edit
+										</a>
+									</span>
+								</small>
+								
+								<!--
+								Share
+								{# if post.has_shared != 1 #}
+								<span>
+								<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
+								</span>
+								{# elif post.has_shared != -1 #}
+								<span>
+									<a href="#" value=-1>Shared</a>
+								</span>
+								{# endif #}
+								-->
+								
+							</div>
+							<!-- Comments/ -->
+						</div>
+
+<!-- 						<div class="col-lg-2">
+							<div>
+								<small>
+									<a href="{% url stpros.views.read post.id %}" class="label label-warning j-ttip" title="{{post.get_pts_answers.count}} answer(s)" data-toggle="tooltip">
+										<span class="fa fa-comments"></span>
+										{{post.get_pts_answers.count}}
+									</a>
+								</small>
+							</div>
+						</div>
+ -->						
+
+						<div class="col-lg-4">
+							<!-- Time -->
+							<div class="post-time">
+								<small>
+									{{ post.date }}
+								</small>
+							</div>
+							<!-- Time- -->
+						</div>
+					</div>
+					<!-- 
+					Replies start
+					Commenting right now,
+					can UnComment it later.
+					-->
+					<!--
+					{% if post.post_set.all %}
+						<ul class="replies">
+							{% for i in post.post_set.all %}
+									<li>
+										{{i.content|striptags }}
+									</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					-->
+					<!-- Replies ends -->
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	{%else%}
+	<div>
+		Nothing to show here at the moment.
+	</div>
+	{%endif%}
+

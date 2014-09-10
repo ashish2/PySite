@@ -78,6 +78,28 @@ def create(request):
 	return render_to_response( 'some_post_form.html', d, context_instance=RequestContext(request) )
 	
 
+def add_the_reply(request, pk):
+	form = PathToSolutionForm(request.POST, exclude=('problem', 'slug', 'parent_id', ) )
+	
+	if form.is_bound:
+		if form.is_valid():
+			clean_data = form.cleaned_data
+			# form = form.save(request, commit=False)
+			PTS_instance = PathToSolution.objects.get(pk=pk)
+			form.instance.parent_id = PTS_instance
+			form.instance.answer = form.cleaned_data.get('answer')
+			form.save(request)
+			if fromUrl:
+				return HttpResponseRedirect(fromUrl)
+		else:
+			"Form Invalid"
+			form.errors
+			pass
+	else:
+		"No data received in form"
+		pass
+
+
 @login_required
 # Form for Comment(reply) to an Answer
 def add_reply(request, pk):
@@ -86,29 +108,11 @@ def add_reply(request, pk):
 	form=PathToSolutionForm( exclude=( 'problem' , 'slug', 'parent_id' ) )
 	
 	if request.method == 'POST':
-		form = PathToSolutionForm(request.POST, exclude=('problem', 'slug', 'parent_id', ) )
-		
-		if form.is_bound:
-			if form.is_valid():
-				clean_data = form.cleaned_data
-				# form = form.save(request, commit=False)
-				PTS_instance = PathToSolution.objects.get(pk=pk)
-				form.instance.parent_id = PTS_instance
-				form.instance.answer = form.cleaned_data.get('answer')
-				form.save(request)
-				if fromUrl:
-					return HttpResponseRedirect(fromUrl)
-			else:
-				"Form Invalid"
-				form.errors
-				pass
-		else:
-			"No data received in form"
-			pass
+		add_the_reply(request, pk)
+
 	else:
 		"Some problem occurred while submitting the form"
 		pass
-	
 	
 	#d = dict(form=PathToSolutionForm,)
 	# form=PathToSolutionForm( exclude=( 'problem' , 'slug', 'parent_id' ) )

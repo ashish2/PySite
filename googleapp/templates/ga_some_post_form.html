@@ -1,0 +1,49 @@
+{% extends "q_a_bbase.html" %}
+
+<!-- Post form -->
+{% block content %}
+	
+	{% if fromUrl %}
+	<form action="{{form_action}}?from={{fromUrl}}" method="post">
+	{% else %}
+	<form action="{{form_action}}" method="post">
+	{% endif %}
+		{% csrf_token %}
+		<div id="cform">
+			{{form.as_p}}
+		</div>
+		<div id="submit">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+	
+
+
+<!--
+<br>
+<br>
+
+<div ng-app="MyApp" ng-controller="MyCtrl">
+	<button ng-click="changeName()">Toggle</button>
+
+	<p>
+		First Name: <input type="text" ng-model="person.firstname"><br>
+		Last Name: <input type="text" ng-model="person.lastname"><br>
+		<br>
+	</p>
+	<br>
+	<br>
+	<br>
+
+	<div id='content' ng-controller='MainController'>
+		<select ng-model='selectedPerson' ng-options='obj.name for obj in people'></select>
+		<select ng-model='selectedGenre'>
+			<option ng-repeat='label in people[selectedPerson.id].music' value="{{selectedPerson.id}}">{{label}}</option>
+		</select>
+	</div>
+
+</div>
+ -->
+
+
+{% endblock %}

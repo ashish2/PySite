@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 		<head>
 			<title>
@@ -18,10 +16,11 @@
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap_cosmo.css">
 			-->
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap/css/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fa/fa.css">
 
 			<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/all.css">
-			<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
 
+			<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
 			
 			<!--
 			For including from project (Base) static/ folder, Without {{STATIC_URL}}
@@ -48,12 +47,14 @@
 				</div>
 
 				<div id="main">
+					
+					<!-- Navbar  -->
 					<div class="row">
 						<div class="col-lg-12">
 							{% include "q_a_global_nav_new2.html" %}
 						</div>
 					</div>
-					<!-- ----- -  ------>
+					<!-- Navbar-  -->
 					
 					<div class="row">
 						<div class="col-lg-12">
@@ -63,18 +64,26 @@
 							<!-- /-->
 						</div>
 					</div>
-				
-
-
-				<!-- Footer starts -->
-				<div class="row">
-					<div class="col-lg-12">
-						<!-- FOOTER Template -->
-						{% include "q_a_footer.html" %}
-						<!-- FOOTER Template / -->						
+					
+					<!-- Footer starts -->
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- FOOTER Template -->
+							{% include "q_a_footer.html" %}
+							<!-- FOOTER Template / -->						
+						</div>
 					</div>
-				</div>
-				<!-- Footer ends/ -->
+					<!-- Footer ends/ -->
+
+					<!-- q_a_friends_modal starts -->
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- friends_modal Template -->
+							{% include "q_a_friends_modal.html" %}
+							<!-- friends_modal Template / -->						
+						</div>
+					</div>
+					<!-- q_a_friends_modal ends/ -->
 
 
 				</div>
@@ -91,6 +100,7 @@
 		<script type="text/javascript" src="{{STATIC_URL}}js/lib/jquery-1.9.1.min.js"></script>
 		-->
 		<!-- including from Static folder of Base(Project/Root Static folder), withOUT {{STATIC_URL}} -->
+		
 		<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -106,8 +116,27 @@
 
 
 		<!-- including from Static folder of Application -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/javascript.js?v=1"></script>
 		<script type="text/javascript" src="{{STATIC_URL}}js/all.js"></script>
+
+		<script type="text/javascript">
+			// Load the SDK asynchronously
+			// (function() {
+			// 	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			// 	po.src = 'https://apis.google.com/js/client:plusone.js';
+			// 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			// })();
+
+			(function () {
+				var po = document.createElement('script');
+				po.type = 'text/javascript';
+				po.async = true;
+				po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(po, s);
+			})();			
+		</script>
+
 		
 		<!-- show block extrahead here, which will come from other templates -->
 		{% include "q_a_tinymcejs.html" %}

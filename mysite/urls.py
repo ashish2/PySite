@@ -71,9 +71,15 @@ urlpatterns = patterns('',
 	
 	# Followers_following
 	url(r"^follow/", include("following_followers.urls")),
+
+	# Relations
+	url(r"^relations/", include("relations.urls")),
 	
 	# Stpros
 	url(r"^stpros/", include("stpros.urls")),
+
+	# GoogleApp
+	url(r"^googleapp/", include("googleapp.urls")),
 	
 	# FB
 	url(r"^hi_from_fb", "stpros.views.hi_from_fb"),

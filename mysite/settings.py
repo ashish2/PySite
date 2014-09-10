@@ -183,6 +183,7 @@ INSTALLED_APPS = (
     # Social
     #'social',
     'fb',
+    'googleapp',
     
     # BBcode
     #'precise_bbcode',
@@ -218,7 +219,8 @@ INSTALLED_APPS = (
     # stpros
     'stpros',
     
-    
+    'relations',
+
     # ADDED-
     
 )

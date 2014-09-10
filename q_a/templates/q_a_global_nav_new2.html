@@ -39,7 +39,10 @@
 
 		<ul class="nav navbar-nav navbar-left">
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Path to problem solve: How i solved a problem, listing down the steps to the solution. Compare solutions. Let us know if you know any other kind of solution.">
+<!-- 			
+				Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?). Compare solutions. Let us know if you know any other kind of solution.
+ -->				
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?).">
 					Problem solve
 					<b class="caret"></b>
 				</a>
@@ -59,6 +62,34 @@
 				</ul>
 			</li>
 		</ul>
+
+
+		<ul class="nav navbar-nav navbar-left">
+			<li class="dropdown">
+<!-- 			
+				Path to problem solve: How i solved a problem, listing down the steps to the solution. Explaining: What you did? &amp; Why you did what you did?). Compare solutions. Let us know if you know any other kind of solution.
+-->				
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Attendance.">
+					Attendance
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="{% url googleapp_attendance_list_all %}" title="Attendance List.">
+							<i class="glyphicon glyphicon-list"></i>
+							List
+						</a>
+					</li>
+					<li>
+						<a href="{% url googleapp.views.create %}" title="Attendance Create.">
+							<i class="glyphicon glyphicon-edit"></i>
+							Add
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
 		
 		<form class="navbar-form navbar-right" role="search" action="{% url search.views.main %}">
 			<div class="form-group">
@@ -73,7 +104,7 @@
 			</div>
 		</form>
 
-		{% if not user.is_authenticated %}
+		{% if not request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li>
 				<a href="{% url login %}" title="Login">
@@ -89,15 +120,15 @@
 		</ul>
 		{% endif %}
 
-		{% if user.is_authenticated %}
+		{% if request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
-				<a data-toggle="dropdown" href="/users/{{user.id}}" class="navbar-brand dropdown-toggle">
-					{% if user.is_authenticated %} 
-						{% if user.userprofile.avatar %}
-							<img class="img-rounded img-responsive header-user-img" alt="{{user}}" title="{{user}}" src="/{{user.userprofile.avatar}}">
+				<a data-toggle="dropdown" href="/users/{{request.user.id}}" class="navbar-brand dropdown-toggle">
+					{% if request.user.is_authenticated %} 
+						{% if request.user.userprofile.avatar %}
+							<img class="img-rounded img-responsive header-user-img" alt="{{request.user}}" title="{{request.user}}" src="/{{request.user.userprofile.avatar}}">
 						{% else %}
-							<img class="img-rounded img-responsive header-user-img" alt="{{user}}" title="{{user}}" src="/uploads/avatar/random.jpg">
+							<img class="img-rounded img-responsive header-user-img" alt="{{request.user}}" title="{{request.user}}" src="/uploads/avatar/random.jpg">
 						{% endif %}
 					{% else %}
 						{{user}} 
