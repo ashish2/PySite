@@ -1,0 +1,21 @@
+
+
+1]
+for Heroku:
+
+
+# first change to heroku branch
+git co branch_heroku
+
+# add & commit
+git a .
+git ci -m "Heroku: <adding etc...>"
+
+# push on git 
+git p
+
+# now push on heroku
+git p heroku branch_heroku:master
+
+
+

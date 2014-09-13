@@ -6,7 +6,7 @@ if __name__ == "__main__":
     
     # For Dev
     # ORI for Dev
-    #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
     # Added for Dev
     #os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
     

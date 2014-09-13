@@ -5,7 +5,7 @@ from googleapp.forms import *
 
 def list_all(request):
 	try:
-		user = Guser.objects.get(user=request.user)
+		user = Guser.objects.get(user_id=request.user.id)
 		listToShow = Attendance.objects.filter(guser=request.user.guser).order_by('-pub_date')
 		# listing = RealEstateListing.objects.get(slug_url=slug)
 		template = 'ga_some_list.html'
@@ -18,7 +18,6 @@ def list_all(request):
 
 	d = dict(somelist = listToShow, )
 	return render_to_response(template, d, context_instance=RequestContext(request) )
-
 
 
 def add_reply(request, pk):
@@ -141,12 +140,17 @@ def auth_login_user():
 	#login(user, None)
 	
 
-def pull_user_image():
-	url_pic = graph_url+'/me/picture?access_token='+access_token+'&height=200&type=normal&width=200&redirect=false'
-	#req_data_me_pic = u.Request(url_pic)
+def pull_user_image(response, di):
+	import urllib
+	from urlparse import urlparse
 	
-	# import urllib
-	# urllib.urlretrieve("http://domain.name/folder/media/some-pic.jpg", "save-as-local-file.jpg")
+	url = di.get('image')['url']
+	imgUrl = urlparse(url)
+	imageExt = imgUrl.path.split('.')[-1]
+	user = response.user
+	userEmailNameId_userId_imageExtension = 'uploads/avatar/'+str(user.email.split('@')[0])+str(user.pk)+'.'+str(imageExt)
+	image = urllib.urlretrieve(url, userEmailNameId_userId_imageExtension)
+	return image[0]
 
 
 def pull_user_me():
@@ -160,8 +164,10 @@ def gp_data(response):
 	di = json.loads(response.POST.get("response"))
 	accesstoken = di.get("access_token")
 	endpoint = pull_user_me()
+	# image = pull_user_image(di)
 
 	url = prepare_url_to_call_graph_api(endpoint, accesstoken)
+
 	resp = call_graph_api_get_data(url)
 	di = prepare_json_data(resp)
 
@@ -174,7 +180,7 @@ def gp_data(response):
 	di['designation'] = "NA"
 	# Settings is_active to True for the moment
 	di['is_active'] = True
-
+	# di['avatar'] = image
 
 	# if create happens only then create User
 	# otherwise, just set session & redirect 
@@ -219,20 +225,20 @@ def gp_data(response):
 	# 	user = get_user(email)
 		
 	user = get_user(email)
+	response.user = user
+
+	di['avatar'] = pull_user_image(response, di)
 
 	print "user"
 	print user
 
 	# Create UserProfile
 	user_p, cr = UserProfile.objects.get_or_create(user=user)
+	# user_p = UserProfileForm(di, user=user)
+	user_p.avatar = di['avatar']
+	user_p.save()
 	# Create FBUserProfile
 	fb_user_p = Guser.objects.filter(user=user, gid=di['gid'])
-
-	print "user_p, cr"
-	print user_p
-	print cr
-	print "fb_user_p"
-	print fb_user_p
 
 	# If not user create a user
 	if not fb_user_p:
@@ -243,7 +249,6 @@ def gp_data(response):
 
 		print "errors"
 		print form.errors
-		response.user = user
 		fb_user_p = form.save(response, commit=False)
 		fb_user_p.user = user
 
@@ -275,5 +280,37 @@ def gp_data(response):
 
 	return di
 
+
 # Example Response from Google Plus
-# di = {'response': '', u'kind': u'plus#person', u'displayName': u'Ashish Ojha', u'name': u'Ashish Ojha', u'language': u'en', u'isPlusUser': True, u'url': u'https://plus.google.com/+AshishOjha2', u'gender': u'male', u'image': {u'url': u'https://lh5.googleusercontent.com/-QoejspCFJ2w/AAAAAAAAAAI/AAAAAAAAAL4/_VFUv5YGAww/photo.jpg?sz=50', u'isDefault': False}, 'is_active': True, 'designation': 'NA', u'emails': [{u'type': u'account', u'value': u'vickyojha@gmail.com'}], u'etag': u'"L2Xbn8bDuSErT6QA3PEQiwYKQxM/FGjG2snWnTa5_e-flSJssjCI4MA"', 'gid': u'115254646172279132383', u'ageRange': {u'min': 21}, u'verified': False, u'circledByCount': 13, 'accesstoken': u'ya29.fAD_2Sg5wvt-qoVehDo0Ki7zSiH5SsrscLff3t7SMjpm3JuFgZAK5QSZ', u'id': u'115254646172279132383', 'profile_link': u'https://plus.google.com/+AshishOjha2', u'objectType': u'person'}
+"""
+di = {
+	'response': '', 
+	u'kind': u'plus#person', 
+	u'displayName': u'Ashish Ojha', u'name': u'Ashish Ojha', u'language': u'en', 
+	u'isPlusUser': True, 
+	u'url': u'https://plus.google.com/+AshishOjha2', 
+	u'gender': u'male', 
+	u'image': {
+		u'url': u'https://lh5.googleusercontent.com/-QoejspCFJ2w/AAAAAAAAAAI/AAAAAAAAAL4/_VFUv5YGAww/photo.jpg?sz=50',
+		u'isDefault': False
+	}, 
+	'is_active': True, 'designation': 'NA', 
+	u'emails': [
+		{
+			u'type': u'account', 
+			u'value': u'vickyojha@gmail.com'
+		}
+	], 
+	u'etag': u'"L2Xbn8bDuSErT6QA3PEQiwYKQxM/FGjG2snWnTa5_e-flSJssjCI4MA"', 
+	'gid': u'115254646172279132383', 
+	u'ageRange': {
+		u'min': 21
+	}, 
+	u'verified': False, 
+	u'circledByCount': 13, 
+	'accesstoken': u'ya29.fAD_2Sg5wvt-qoVehDo0Ki7zSiH5SsrscLff3t7SMjpm3JuFgZAK5QSZ', 
+	u'id': u'115254646172279132383', 
+	'profile_link': u'https://plus.google.com/+AshishOjha2', 
+	u'objectType': u'person'
+}
+"""

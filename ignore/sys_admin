@@ -1,0 +1,32 @@
+
+SYSADMIN:::
+
+system monitoring software(app) on python:
+
+1]
+show the Load Averages, for last 1, 5, 10 mins 
+with good visuals on Raphael or other JS charts
+command: top (take load averages)
+
+2]
+show processes and theirs names,
+with different colors.
+command: ps -ef
+
+3]
+change Unix pass for a System User
+[shadow file]
+
+4]
+show hard disk health
+
+5]
+networking functionalities
+>
+chk/change system ip
+>
+up/down interface
+#ifup/ifdown <interface>
+show progress, up or down
+
+

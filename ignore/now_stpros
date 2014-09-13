@@ -1,0 +1,231 @@
+
+
+=================
+TO DO: (try to understand):
+
+>
+How to have Sitewise STATIC FILEs in django
+
+>
+
+BUGS:
+>
+BBcode, UL doesnt come properly.
+
+
+
+=============================
+
+Steps to Problem Solve ( Stpros):
+
+if u face a problem & u hv solved it,
+then write about it, 
+just write down all the steps involved and the way u solved it...
+this helps you remember the solution to a big extent,
+to help you face the same problem, if in case you face it again.
+
+now,
+Login with FB ( FB Users Table) ( add social network stuff, share(fb) & likes too )
+Comments on the Answers.
+Design ( like PasteBin )
+
+	
+https://news.ycombinator.com/item?id=5786118
+dysoco 419 days ago | link
+
+Is there any kind of streaming service like Twitch.tv but for programmers?
+Maybe it's weird... but I really like watching other people writing a project (Like in the Ludum Dare), I like to see how they tackle the design, how they work, what cool tricks they use, etc.
+You can even interact with them via chat, and not only help but also ask questions about what they are doing... is great for people who are still learning.
+Any?
+
+
+so there is a solution posted by 1 peson,
+& then, there are 5 more solutions posted by different people,
+then when X (person X) solves it & he posts his solution,
+he can see,
+his answer & tries to match with answers from others,
+& see with who's answer his answer matches most,
+& probably these 2 person have the same way of 
+logic & analysing of problems,
+we can get to understand,
+how the brains of people function,
+wen analysing a problem,
+& who's brain matches with each other.
+
+
+i solved a problem,
+and here is the trajectory that i followed 
+when solving.
+Along with the thoughts that came to my mind 
+while solving it.
+hope someone benefits from this in the future.
+Thanks.
+
+
+stpros:
+the site encourages you to note down the way you solved your problem,
+write down the whole solution to the problem,
+so that you can remember it for some time.
+also,
+it will be a convenience if someone else,
+some other day is facing the same problem, 
+he can visit ur answer 
+& this could help him solve his problem.
+
+
+>
+stpros2:
+if u hv solved a problem,
+and u remember the steps to the solution,
+and noting down those steps 
+and writing the explanations to an important step in between which might not be very clear
+will help someone else 
+understand the problem & the solution better,
+than you can do it here.
+Also,
+if you think,
+Just noting down the steps to the problem solution,
+will actually help you remember the problem better for your own good,
+than you can do the same here too,
+you can just write down the problem statement, 
+the steps to the solutions, 
+with appropriate explanations of any step wherever required.
+Also,
+if u think u hav a problem in hand,
+which you hv probably solved,
+or half solved,
+but u think the steps you have figured out,
+are not the best steps to the solution,
+and u think you want to ask a question abt the problem,
+to know its exact steps to the solution,
+or better steps to the solution,
+as to how others thought abt the problem,
+and solved it,
+then you can ask here.
+
+
+>
+best problem solvers of all time (like best users of all time, this day(today), )
+
+
+q_a:
+more like an experience based qna
+
+
+
+
+
+list_page:
+panels
+	then, comments as list ( 2 comments)
+
+show_is page
+	1 big panel,
+	then comments as li's
+
+take header up -- NO, not taking it up.
+
+Stpros:
+
+Mon 21 July, 2014:
+	Comments -- DONE
+	Votes, -- DONE
+		and, 
+	Check, FB Login, and implement it if possible. -- Dint Even Touch
+	
+Wed 23 July:
+	BBCode, JS Plugin & Backend Parsing Implementation -- DONE
+	Check, FB Login, and implement it if possible. -- Forwarded
+	User's Profile  -- Forwarded
+	Friends points  -- Forwarded
+	Add Friend (Only,  More points wala can add less pointwala, if lesss pointwala is adding, the morepointwala will not get added, but he will be notified, that less point wala person was trying to add u)  -- Forwarded
+	
+Thurs 24 July:
+	Check, FB Login, and implement it if possible.  -- DONE
+	FB Image -- FORWARDED
+	Complete User's Profile Edit Form
+
+Fri 25 July:
+	Friends points
+	Add Friend (Only,  More points wala can add less pointwala, if lesss pointwala is adding, the morepointwala will not get added, but he will be notified, that less point wala person was trying to add u)
+	
+
+Sat 26 July:
+	Css
+	AWS/Heroku
+	Scalable ( See how many concurrent connections, & how much load time it takes ) ( atleast 10K conn/second & load time < 100ms)
+	
+
+Sat 30 July:
+	Css
+	FB Image Pull & Show -- FORWARDED
+
+Fri Aug 1:
+	Pygments library to give code some color
+
+Sat Aug 2:
+	Some Angular stuff
+
+Sun Aug 3:
+	Search Functionality (search bar suggestion dropdown) (Simple Like query first & then later try Solr)
+
+Mon Aug 4:
+	Userprofile Comments
+	Like on Userprofile Comments
+	Vote Up-Down on Userprofile Comments
+	Follow-Following like Quora (*Maybe)
+	Add Friends like FB (*Maybe)
+
+Tues Aug 5:
+	Make FBUser table same as User table, (but then wat if u overide same email address, wat if ppl with same email want to keep their site account & fb_login account different (though it doesnt make sense but they can & u shud offer them whether they want to combine both accounts. so there will have to be another table having relationship of User-FBUser same accounts) )	
+
+Sun Aug 10:
+	UserProfileForm ( Prbably Factory_formset might be required as first_name in Usre table & Avatar etc in UserProfile Table) -- DONE
+
+	Login.html: Header & Footer -- Done
+	Logout.html: Header & Footer -- Done
+
+	UserImage (pull from fb or default) -- 
+	FbLogin Button -- 
+	
+
+Mon Aug 11:
+	sorting out user.userprofile for FBUser, as FBUser does not have a userprofile table attached with itself.
+
+Sun Aug 17:
+	Pygments library
+
+
+Tue Aug 19: (Bugs Day):
+	ul not working in bbcode editor
+	Whole FB functionality with FB User Table and pulling & saving their image
+	
+Sun Aug 31:
+	Show Followers & Following list in UserProfile page, in their respective tabs -- DONE
+	Show Follow-unFollow button in a proper place (css)
+
+Mon Sep 1:
+	Combine FBUser and User table. ( No Raw User Logins, only FBUser logins) (See all the conditions that will apply, change the Userprofile table to have SocialNetworkType or FBSocNet etc.)
+	Use FB Login & see, if it registers in User table & is UserProfile getting made, & chck it.
+
+	create FBUserProfile (not getting created, The FBUserProfile could not be created because the data didn't validate.)
+	pull FBImage & show
+	django doesnt log me out, even after clicking logout
+
+	Implement search
+	Implement Throw & Catches
+
+
+
+
+
+How to make FBUser Functionality?
+
+No need of extra FBUser table.
+FBUser will be put in User table with FBFlag: 1
+FBUserProfile details should be stored in UserProfile Table
+If a user has an fb email & our site login email as same,
+dont do anything, set column fbuser_existed_before_as_normal_user to 1.
+take, password as session user.password, watever it is, & login the fb_user directly.
+
+

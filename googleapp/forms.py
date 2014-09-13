@@ -74,8 +74,6 @@ class AttendanceForm(ModelForm):
 		self.fields['pub_date'].widget = widgets.AdminSplitDateTime()
 		self.fields['pub_date'].help_text = "<small>(Time in format hh:mm:ss)</small>"
 
-		# self.fields['pub_date'].label = "format"
-
 		# Removing Form Fields
 		# if exclude_list:
 		# 	for field in exclude_list:
