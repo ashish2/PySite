@@ -89,8 +89,6 @@ def add_the_reply(request, pk):
 			form.instance.parent_id = PTS_instance
 			form.instance.answer = form.cleaned_data.get('answer')
 			form.save(request)
-			if fromUrl:
-				return HttpResponseRedirect(fromUrl)
 		else:
 			"Form Invalid"
 			form.errors
@@ -109,6 +107,8 @@ def add_reply(request, pk):
 	
 	if request.method == 'POST':
 		add_the_reply(request, pk)
+		if fromUrl:
+			return HttpResponseRedirect(fromUrl)
 
 	else:
 		"Some problem occurred while submitting the form"

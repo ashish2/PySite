@@ -4,16 +4,28 @@
 		"selected_items":
 		[
 			[
+				"use",
+				"user_p"
+			],
+			[
+				"Use",
+				"UserProfile"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"pul",
+				"pull_user_image"
+			],
+			[
 				"list",
 				"listToShow"
 			],
 			[
 				"li",
 				"listToShow"
-			],
-			[
-				"res",
-				"restricted_emails"
 			],
 			[
 				"o",
@@ -168,20 +180,12 @@
 				"args"
 			],
 			[
-				"use",
-				"user_profile_form"
-			],
-			[
 				"is",
 				"is_valid"
 			],
 			[
 				"l",
 				"last_name"
-			],
-			[
-				"Use",
-				"UserProfileForm"
 			],
 			[
 				"padding",
@@ -388,16 +392,21 @@
 	},
 	"file_history":
 	[
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/views.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/ignore/now_stpros",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_some_post_form.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/.gitignore",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/admin.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/forms.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/admin.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/admin/js/jquery.init.js",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/settings.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_bbase.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/urls.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/manage.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/.gitignore",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_test.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_nothing_here.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/ga_stpros_loop_content.html",
@@ -441,7 +450,6 @@
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/1.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/django/contrib/auth/models.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_3,4,7,8.py",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_2 (copy).py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/polls/models.py",
@@ -492,12 +500,10 @@
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_2.py",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_4.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/templates/registration/logout.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/ignore/now_stpros",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/fb/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/fb/backends.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/django/contrib/auth/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/emailusernames/backends.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/emailusernames/management/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/fb/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_footer.html",
@@ -513,9 +519,7 @@
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/users/templates/user_profile.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/social/apps/flask_app/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/social/p3.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/bootstrap/css/bootstrap.css",
-		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_1.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/django/http/__init__.py"
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/bootstrap/css/bootstrap.css"
 	],
 	"find":
 	{
@@ -536,6 +540,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"list_",
+			"user",
 			"admin",
 			"fb_user_p",
 			"====",
@@ -661,9 +667,7 @@
 			"fragment-3",
 			"tabs-nav",
 			"panel",
-			"height",
-			"ui-tabs-nav",
-			"feature"
+			"height"
 		],
 		"highlight": true,
 		"in_selection": false,
