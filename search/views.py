@@ -39,15 +39,13 @@ def get_query(query_string, search_fields):
 		else:
 			query = query & or_query
 
-	print "query"
-	print query
-
 	return query
 
 def search(request):
 	query_string = ''
 	found_entries = None
 	d = {}
+	template = 'se_nothing_here.html'
 	if ( 'q' in request.GET ) and request.GET.get('q').strip():
 		query_string = request.GET.get('q')
 		pts_query = get_query( query_string, ['problem', 'answer'] )
@@ -55,9 +53,12 @@ def search(request):
 		found_entries = PathToSolution.objects.filter(pts_query).order_by('-date')
 		somelist = found_entries
 
+		if somelist:
+			template = 'se_some_list.html'
+
 		d = { 'query_string': query_string, 'somelist': somelist}
 
-	return render_to_response('se_some_list.html', d, context_instance = RequestContext(request) )
+	return render_to_response(template, d, context_instance = RequestContext(request) )
 
 
 def main(request):
