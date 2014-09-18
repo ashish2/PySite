@@ -1,0 +1,15 @@
+{% extends "q_a_bbase.html" %}
+
+{% block content %}
+	<div class="col-lg-12">
+		<i>Search Results for: </i>
+		<b>
+			<i>
+				`{{query_string}}`
+			</i>
+		</b>
+	</div>
+	<div class="col-lg-12">
+		No search results found for your query, please try changing your query.
+	</div>
+{% endblock %}

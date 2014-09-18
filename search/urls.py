@@ -15,7 +15,8 @@ from mysite.settings import STATIC_URL
 urlpatterns = patterns('search.views', 
 	
 	# Default
-	url(r"", "main" ), # search
+	url(r"", "search" ), # search
+	# url(r"", "main" ), # search
 	
 )
 

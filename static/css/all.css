@@ -111,9 +111,14 @@ a:hover, a:focus {
 .padding-top-5{
 	padding-top: 5px;
 }
+
+.margin-top-6{
+	margin-top: 6px;
+}
 .margin-top-7{
 	margin-top: 7px;
 }
+
 .margin-top-10{
 	margin-top: 10px;
 }
