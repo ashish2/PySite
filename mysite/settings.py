@@ -195,6 +195,8 @@ INSTALLED_APPS = (
     # south
     'south',
     
+    # Search
+    'search',
     # Search, Solr
     'pysolr',
     

@@ -4,7 +4,7 @@
 		<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
 	</div>
 {% endif %}
-<div class="vote-amt">
+<div class="vote-amt margin-top-6">
 	{{post.vote_count}}
 </div>
 {% if post.has_voted != -1 %}

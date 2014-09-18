@@ -1,0 +1,45 @@
+{% extends "q_a_bbase.html" %}
+
+{% block content %}
+	<div class="main">
+
+		<div class="col-lg-12">
+			<i>Search Results for: </i>
+			<b>
+				<i>
+					`{{query_string}}`
+				</i>
+			</b>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="start-posts">
+				<!-- Posts -->
+				{% include "se_loop_content.html" %}
+					
+				<!-- Next/Prev page links -->
+				{% if somelist and somelist.paginator.num_pages > 1  %}
+				<div class="pagination" style="margin-top: 20px; margin-list: -20px;">
+					<span class="step-links">
+						{% if somelist.has_previous %}
+							<a href="?page={{somelist.previous_page_number}}">
+								newer entries &lt;&lt;
+							</a>
+						{% endif %}
+						<span class="current">
+							&nbsp;Page {{ somelist.number }} of {{ somelist.paginator.num_pages }}
+						</span>
+						{% if somelist.has_next %}
+							<a href="?page={{somelist.next_page_number}}">
+								&gt;&gt; older entries
+							</a>
+						{% endif %}
+					</span>
+				</div>
+				{% endif %}
+		
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
