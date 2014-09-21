@@ -27,7 +27,7 @@ from accounts.forms import RegistrationForm
 
 def register(request):
 	#create_superuser('admin@example.com', 'password')
-	
+	register_success = False
 	form = RegistrationForm()
 	if request.method == 'POST':
 		form = RegistrationForm(request.POST)
@@ -50,11 +50,14 @@ def register(request):
 				#v.login(request)
 				pass
 			
-			return HttpResponseRedirect("/")
+			register_success = True
+			# return HttpResponseRedirect("/")
 			
 		else:
 			form = RegistrationForm(request.POST)
 	
+	d = { 'form': form, "register_success": register_success, }
+
 	#return render(request, "registration/register.html", { 'form': form, })
-	return render(request, 'registration/registration.html', { 'form': form, }, context_instance=RequestContext(request))
+	return render(request, 'registration/registration.html', d, context_instance=RequestContext(request))
 	

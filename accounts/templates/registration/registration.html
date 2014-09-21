@@ -5,7 +5,6 @@
 
 {% block content %}
 
-
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Please register or if you already have an account you can login 
@@ -57,8 +56,14 @@
 					</form>
 
  -->
- 						<div id="form-login-registeration">
+ 
+						{% if register_success %}
+						<div class="alert-info">
+							Thanks for registering. Please try <a href="{% url login %}">logging</a> in.
+						</div>
+						{%endif%}
 
+ 						<div id="form-login-registeration">
 
 							<div class="padding-top-4">
 								<div id="form-login-registeration-links">
