@@ -224,13 +224,15 @@ INSTALLED_APPS = (
     
     # rest framework
     # 'rest_framework',
-    'tastypie',
+    # 'tastypie',
     
     # following_followers
     'following_followers',
     
     # stpros
     'stpros',
+    
+    'relations',
     
     # Added-
     
