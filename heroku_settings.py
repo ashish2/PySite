@@ -197,15 +197,12 @@ INSTALLED_APPS = (
     # Social
     #'social',
     'fb',
-    'googleapp',
     
     # BBcode
     #'precise_bbcode',
     #'content_bbcode',
     'bbcode',
         
-    # Search
-    'search',
     # Search, Solr
     'pysolr',
     
@@ -227,14 +224,13 @@ INSTALLED_APPS = (
     
     # rest framework
     # 'rest_framework',
-    # 'tastypie',
+    'tastypie',
     
     # following_followers
     'following_followers',
     
     # stpros
     'stpros',
-    
     'relations',
     
     # Added-
@@ -335,12 +331,10 @@ sys.path.append(os.path.dirname(__file__))
 AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
 # Login
-# LOGIN_URL = '/accounts/login/'
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 
 
 # importing some more settings at the End
 from extra_heroku_end_settings import *
-
 
 # ADDED-
