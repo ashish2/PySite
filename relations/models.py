@@ -27,11 +27,4 @@ class Rel(BaseModel):
 	followers = models.ForeignKey(User, related_name="fwers") # when i am a follower, follower: myId, following: otherPersonsId
 	following = models.ForeignKey(User, related_name="fwing") # when i was followed, follower: otherPersonsId, following: myId
 
-	def get_followers(self):
-		return self.fwing.filter(following=self)
-
-	def get_following(self):
-		return self.fwers.filter(followers=self)
-
-
 

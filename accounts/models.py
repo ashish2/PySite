@@ -30,12 +30,19 @@ UserProfile table
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
-	avatar = models.ImageField(upload_to="uploads/avatar", default="", blank=True)
+	avatar = models.ImageField(upload_to="uploads/avatar", default="", blank=True) # default="uploads/avatar/random.jpg"
 	biography = models.TextField(default="", blank=True)
 	
 	
 	def __unicode__(self):
 		return self.user.username
+	
+	def get_followers(self):
+		return self.user.fwing.filter(following=self)
+
+	def get_following(self):
+		return self.user.fwers.filter(followers=self)
+
 	
 
 def create_user_profile( sender, instance, created, **kwargs):
@@ -44,6 +51,8 @@ def create_user_profile( sender, instance, created, **kwargs):
 		profile = UserProfile()
 		profile.user = instance
 		profile.save()
+
+
 
 post_save.connect(create_user_profile, sender=User)
 

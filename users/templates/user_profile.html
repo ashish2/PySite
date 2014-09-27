@@ -88,7 +88,13 @@
 							<div>
 								<p>
 									<a href="{% url users.views.view_user_profile q.followers.pk %}">
+
+										{% if q.followers.userprofile.avatar %}
 										<img class="img-rounded img-responsive header-user-img" alt="{{q.followers}}" title="{{q.followers.email}}" src="/{{q.followers.userprofile.avatar}}">
+										{%else%}
+										<img class="img-rounded img-responsive header-user-img" alt="{{q.followers}}" title="{{q.followers.email}}" src="/uploads/avatar/random.jpg">
+										{%endif%}
+
 									</a>
 								</p>
 							</div>

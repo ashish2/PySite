@@ -21,7 +21,10 @@ urlpatterns = patterns('users.views',
 	
 	url(r"^profile/edit/(?P<pk>\d+)/?$", "edit_user_profile", name="edit_user_profile"),
 	url(r"^(?P<pk>\d+)/?$", "view_user_profile", name="view_user_profile"),
-
+	url(r"^followers/list/?$", "get_followers_list", name="get_followers_list"),
+	url(r"^following/list/?$", "get_following_list", name="get_following_list"),
+	
+	
 	
 	#url(r"edit/$", "user_edit_form" ),
 	#url(r"edit$", "user_edit_form" ),

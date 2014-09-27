@@ -2,9 +2,14 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-
-	<p>You're logged in!</p>
-	<p>Please click <a href="/">here</a> to go to the main page.</p>
+	
+	<div>
+		<p>
+			<br />
+			You're logged in!
+		</p>
+		<p>Please click <a href="/">here</a> <br /> to go to the main page.</p>
+	</div>
 
 {% else %}
 
@@ -151,7 +156,7 @@
 							the JavaScript SDK to present a graphical Login button that triggers
 							the FB.login() function when clicked.
 							-->
-							<script type="text/javascript" src="{{STATIC_URL}}js/my_fb_login.js"></script>
+							<script type="text/javascript" src="{{STATIC_URL}}js/mysite/my_fb_login.js"></script>
 
 							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 							</fb:login-button>
@@ -173,7 +178,7 @@
 							the JavaScript SDK to present a graphical Login button that triggers
 							the FB.login() function when clicked.
 							-->
-							<script type="text/javascript" src="{{STATIC_URL}}js/my_gp_login.js"></script>
+							<script type="text/javascript" src="{{STATIC_URL}}js/mysite/my_gp_login.js"></script>
 									<!-- data-requestvisibleactions="http://schemas.google.com/AddActivity" -->
 
 <!-- 									https://www.googleapis.com/auth/plus.profile.emails.read
