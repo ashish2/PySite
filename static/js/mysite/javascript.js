@@ -59,31 +59,26 @@ function sendGet(url, params)
 function ajaxCall(ASYNC_URL, func_to_run, method, resp, successCallBack, errorCallBack )
 {
 	
-	console.log("resp");
-	console.log(resp);
-	
-	resp = JSON.stringify(resp);
+	if (resp)
+		resp = JSON.stringify(resp);
+	else
+		resp = '';
+
 	$.ajax({
-		
 		beforeSend: function( xhr) {
 			xhr.setRequestHeader("X-CSRFToken", csrftoken);
 		},
-
 		url: ASYNC_URL,
 		// data: { "func_to_run": func_to_run, "response": resp, },
 		data: { "func_to_run": func_to_run, "response": resp, },
 		type: method,
 		async: true,
-
 		error: errorCallBack,
 		success: successCallBack,
 		// processData: false,
 		processData: true,
-
 	});
 
-	console.log("resp2");
-	console.log(resp);
 }
 
 

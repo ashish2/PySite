@@ -3,6 +3,8 @@
 
 (function($){
 
+	var ASYNC_URL = '/async/';
+
 	// Expand Search bar
 	nav_search = $("#nav-search");
 	nav_search
@@ -30,7 +32,29 @@
 	// Tooltip-
 
 
+	// function successCallBack(){
+	// 	console.log("scCB");
+	// }
 
+	function errorCallBack(){
+		console.log("errCB");
+	}
+
+	function showFwersList(data){
+		console.log("data");
+		console.log(data);
+	}
+
+	// Followers List modal
+	$('#fwersList').on('shown.bs.modal', function (e) {
+		// do something…
+		console.log("e");
+		console.log(e);
+		console.log("ASYNC_URL");
+		console.log(ASYNC_URL);
+		ajaxCall( ASYNC_URL, "fwers_list", "GET", '', showFwersList, errorCallBack );
+	});
+	// Followers List modal-
 
 })(jQuery);
 

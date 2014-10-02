@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"to",
+				"toString"
+			],
+			[
+				"ava",
+				"avatar"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"user",
+				"userprofile__avatar"
+			],
+			[
+				"fwe",
+				"fwers_user"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"loc",
+				"loc"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
 				"quer",
 				"query"
 			],
@@ -384,26 +416,82 @@
 	"buffers":
 	[
 		{
-			"file": "/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/spiders/changeworknow.py",
+			"file": "async/views.py",
 			"settings":
 			{
-				"buffer_size": 3063,
+				"buffer_size": 1819,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/scrapy.cfg",
+			"file": "q_a/views.py",
 			"settings":
 			{
-				"buffer_size": 69,
+				"buffer_size": 10734,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/1.py",
+			"file": "accounts/models.py",
 			"settings":
 			{
-				"buffer_size": 24,
+				"buffer_size": 1578,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "users/views.py",
+			"settings":
+			{
+				"buffer_size": 3095,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/js/mysite/javascript.js",
+			"settings":
+			{
+				"buffer_size": 2084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/js/mysite/all.js",
+			"settings":
+			{
+				"buffer_size": 1975,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "q_a/templates/q_a_global_nav_new2.html",
+			"settings":
+			{
+				"buffer_size": 8581,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "q_a/templates/q_a_bbase.html",
+			"settings":
+			{
+				"buffer_size": 4515,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "users/urls.py",
+			"settings":
+			{
+				"buffer_size": 1558,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "stpros/models.py",
+			"settings":
+			{
+				"buffer_size": 2151,
 				"line_ending": "Unix"
 			}
 		}
@@ -440,77 +528,105 @@
 	},
 	"file_history":
 	[
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/settings.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/heroku_settings.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/ignore/now_stpros",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/users/templates/user_profile.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_friends_modal.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/relations/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/polls/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/templates/registration/login.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_global_nav_new2.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/all.js",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/javascript.js",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/ignore/now",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/my_fb_login.js",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_bbase.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/templates/fb_login.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/my_gp_login.js",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/common.js",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/urls.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/following_followers/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/following_followers/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/se_loop_content.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_stpros_loop_content.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/templates/stpros_loop_content.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_footer.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/users/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/models.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/users/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/2_descriptors/2.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/2_descriptors/1.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/now",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/random/simulate_req.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/2_descriptors.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/1.py",
+		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/this_pages",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/bin/activate",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/spiders/changeworknow.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/scrapy.cfg",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/views.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/bootstrap-3.0.0/css/bootstrap.css",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/templates/registration/registration.html",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/requirements.txt",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/manage.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/extra_heroku_end_settings.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/wsgi.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/settings.py",
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/extra_settings.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/random/items_copy.json",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/6_1.py",
-		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/1.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_5/lib/python2.7/site-packages/IPython/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/lib/python2.7/site-packages/IPython/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_5/lib/python2.7/site-packages/IPython/lib/kernel.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_5/lib/python2.7/site-packages/IPython/__main__.py",
-		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/this_pages",
 		"/usr/local/lib/python2.7/dist-packages/scrapy/contrib/webservice/crawler.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/lib/python2.7/site-packages/zmq/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/random/items.json",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/settings.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/heroku_settings.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/se_nothing_here.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/nothing_here.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/se_some_list.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/templates/nothing_here.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/views.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/views.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/se_loop_content.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/mysite/urls.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/urls.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_global_nav_new2.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/search/templates/stpros_loop_content.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/spiders/changeworknow.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_bbase.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv_scrapy024/scraper-test-master/brightcorp/spiders/changeworknow.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_global_nav_new.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/css/all.css",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/templates/vote_div.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/templates/stpros_loop_content.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/pysite/requirements.txt",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/lib/python2.7/site-packages/setuptools.pth",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/lib/python2.7/site-packages/django/__init__.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/bin/activate",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/lib/python2.7/site-packages/easy-install.pth",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/bootstrap-3.2.0/css/bootstrap.css.map",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/javascript.js",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/static_/js/javascript.js",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/static_/css/all.css",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/all.js",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/ignore/now_stpros",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_some_post_form.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/.gitignore",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/admin.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/admin.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/admin/js/jquery.init.js",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/manage.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_test.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_nothing_here.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/ga_stpros_loop_content.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_stpros_loop_content.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/forms.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/urls.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/ga_some_list.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/vote_div.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/templates/registration/login.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/async/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/fb/views.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/my_gp_login.js",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/js/my_fb_login.js",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/templates/q_a_tinymcejs.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/static/css/fa/fa.css",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/forms.py",
@@ -530,7 +646,6 @@
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/stpros_loop_content.html",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/googleapp/templates/index.html",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/1.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/accounts/views.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/lib/python2.7/site-packages/django/contrib/auth/models.py",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_3,4,7,8.py",
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_2 (copy).py",
@@ -539,35 +654,8 @@
 		"/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/3_oreilly_python_cookbook/5_15.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/minbase/includes.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/stpros/urls.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/q_a/urls.py",
 		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_7/bin/pip",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/README.md.txt",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/settings.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/items_copy.json",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/items.json",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/base/atsspiders.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/items.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/spiders/jobvite.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/m.txt",
-		"/usr/lib/python2.7/weakref.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/m.html",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/spiders/compuindia_spider.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/t.txt",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/spiders/dmoz_spider.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/spiders/pricedealsindia_spider.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/spiders/mobilestore_spider.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/bin/activate",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv_scrapy024/bin/activate",
-		"/usr/local/lib/python2.7/dist-packages/scrapylib/setup.py",
-		"/usr/local/lib/python2.7/dist-packages/scrapy/contrib/loader/processor.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/pipelines.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/scrapy.cfg",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/pipelines.py",
-		"/usr/local/lib/python2.7/dist-packages/scrapy/__init__.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/items.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/settings.py",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/ignore/now",
-		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/tutorial2/tutorial2/spiders/yepmewomen_spider.py"
+		"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/README.md.txt"
 	],
 	"find":
 	{
@@ -578,6 +666,9 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"*.html,/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/",
+			"/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/",
+			"<open files>,<open folders>,*.py,/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1_4/pysite_1_4/",
 			"/usr/local/lib/python2.7/dist-packages/scrapy,<open files>,<open folders>,*.py,/usr/local/lib/python2.7/dist-packages/scrapy/commands,/usr/local/lib/python2.7/dist-packages/scrapy/contracts,/usr/local/lib/python2.7/dist-packages/scrapy/contrib,/usr/local/lib/python2.7/dist-packages/scrapy/contrib_exp,/usr/local/lib/python2.7/dist-packages/scrapy/core,/usr/local/lib/python2.7/dist-packages/scrapy/http,/usr/local/lib/python2.7/dist-packages/scrapy/selector,/usr/local/lib/python2.7/dist-packages/scrapy/settings,/usr/local/lib/python2.7/dist-packages/scrapy/templates,/usr/local/lib/python2.7/dist-packages/scrapy/tests,/usr/local/lib/python2.7/dist-packages/scrapy/utils,/usr/local/lib/python2.7/dist-packages/scrapy/xlib",
 			"/usr/local/lib/python2.7/dist-packages/scrapy",
 			""
@@ -588,6 +679,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"login",
+			"start-user-details",
+			"fwersList",
+			"fwerslist",
+			"followers",
+			"my_gp_login.js",
+			"my_fb_login.js",
+			"ajaxCall",
+			"Populating ",
+			"#myModal",
+			"pythonpa",
+			"tast",
+			"tas",
+			"tast",
+			"rel",
+			"rela",
+			"info",
 			"sear",
 			"nothin",
 			"				",
@@ -698,24 +806,7 @@
 			"container.data-contai",
 			"face",
 			"gray",
-			"1px",
-			"checks_span",
-			".clearBoth{\n    clear: both;\n}\n",
-			"alert",
-			"			\n",
-			"no_results_found_email",
-			"\n    ",
-			"form",
-			");\n",
-			"'}).",
-			"natures",
-			"ui-tabs-nav",
-			"tabs-nav li h2.slide-heade",
-			"slide-subheader",
-			"ui-tabs-nav",
-			"img",
-			"ui-tabs-panel",
-			"featured"
+			"1px"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -739,23 +830,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/brightcorp/spiders/changeworknow.py",
+					"file": "async/views.py",
 					"settings":
 					{
-						"buffer_size": 3063,
+						"buffer_size": 1819,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2582,
-								2582
+								211,
+								211
 							]
 						],
 						"settings":
@@ -764,30 +855,220 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 550.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/opt/lampp/htdocs/ash3_opt_www/www2/python/venv/venv1/pyth_django/scrapy/1/scraper-test-master/scrapy.cfg",
+					"file": "q_a/views.py",
 					"settings":
 					{
-						"buffer_size": 69,
+						"buffer_size": 10734,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								69,
-								69
+								5223,
+								5223
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2140.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "accounts/models.py",
+					"settings":
+					{
+						"buffer_size": 1578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1052,
+								1052
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 176.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "users/views.py",
+					"settings":
+					{
+						"buffer_size": 3095,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2879,
+								2879
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 776.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "static/js/mysite/javascript.js",
+					"settings":
+					{
+						"buffer_size": 2084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1295,
+								1295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 610.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "static/js/mysite/all.js",
+					"settings":
+					{
+						"buffer_size": 1975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1772,
+								1772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 605.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "q_a/templates/q_a_global_nav_new2.html",
+					"settings":
+					{
+						"buffer_size": 8581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1800.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "q_a/templates/q_a_bbase.html",
+					"settings":
+					{
+						"buffer_size": 4515,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3699,
+								3699
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1735.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "users/urls.py",
+					"settings":
+					{
+						"buffer_size": 1558,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								851,
+								851
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -796,24 +1077,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/opt/lampp/htdocs/ash3_opt_www/langs/python/tuts/5_from_net/1.py",
+					"buffer": 9,
+					"file": "stpros/models.py",
 					"settings":
 					{
-						"buffer_size": 24,
+						"buffer_size": 2151,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23,
-								23
+								859,
+								859
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -69,6 +69,28 @@ def edit_user_profile(request, pk):
 	return render_to_response( 'acc_some_post_form.html', d, context_instance=RequestContext(request) )
 
 
+def get_user(pk):
+	return User.objects.get(pk=pk)
+
+@login_required
+def get_followers_list(request, pk):
+	"""get users followers"""
+	user = get_user(pk)
+	fwers = user.fwers.all()
+	# return HttpResponse(fwers)
+	return fwers
+
+@login_required
+def get_following_list(request, pk):
+	"""get users followers"""
+	user = get_user(pk)
+	fwing = user.fwing.all()
+	# return HttpResponse(fwing)
+	return fwing
+
+
+
+
 # To handle uploaded files
 # def handle_uploaded_file(f):
 #     with open('uploads/avatar/name.txt', 'wb+') as destination:

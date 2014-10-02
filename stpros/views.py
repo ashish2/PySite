@@ -34,6 +34,8 @@ def list_all(request):
 		li.has_voted = e[0].vote if e else 0
 		vote_count = li.vote_set.aggregate(Sum('vote'))['vote__sum']
 		li.vote_count = vote_count if vote_count else 0
+		li.has_faved = 1 if li.favorite_set.filter(user=request.user.id) else 0
+
 	
 	fromUrl = request.get_full_path()
 	d = dict(somelist = listToShow, fromUrl = fromUrl )
@@ -240,7 +242,7 @@ def vote(request, pk, vote):
 	status = static['vote_field_default_status']
 	u = static['root_user_id']
 	
-	# Login required, if we put it in the descriptor, we dont have to use this if condition, 	# using only FTM
+	# Login required, if we put it in the decorator, we dont have to use this if condition, 	# using only FTM
 	if request.user.id:
 		d = dict( user=request.user, is_active=status )
 		
@@ -271,4 +273,24 @@ def vote(request, pk, vote):
 	else:
 		return HttpResponse('Please Login here.')
 	
+
+# Combine these 2, implement them thru 1 interface
+@login_required
+def faveD(request, pk):
+	"""faved: Fave Delete"""
+	p = PathToSolution.objects.get(pk=pk)
+	di = dict(pts=p)
+	fave = request.user.fav_by_user.get(**di)
+	de = fave.delete()
+	f = request.GET['from']
+	return HttpResponseRedirect(f)
+
+@login_required
+def faveC(request, pk):
+	"""faveC: Fave Create"""
+	p = PathToSolution.objects.get(pk=pk)
+	di = dict(pts=p)
+	fave = request.user.fav_by_user.get_or_create(**di)
+	f = request.GET['from']
+	return HttpResponseRedirect(f)
 

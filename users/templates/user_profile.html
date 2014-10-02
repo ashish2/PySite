@@ -19,6 +19,7 @@
 						<li><a href="#following" data-toggle="tab">Following</a></li>
 						<li><a href="#catch_r" data-toggle="tab">Catches Received</a></li>
 						<li><a href="#catch_t" data-toggle="tab">Catches Taken</a></li>
+						<li><a href="#fave" data-toggle="tab">Favorites</a></li>
 					</ul>
 
 
@@ -58,29 +59,34 @@
 
 
 						<div class="tab-pane margin-top-7" id="questions">
-							{%for q in user_pts_questions %}
-							<div>
-								<p>
-									<a href="{% url stpros.views.read q.pk %}">{{q.problem}}</a>
-								</p>
-								<p>
-									{% bbcode q.answer %}
-								</p>
+							<div class="list-group">
+								{%for q in user_pts_questions %}
+									<a href="{% url stpros.views.read q.pk %}" class="list-group-item">
+										<h4 class="list-group-item-heading">
+											{{q.problem}}
+										</h4>
+										<p class="list-group-item-text">
+											{% bbcode q.answer %}
+										</p>
+									</a>
+								{%endfor%}
 							</div>
-							{%endfor%}
 						</div>
 
 						<div class="tab-pane margin-top-7" id="answers">
-							{%for q in user_pts_answers %}
-							<div>
-								<p>
-									<a href="{% url stpros.views.read q.parent_id.pk %}">{{q.parent_id.problem}}</a>
-								</p>
-								<p>
-									{% bbcode q.answer %}
-								</p>
+							<div class="list-group">
+								{%for q in user_pts_answers %}
+									<a href="{% url stpros.views.read q.parent_id.pk %}" class="list-group-item">
+										<h4 class="list-group-item-heading">
+											{{q.parent_id.problem}}
+										</h4>
+										<p class="list-group-item-text">
+											{% bbcode q.answer %}
+										</p>
+									</a>
+								{%endfor%}
 							</div>
-							{%endfor%}
+
 						</div>
 
 						<div class="tab-pane margin-top-7" id="followers">
@@ -88,7 +94,13 @@
 							<div>
 								<p>
 									<a href="{% url users.views.view_user_profile q.followers.pk %}">
+										
+										{% if q.followers.userprofile.avatar %}
 										<img class="img-rounded img-responsive header-user-img" alt="{{q.followers}}" title="{{q.followers.email}}" src="/{{q.followers.userprofile.avatar}}">
+										{%else%}
+										<img class="img-rounded img-responsive header-user-img" alt="{{q.followers}}" title="{{q.followers.email}}" src="/uploads/avatar/random.jpg">
+										{%endif%}
+
 									</a>
 								</p>
 							</div>
@@ -100,7 +112,13 @@
 							<div>
 								<p>
 									<a href="{% url users.views.view_user_profile q.following.pk %}">
+
+										{% if q.following.userprofile.avatar %}
 										<img class="img-rounded img-responsive header-user-img" alt="{{q.following}}" title="{{q.following.email}}" src="/{{q.following.userprofile.avatar}}">
+										{%else%}
+										<img class="img-rounded img-responsive header-user-img" alt="{{q.following}}" title="{{q.followers.email}}" src="/uploads/avatar/random.jpg">
+										{%endif%}
+
 									</a>
 								</p>
 							</div>
@@ -121,6 +139,14 @@
 
 						</div>
 						
+						<div class="tab-pane margin-top-7" id="fave">
+							<div class="list-group">
+								{%for q in user.fav_by_user.all %}
+									<a href="{% url stpros.views.read q.pk %}" class="list-group-item">{{q.pts.problem}}</a>
+								{%endfor%}
+							</div>
+						</div>
+
 
 					</div>
 					

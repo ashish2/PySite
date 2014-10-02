@@ -8,6 +8,30 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="c-text-align-center">
+<!-- 								{# if post.has_voted != 1 #}
+								<div class="vote-up">
+									<a href="{% url stpros.views.vote post.pk 1 %}?from={{fromUrl|urlencode}}" title="Vote up" value=1><span class="glyphicon glyphicon-thumbs-up"></span></a>
+								</div>
+								{# endif #}
+								<div class="vote-amt">
+									{#post.vote_count#}
+								</div>
+								{# if post.has_voted != -1 #}
+								<div class="vote-down">
+									<a href="{% url stpros.views.vote post.pk -1 %}?from={{fromUrl|urlencode}}" title="Vote down" value=-1>
+										<span class="glyphicon glyphicon-thumbs-down"></span>
+									</a>
+								</div>
+								{# endif #}
+ -->							</div>
+						</div>
+					</div>
+<!-- 					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center margin-top-7">
+								<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#fwersList">
+									<span class="glyphicon glyphicon-share-alt"></span>
+								</a>
 							</div>
 						</div>
 					</div>

@@ -1,0 +1,14 @@
+{% if post.has_faved != 1 %}
+	<div class="vote-up">
+		<a href="{% url stpros.views.faveC post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Add to Favorite">
+			<span class="fa fa-heart-o"></span>
+		</a>
+	</div>
+{% else %}
+	<div class="vote-down">
+		<a href="{% url stpros.views.faveD post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Remove from Favorite">
+			<span class="fa fa-heart"></span>
+		</a>
+	</div>
+{% endif %}
+
