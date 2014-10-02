@@ -21,8 +21,16 @@ class PathToSolutionAdmin(admin.ModelAdmin):
 	#~]
 	
 	
+class VoteAdmin(admin.ModelAdmin):
+	search_fields = ["id"]
+
+
+class FavoriteAdmin(admin.ModelAdmin):
+	search_fields = ["id"]
 
 admin.site.register(PathToSolution, PathToSolutionAdmin)
+admin.site.register(Vote, VoteAdmin)
+admin.site.register(Favorite, FavoriteAdmin)
 
 
 
