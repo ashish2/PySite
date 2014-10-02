@@ -35,9 +35,13 @@ urlpatterns = patterns('stpros.views',
 	url(r"^read/(\d+)/", "read"), 		# Show Details, of Stpros id
 	# url(r"^read/(\d+)/", "read_pts_n_answers"), 		# Show Details, of Stpros id
 	
+	url(r"^reply/(\d+)/$", "add_reply"),
 
 	url(r"^vote/(?P<pk>\d+)/(?P<vote>-?\d+)/", "vote"),
-	url(r"^reply/(\d+)/$", "add_reply"),
+	
+	url(r"^fave/c/(?P<pk>\d+)/", "faveC"), # faveC: Fave Create
+	url(r"^fave/d/(?P<pk>\d+)/", "faveD"), # faveD: Fave Delete
+	
 	
 	#url(r"^api/", include(v1_api.urls ) ), 		# Stpros Api 	# Api-
 	

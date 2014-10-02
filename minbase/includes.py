@@ -30,14 +30,22 @@ from django.contrib import auth
 # Settings
 from mysite import settings
 
-# Models
-from django.db.models import Q
-
-from q_a.models.models import *
-from q_a.forms import *
+#General
 from q_a.func import *
 
+# Models
+from django.db.models import Q
 from django.db.models import Sum
+
+from q_a.models.models import *
+
+from stpros.models import *
+
+
+### Models
+from django.contrib.auth.models import User
+from accounts.models import UserProfile
+from relations.models import *
 
 ### Some static values
 from q_a.staticvals import static
@@ -50,17 +58,14 @@ from urlparse import urlsplit
 from django.utils import timezone
 
 
-### Models
-from django.contrib.auth.models import User
-from accounts.models import UserProfile
-
-from relations.models import *
 
 ### Forms
 from django.forms.formsets import formset_factory
 from stpros.forms import *
 from django.forms import TextInput
 from accounts.forms import *
+
+from q_a.forms import *
 
 ### Formatting
 from django.utils.translation import ugettext_lazy as _

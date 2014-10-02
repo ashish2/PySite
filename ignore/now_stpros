@@ -235,10 +235,13 @@ Mon Sep 1:
 	Use FB Login & see, if it registers in User table & is UserProfile getting made, & chck it.
 
 	create FBUserProfile (not getting created, The FBUserProfile could not be created because the data didn't validate.)
+	
 	pull FBImage & show
+
 	django doesnt log me out, even after clicking logout
 
-	Implement search
+	Implement search (Basic search) -- DONE
+	Implement Advanced search 
 	Implement Throw & Catches
 
 

@@ -74,3 +74,17 @@ class Vote(BaseModel):
 	def __unicode__(self):
 		return unicode("%s: %s" % (self.pts, self.vote) ) or u''
 	
+
+class Favorite(BaseModel):
+	pts = models.ForeignKey(PathToSolution)
+	user = models.ForeignKey(User , related_name="fav_by_user")
+	#fave = models.IntegerField( help_text=_("1 or -1, positive or delete fav"), default=1 )
+	
+	class Meta:
+		app_label = app_label_q_a
+	
+	def __unicode__(self):
+		return unicode("%s: %s" % (self.pts, self.user) ) or u''
+	
+
+
