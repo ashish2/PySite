@@ -1,12 +1,12 @@
 {% if post.has_faved != 1 %}
 	<div class="vote-up">
-		<a href="{% url stpros.views.faveC post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Add to Favorite{ Lets show some love :) }">
+		<a href="{% url stpros.views.faveC post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Add to Favorites. ( Lets show some love :) )">
 			<span class="fa fa-heart-o"></span>
 		</a>
 	</div>
 {% else %}
 	<div class="vote-down">
-		<a href="{% url stpros.views.faveD post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Remove from Favorite{ Alright! time to take back the love :P }">
+		<a href="{% url stpros.views.faveD post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Remove from Favorites. ( Alright! time to take back the love :P )">
 			<span class="fa fa-heart"></span>
 		</a>
 	</div>
