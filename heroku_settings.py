@@ -204,7 +204,7 @@ INSTALLED_APPS = (
     #'content_bbcode',
     'bbcode',
     
-    # 'search', 
+    'search', 
     # Search, Solr
     'pysolr',
     
