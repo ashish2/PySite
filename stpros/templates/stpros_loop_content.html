@@ -28,6 +28,7 @@
 						</div>
 					</div>
 
+				<!--
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="c-text-align-center margin-top-7">
@@ -55,9 +56,10 @@
 							</div>
 						</div>
 					</div>
+				-->
 
 				</div>
-				<div class="col-lg-11">					
+				<div class="col-lg-11">	
 					<div class="post-title">
 						<h4>
 							<b>
@@ -114,16 +116,35 @@
 							</div>
 						</div>
 
-						<div class="col-lg-4">
+						<div class="col-lg-2">
 							<!-- Time -->
 							<div class="post-time">
 								<small>
+									<span class="glyphicon glyphicon-calendar"></span>
 									{{ post.date }}
 								</small>
 							</div>
 							<!-- Time- -->
 						</div>
+
+						<!-- Some user functions -->
+						<div class="col-lg-2">
+							<div class="some-user-funcs">
+								<small>
+									<div>
+										{% if user.pk == post.user.pk %}
+										<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
+										{% endif %}
+									</div>
+
+
+								</small>
+							</div>
+						</div>
+						<!-- Some user functions- -->
+
 					</div>
+
 					<!-- 
 					Replies start
 					Commenting right now,

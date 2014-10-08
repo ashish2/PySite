@@ -152,4 +152,30 @@ a:hover, a:focus {
 	display: inline-block;
 }
 
+/*Check these two, and redo if can,
+as they are both adding styles to `id`,
+instead of `class`
+*/#notificationParent{
+	margin: 0 40%;
+	position: absolute;
+}
+
+#notification {
+	position: relative;
+	z-index: 9999;
+	width: auto;
+}
+
+.some-user-funcs {
+	display: none;
+}
+
+.cursor:hover{
+	cursor: pointer
+}
+
+
+
+
+
 

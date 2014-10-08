@@ -70,8 +70,42 @@
 		// do something…
 		ajaxCall( ASYNC_URL, "fwers_list", "GET", '', showFwersList, errorCallBack );
 	});
-
 	// Followers List modal-
+
+
+	// Delete the PTS id
+	function ptsD(data){
+		data = JSON.parse(data);
+		div = $('*[data-pts-id="'+data['pk']+'"]');
+		div.parents(".each-posts").fadeOut(300);
+	}
+
+	$('.j-del-pts').on('click', function (e) {
+		// do something…
+		// ajaxCall( ASYNC_URL, "fwers_list", "GET", '', showFwersList, errorCallBack );
+		$(e.target).removeClass("glyphicon-remove-circle").addClass("fa fa-spinner fa-spin");
+
+		resp = {"pts_id": $(e.target).data("pts-id") };
+		ajaxCall( ASYNC_URL, "ptsD", "GET", resp, ptsD, errorCallBack );
+
+	});	
+	// Delete the PTS id-
+
+
+	//======== Hide & Show js ====================
+	
+	// Delete post js
+	some_user_funcs = $(".some-user-funcs");
+	some_user_funcs_each_posts = some_user_funcs.parents(".each-posts");
+	some_user_funcs_each_posts.hover( function(e){ 
+		$(e.target); $(e.target).find(some_user_funcs).fadeIn();
+	}).mouseleave(function(e){
+		$(e.target); $(e.target).find(some_user_funcs).fadeOut();
+	});
+	// Delete post js-
+	
+
+	//======== Hide & Show js- ====================
 
 
 })(jQuery);

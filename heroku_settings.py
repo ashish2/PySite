@@ -197,12 +197,14 @@ INSTALLED_APPS = (
     # Social
     #'social',
     'fb',
+    'googleapp',
     
     # BBcode
     #'precise_bbcode',
     #'content_bbcode',
     'bbcode',
-        
+    
+    'search', 
     # Search, Solr
     'pysolr',
     
@@ -224,14 +226,13 @@ INSTALLED_APPS = (
     
     # rest framework
     # 'rest_framework',
-    # 'tastypie',
+    'tastypie',
     
     # following_followers
     'following_followers',
     
     # stpros
     'stpros',
-    
     'relations',
     
     # Added-

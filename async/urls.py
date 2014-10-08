@@ -12,6 +12,7 @@ urlpatterns = patterns('async.views',
 	
 	# Default
 	url(r"", "main" ),
+	# url(r"^pts/d/(\d+)/", "ptsD"),
 	
 )
 
