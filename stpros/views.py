@@ -294,3 +294,16 @@ def faveC(request, pk):
 	f = request.GET['from']
 	return HttpResponseRedirect(f)
 
+@login_required
+def ptsD(request, pk):
+	"""Api Function, 
+		should only return Truw or False 
+		ptsD: PathToSolution Delete
+	"""
+	p = PathToSolution.objects.get(pk=pk)
+	ret = p.delete()
+	# f = request.GET['from']
+	return HttpResponseRedirect(f)
+
+
+

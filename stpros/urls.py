@@ -31,9 +31,9 @@ urlpatterns = patterns('stpros.views',
 	#url(r"^stpros/add/reply/(\d+)/?", "add_reply"),
 	
 	url(r"^create/", "create"), 		# Add post, Add question, add/ , add_new
-
 	url(r"^read/(\d+)/", "read"), 		# Show Details, of Stpros id
 	# url(r"^read/(\d+)/", "read_pts_n_answers"), 		# Show Details, of Stpros id
+	# url(r"^pts/d/(\d+)/", "ptsD"),
 	
 	url(r"^reply/(\d+)/$", "add_reply"),
 

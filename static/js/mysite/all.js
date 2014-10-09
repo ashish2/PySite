@@ -70,9 +70,62 @@
 		// do something…
 		ajaxCall( ASYNC_URL, "fwers_list", "GET", '', showFwersList, errorCallBack );
 	});
-
 	// Followers List modal-
+
+
+	// Delete the PTS id
+	function ptsD(data){
+		data = JSON.parse(data);
+		div = $('*[data-pts-id="'+data['pk']+'"]');
+		div.parents(".each-posts").fadeOut(300);
+	}
+
+	$('.j-del-pts').on('click', function (e) {
+		// do something…
+		// ajaxCall( ASYNC_URL, "fwers_list", "GET", '', showFwersList, errorCallBack );
+		$(e.target).removeClass("glyphicon-remove-circle").addClass("fa fa-spinner fa-spin");
+
+		resp = {"pts_id": $(e.target).data("pts-id") };
+		ajaxCall( ASYNC_URL, "ptsD", "GET", resp, ptsD, errorCallBack );
+
+	});	
+	// Delete the PTS id-
+
+
+	//======== Hide & Show js ====================
+	
+	// Delete post js
+	some_user_funcs = $(".disp_none_show_on_parent_hover");
+	some_user_funcs_each_posts = some_user_funcs.parents(".each-posts");
+	some_user_funcs_each_posts.mouseenter( function(e){ 
+		$(e.currentTarget).find(some_user_funcs).fadeIn(500);
+	}).mouseleave(function(e){
+		$(e.currentTarget).find(some_user_funcs).fadeOut(800);
+	});
+	// Delete post js-
+	
+
+	//======== Hide & Show js- ====================
 
 
 })(jQuery);
 
+
+/*
+
+some_user_funcs_each_posts.mouseenter( function(e){ 
+ 	// div = $(e.target);
+ 	div = $(e.currentTarget);
+ 	console.log("div");
+ 	console.log(div);
+ 	th = $(this);
+ 	console.log("th");
+ 	console.log(th);
+ 	div_ss = div.find(some_user_funcs);
+ 	console.log("div ss");
+ 	console.log(div_ss);
+ 	th_ss = th.find(some_user_funcs);
+ 	console.log("th ss");
+ 	console.log(th_ss);
+})
+	 */

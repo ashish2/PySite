@@ -22,6 +22,7 @@ def main(request):
 		"gp_data": gp_data,
 		"get_pts_answers_ajax_call": get_pts_answers_ajax_call,
 		"fwers_list": fwers_list,
+		"ptsD": ptsD,
 	}
 	
 	# print request.POST.getlist()
@@ -43,6 +44,11 @@ def main(request):
 			# data = serialize("json", data )
 			data = json.dumps(data)
 			return HttpResponse( data )
+		if request.GET.get('func_to_run') == 'ptsD':
+			data = funcs[request.GET.get('func_to_run')](request)
+			data = json.dumps(data)
+			return HttpResponse(data)
+
 
 	
 		# if request.POST.get('func_to_run') == 'get_pts_answers':
@@ -60,3 +66,26 @@ def fwers_list(request):
 	# fwers_user = serialize('json', fwers_user, fields=('pk', 'email', 'userprofile__avatar') )
 	return list( fwers_user )
 
+def ptsD(request):
+	"""Api Function, 
+		should only return Truw or False 
+		ptsD: PathToSolution Delete
+
+		First; Check whether this Object is the User' own object (i.e. object being created by himself).
+		Second: Check Whether he is allowed to Delete? If he is allowed, only then proceed.
+	"""
+	respo = request.GET.get("response")
+	respo = json.loads(respo)
+	
+	pk = respo.get("pts_id")
+	p = PathToSolution.objects.get(pk=pk)
+
+	# Check for Private Key of the User trying to delete & the User who created the Object (pts_id)
+	# if p.user.private_key == request.private_key
+
+	ret = p.delete()
+	if isinstance(ret, type(None)):
+		di = { "pk": pk, "deleted": True}
+		return di
+	di = {"pk": pk, "deleted": False}
+	return di
