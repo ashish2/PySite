@@ -98,9 +98,9 @@
 	some_user_funcs = $(".disp_none_show_on_parent_hover");
 	some_user_funcs_each_posts = some_user_funcs.parents(".each-posts");
 	some_user_funcs_each_posts.hover( function(e){ 
-		$(e.target); $(e.target).find(some_user_funcs).fadeIn();
+		$(e.target).find(some_user_funcs).fadeIn();
 	}).mouseleave(function(e){
-		$(e.target); $(e.target).find(some_user_funcs).fadeOut();
+		$(e.target).find(some_user_funcs).fadeOut();
 	});
 	// Delete post js-
 	
