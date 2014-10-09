@@ -1,14 +1,17 @@
-{% if post.has_faved != 1 %}
-	<div class="vote-up">
-		<a href="{% url stpros.views.faveC post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Add to Favorites. ( Lets show some love :) )">
-			<span class="fa fa-heart-o"></span>
-		</a>
+<div class="ht-16px">
+	<div class="disp_none_show_on_parent_hover">
+		{% if post.has_faved != 1 %}
+			<div class="vote-up">
+				<a href="{% url stpros.views.faveC post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777 j-ttip" title="Add to Favorites. ( Lets show some love :) )" data-toggle="tooltip" data-placement="bottom">
+					<span class="fa fa-heart-o"></span>
+				</a>
+			</div>
+		{% else %}
+			<div class="vote-down">
+				<a href="{% url stpros.views.faveD post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777 j-ttip" title="Remove from Favorites. ( Alright! time to take back the love :P )" data-toggle="tooltip" data-placement="bottom">
+					<span class="fa fa-heart"></span>
+				</a>
+			</div>
+		{% endif %}
 	</div>
-{% else %}
-	<div class="vote-down">
-		<a href="{% url stpros.views.faveD post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777" title="Remove from Favorites. ( Alright! time to take back the love :P )">
-			<span class="fa fa-heart"></span>
-		</a>
-	</div>
-{% endif %}
-
+</div>

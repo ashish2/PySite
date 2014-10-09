@@ -20,11 +20,15 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="c-text-align-center margin-top-7">
-								<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#fwersList">
-									<span class="glyphicon glyphicon-share-alt"></span>
-								</a>
+
+							<div class="c-text-align-center margin-top-7 ht-16px">
+								<div class="disp_none_show_on_parent_hover">
+									<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#fwersList">
+										<span class="glyphicon glyphicon-share-alt"></span>
+									</a>
+								</div>
 							</div>
+
 						</div>
 					</div>
 
@@ -79,7 +83,7 @@
 					<div class="row margin-top-10">
 						<div class="col-lg-2">
 							<!-- Comments -->
-							<div class ="btn-post-answer-reply commentlink">
+							<div class ="btn-post-answer-reply commentlink disp_none_show_on_parent_hover">
 								<small>
 									<span>
 										<a href="{% url stpros.views.add_reply post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777 j-ttip" data-toggle="tooltip" title="Reply">
@@ -106,7 +110,7 @@
 						</div>
 
 						<div class="col-lg-2">
-							<div>
+							<div class="disp_none_show_on_parent_hover">
 								<small>
 									<a href="{% url stpros.views.read post.id %}" class="label label-warning j-ttip" title="{{post.get_pts_answers.count}} answer(s)" data-toggle="tooltip">
 										<span class="fa fa-comments"></span>
@@ -129,12 +133,16 @@
 
 						<!-- Some user functions -->
 						<div class="col-lg-2">
-							<div class="some-user-funcs disp_none_show_on_parent_hover">
-								<small>
-									{% if user.pk == post.user.pk %}
-									<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
-									{% endif %}
-								</small>
+							<div class="some-user-funcs">
+								
+								<div class="disp_none_show_on_parent_hover">								
+									<small>
+										{% if user.pk == post.user.pk %}
+										<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
+										{% endif %}
+									</small>
+								</div>
+
 							</div>
 						</div>
 						<!-- Some user functions- -->

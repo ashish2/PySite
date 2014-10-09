@@ -97,10 +97,10 @@
 	// Delete post js
 	some_user_funcs = $(".disp_none_show_on_parent_hover");
 	some_user_funcs_each_posts = some_user_funcs.parents(".each-posts");
-	some_user_funcs_each_posts.hover( function(e){ 
-		$(e.target).find(some_user_funcs).fadeIn();
+	some_user_funcs_each_posts.mouseenter( function(e){ 
+		$(e.currentTarget).find(some_user_funcs).fadeIn(500);
 	}).mouseleave(function(e){
-		$(e.target).find(some_user_funcs).fadeOut();
+		$(e.currentTarget).find(some_user_funcs).fadeOut(800);
 	});
 	// Delete post js-
 	
@@ -110,3 +110,22 @@
 
 })(jQuery);
 
+
+/*
+
+some_user_funcs_each_posts.mouseenter( function(e){ 
+ 	// div = $(e.target);
+ 	div = $(e.currentTarget);
+ 	console.log("div");
+ 	console.log(div);
+ 	th = $(this);
+ 	console.log("th");
+ 	console.log(th);
+ 	div_ss = div.find(some_user_funcs);
+ 	console.log("div ss");
+ 	console.log(div_ss);
+ 	th_ss = th.find(some_user_funcs);
+ 	console.log("th ss");
+ 	console.log(th_ss);
+})
+	 */

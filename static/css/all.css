@@ -135,7 +135,13 @@ a:hover, a:focus {
 	text-align: center;
 }
 
+.ht-16px{
+	height: 16px;
+}
 
+.disp_none_show_on_parent_hover {
+	display: none;
+}
 
 /*General-*/
 
@@ -175,9 +181,6 @@ instead of `class`
 	cursor: pointer
 }
 
-.disp_none_show_on_parent_hover {
-	display: none;
-}
 
 
 
