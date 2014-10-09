@@ -129,15 +129,11 @@
 
 						<!-- Some user functions -->
 						<div class="col-lg-2">
-							<div class="some-user-funcs">
+							<div class="some-user-funcs disp_none_show_on_parent_hover">
 								<small>
-									<div>
-										{% if user.pk == post.user.pk %}
-										<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
-										{% endif %}
-									</div>
-
-
+									{% if user.pk == post.user.pk %}
+									<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
+									{% endif %}
 								</small>
 							</div>
 						</div>

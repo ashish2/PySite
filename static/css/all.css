@@ -166,14 +166,18 @@ instead of `class`
 	width: auto;
 }
 
-.some-user-funcs {
+/*.some-user-funcs {
 	display: none;
 }
+*/
 
 .cursor:hover{
 	cursor: pointer
 }
 
+.disp_none_show_on_parent_hover {
+	display: none;
+}
 
 
 
