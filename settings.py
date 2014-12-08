@@ -189,6 +189,7 @@ INSTALLED_APPS = (
     # Email as Username
     'emailusernames',
     
+    'laughguru',
     
     # Added-
     
