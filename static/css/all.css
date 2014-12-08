@@ -143,6 +143,12 @@ a:hover, a:focus {
 	display: none;
 }
 
+.fc-black2{
+	color: #4A4A4A;
+}
+
+
+
 /*General-*/
 
 
@@ -183,6 +189,12 @@ instead of `class`
 
 
 
+/* Other */
+.options{
+	font-size: 20px;
+}
 
 
+
+/* Other- */
 

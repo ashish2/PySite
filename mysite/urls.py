@@ -78,6 +78,12 @@ urlpatterns = patterns('',
 	# Stpros
 	url(r"^stpros/", include("stpros.urls")),
 
+	# tutsplus
+	url(r"^tutsplus/", include("tutsplus.urls")),
+
+	# laughguru
+	url(r"^laughguru/", include("laughguru.urls")),
+
 	# GoogleApp
 	url(r"^googleapp/", include("googleapp.urls")),
 	
@@ -109,6 +115,10 @@ urlpatterns = patterns('',
 	# Static
 	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/static/'} ),
 	# Static/
+
+	# media
+	# (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}), )	
+	(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd + settings.MEDIA_ROOT}),	
 
 	# uploads
 	(r'^uploads/(?P<path>.*)$', 'django.views.static.serve', {'document_root': cwd +'/uploads/'} ),
@@ -164,6 +174,9 @@ urlpatterns = patterns('',
 	url(r"", include("stpros.urls") ), 
 	
 )
+
+# print "settings.MEDIA_ROOT"
+# print settings.MEDIA_ROOT
 
 
 # Static Files

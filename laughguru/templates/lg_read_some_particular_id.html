@@ -1,0 +1,214 @@
+{% extends "lg_bbase.html" %}
+{% load bbcode %}
+
+{% block content %}
+
+
+
+	<!-- .row starts -->
+	<div class="row content">
+
+		<!-- Navigation Menu, Might go in nav file -->
+		<div class="col-lg-1 lg-nav">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="">
+					<a href="#" title="Home">
+						<img src="{{MEDIA_URL}}frontend/icon_home.png" alt="Home">
+						<span class="fc-black2">
+							Home
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_math.png" alt="Math">
+						<span class="fc-black2">
+							Math
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_science.png" alt="Science">
+						<span class="fc-black2">
+							Science
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_english.png" alt="English">
+						<span class="fc-black2">
+							English
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_scorecard.png" alt="Scorecard">
+						<span class="fc-black2">
+							Scorecard
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_store_selected.png" alt="Store">
+						<span class="fc-black2">
+							Store
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /-->
+
+		<div class="col-lg-11">
+
+			<div class="row">
+				<div class="col-lg-9">
+					<ol class="breadcrumb qlassik-bold">
+						<li><a class="fc-black2 qlassik-bold" href="#">Math</a></li>
+						<li><a class="fc-black2 qlassik-bold" href="#">Algebra</a></li>
+						<li class="active">Formulae</li>
+					</ol>
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="m-btn red rnd pull-right">Close Chapter</button>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<!-- Football Field -->
+				<div class="col-lg-4">
+					<h5 class="qlassik">
+						We will put a cute little Football field here. 
+						<!--
+						This is where we play football. 
+						Though we were never able to play it in reality, 
+						but we will surely play it on the computer.
+						-->
+					</h5>
+				</div>
+				<!-- /-->
+
+				<!-- .col starts -->
+				<div class="col-lg-8">
+					<!-- .start-content starts -->
+					<div class="start-content">
+
+						<div class="main-pos">
+
+							<div class="row">
+								<div class="col-lg-8">
+									<div class="page-heade post-titl qlassik-bold">
+										<!--<h4>Votes: ({{some_id.vote_count}})</h4>-->
+										<span style="color: #5055BF; font-size: 30px;">
+											Question {{pk}}/{{q_count}}
+										</span>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<img src="{{MEDIA_URL}}frontend/icon_help_dark.png" alt="Help">
+								</div>
+								<div class="col-lg-2">
+									<button class="btn btn-default pull-right">Time: 09:30</button>
+								</div>
+
+							</div>
+
+							<div class="post-content qlassik-bold" style="font-size:26px">
+								{# bbcode some_id.answer #}
+								{{ some_id.question }}
+							</div>
+							
+							<div class="btn-follow-answer row">
+
+								<form class="form-horizontal" role="form" action="" method="post">
+									{% csrf_token %}
+									<div class="form-group">
+										<div class="col-lg-offset-2 col-lg-10 fc-black2">
+											<label class="radio-inline">
+												<input type="radio" name="answer" value="{{some_id.opta}}"> 
+												<span class="options">
+													A {{some_id.opta}}
+												</span>
+											</label>
+											<label class="radio-inline">
+												<input type="radio" name="answer" value="{{some_id.optb}}"> 
+												<span class="options">
+													B {{some_id.optb}}
+												</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-offset-2 col-lg-10">
+											<label class="radio-inline">
+												<input type="radio" name="answer" value="{{some_id.optc}}"> 
+												<span class="options">
+													C {{some_id.optc}}
+												</span>
+											</label>
+											<label class="radio-inline">
+												<input type="radio" name="answer" value="{{some_id.optd}}">
+												<span class="options">
+													D {{some_id.optd}}
+												</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-offset-2 col-lg-10">
+											<button type="submit" name="submit" class="btn btn-default">
+												Submit
+											</button>
+										</div>
+									</div>
+								</form>
+
+							</div>
+
+						</div>
+
+
+						<div class="error">
+						</div>
+
+
+		 				<div class="row">
+		 					<div class="col-lg-6">
+		 						{% if some_id.awesome %}
+		 							Awesome!!! I think you're going to grow up to be a Genius!!! Keep Going Einstein!!! Let's check the next question.
+		 						{%else%}
+		 							No!!!
+		 						{%endif%}
+		 					</div>
+	 						{% if some_id.awesome %}
+		 					<div class="col-lg-6">
+<!-- 		 						<button class="btn btn-info pull-right">
+		 							Next Question
+		 							<i class="fa fa-arrow-circle-o-right"></i>
+		 						</button>
+ -->								<a href="#" class="m-btn blue rnd pull-right">
+										Next Question
+									<i class="m-icon-swapright m-icon-white"></i>
+								</a>
+		 					</div>
+	 						{%endif%}
+		 				</div>
+
+
+					</div>
+					<!-- .start-content ends -->
+				</div>
+				<!-- .col ends -->
+			</div>
+
+		</div>
+
+	</div>
+	<!-- .row ends -->
+{% endblock %}
+

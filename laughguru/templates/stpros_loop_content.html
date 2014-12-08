@@ -1,0 +1,172 @@
+{# load parse_content_bbcode #}
+{% load bbcode %}
+	{% for post in somelist %}
+		<div class="each-posts">
+			<div class="row">
+				<div class="col-lg-1">
+					<div class="row">
+						<div class="col-lg-12">
+							<div>
+								{% include "fave_div.html" %}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center margin-top-7">
+								{% include "vote_div.html" %}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+
+							<div class="c-text-align-center margin-top-7 ht-16px">
+								<div class="disp_none_show_on_parent_hover">
+									<a class="j-ttip c-color-777" title="Throw this: Forward this to a friend who you think might be able to contribute to this topic. (Your friend will receive this as a catch)." data-placement="bottom" data-toggle="modal" href="#fwersList">
+										<span class="glyphicon glyphicon-share-alt"></span>
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				<!--
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="c-text-align-center margin-top-7">
+								<ul class="nav">
+									<li class="dropdown">
+										<a data-toggle="dropdown" class="dropdown-toggle c-color-777" href="#" title="Options">
+											<b class="fa fa-ellipsis-v"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="/" title="">
+													<i class="fa fa-circle-thin"></i>
+													Some_Option_1
+												</a>
+											</li>
+											<li>
+												<a href="/create/" title="">
+													<i class="fa fa-circle-thin"></i>
+													Some_Option_2
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				-->
+
+				</div>
+				<div class="col-lg-11">	
+					<div class="post-title">
+						<h4>
+							<b>
+								<a href="{% url stpros.views.read post.id %}">{{ post.problem }}</a>
+							</b>
+						</h4>
+					</div>
+					
+					<div class="border-1-black">
+						<small><a href="{% url users.views.view_user_profile post.user.pk %}">{{post.user.username}}</a></small>
+						<div>
+							{# post.answer|striptags|linebreaks #}
+							{% bbcode post.answer %}
+						</div>
+					</div>
+					
+					<div class="row margin-top-10">
+						<div class="col-lg-2">
+							<!-- Comments -->
+							<div class ="btn-post-answer-reply commentlink disp_none_show_on_parent_hover">
+								<small>
+									<span>
+										<a href="{% url stpros.views.add_reply post.pk %}?from={{fromUrl|urlencode}}" class="c-color-777 j-ttip" data-toggle="tooltip" title="Reply">
+											<span class="fa fa-reply"></span>
+										</a>
+									</span>
+								</small>
+								
+								<!--
+								Share
+								{# if post.has_shared != 1 #}
+								<span>
+								<a href="{% url q_a.views.share post.pk %}?from={{fromUrl|urlencode}}">Share</a>
+								</span>
+								{# elif post.has_shared != -1 #}
+								<span>
+									<a href="#" value=-1>Shared</a>
+								</span>
+								{# endif #}
+								-->
+								
+							</div>
+							<!-- Comments/ -->
+						</div>
+
+						<div class="col-lg-2">
+							<div class="disp_none_show_on_parent_hover">
+								<small>
+									<a href="{% url stpros.views.read post.id %}" class="label label-warning j-ttip" title="{{post.get_pts_answers.count}} answer(s)" data-toggle="tooltip">
+										<span class="fa fa-comments"></span>
+										{{post.get_pts_answers.count}}
+									</a>
+								</small>
+							</div>
+						</div>
+
+						<div class="col-lg-2">
+							<!-- Time -->
+							<div class="post-time">
+								<small>
+									<span class="glyphicon glyphicon-calendar"></span>
+									{{ post.date }}
+								</small>
+							</div>
+							<!-- Time- -->
+						</div>
+
+						<!-- Some user functions -->
+						<div class="col-lg-2">
+							<div class="some-user-funcs">
+								
+								<div class="disp_none_show_on_parent_hover">								
+									<small>
+										{% if user.pk == post.user.pk %}
+										<span class="glyphicon glyphicon-remove-circle j-del-pts c-color-777 cursor" data-pts-id="{{post.pk}}" title="Delete"></span>
+										{% endif %}
+									</small>
+								</div>
+
+							</div>
+						</div>
+						<!-- Some user functions- -->
+
+					</div>
+
+					<!-- 
+					Replies start
+					Commenting right now,
+					can UnComment it later.
+					-->
+					<!--
+					{% if post.post_set.all %}
+						<ul class="replies">
+							{% for i in post.post_set.all %}
+									<li>
+										{{i.content|striptags }}
+									</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					-->
+					<!-- Replies ends -->
+				</div>
+			</div>
+		</div>
+	{% endfor %}

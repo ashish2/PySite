@@ -1,0 +1,22 @@
+{% if tuts_list %}
+    <ul>
+    {% for tut in tuts_list %}
+        <li>
+        	<ul>
+				<li>Tut: <a href="/tutsplus/{{ tut.id }}/">{{ tut.tutUrl }}</a></li>
+				<li>Author: {{ tut.authorName }}</li>
+        	</ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+
+
+
+
+
+
