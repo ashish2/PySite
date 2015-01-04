@@ -182,7 +182,10 @@ a:hover, a:focus {
 	font-size: 18px;
 }
 nav, header, a, img, li, div {
+	-moz-transition : all 1s ease 0s;
 	-webkit-transition : all 1s ease 0s;
+	-o-transition : all 1s ease 0s;
+	transition : all 1s ease 0s;
 }
 
 
