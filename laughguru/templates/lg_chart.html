@@ -1,0 +1,163 @@
+{% extends "lg_bbase.html" %}
+{% load bbcode %}
+
+{% block content %}
+
+<style type="text/css">
+.arc path {
+  stroke: #fff;
+}
+</style>
+
+	<!-- .row starts -->
+	<div class="row content">
+
+		<!-- Navigation Menu, Might go in nav file -->
+		<div class="col-lg-1 lg-nav">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="">
+					<a href="#" title="Home">
+						<img src="{{MEDIA_URL}}frontend/icon_home.png" alt="Home">
+						<span class="fc-black2">
+							Home
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_math.png" alt="Math">
+						<span class="fc-black2">
+							Math
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_science.png" alt="Science">
+						<span class="fc-black2">
+							Science
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_english.png" alt="English">
+						<span class="fc-black2">
+							English
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_scorecard.png" alt="Scorecard">
+						<span class="fc-black2">
+							Scorecard
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="{{MEDIA_URL}}frontend/icon_store_selected.png" alt="Store">
+						<span class="fc-black2">
+							Store
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /-->
+
+		<div class="col-lg-11">
+
+			<div class="row">
+				<div class="col-lg-9">
+					<ol class="breadcrumb qlassik-bold">
+						<li><a class="fc-black2 qlassik-bold" href="#">Math</a></li>
+						<li><a class="fc-black2 qlassik-bold" href="#">Algebra</a></li>
+						<li class="active">Formulae</li>
+					</ol>
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="m-btn red rnd pull-right">Close Chapter</button>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<!-- .col starts -->
+				<div class="col-lg-12">
+					<!-- .start-content starts -->
+					<div class="start-content">
+						<div class="main-pos">
+							adfljasdlfj
+						</div>
+
+						<div id="chart">
+						</div>
+
+						<div class="error">
+						</div>
+
+					</div>
+					<!-- .start-content ends -->
+				</div>
+				<!-- .col ends -->
+			</div>
+
+		</div>
+
+	</div>
+	<!-- .row ends -->
+{% endblock %}
+
+
+<script type="text/javascript">
+
+(function($){
+	var w = 400;
+	var h = 400;
+	var r = h/2;
+	var color = d3.scale.category20c();
+
+	var data = [
+		{"label":"Category A", "value":20}, 
+		{"label":"Category B", "value":50}, 
+		{"label":"Category C", "value":30}
+	];
+
+	var vis = d3.select('#chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+	var pie = d3.layout.pie().value(function(d){return d.value;});
+
+	// declare an arc generator function
+	var arc = d3.svg.arc().outerRadius(r);
+
+	// select paths, use arc generator to draw
+	var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+
+	arcs.append("svg:path")
+	.attr("fill", function(d, i){
+		return color(i);
+	})
+	.attr("d", function (d) {
+		// log the result of the arc generator to show how cool it is :)
+		console.log(arc(d));
+		return arc(d);
+	});
+
+	// add the text
+	arcs
+	.append("svg:text")
+	.attr("transform", function(d){
+		d.innerRadius = 0;
+		d.outerRadius = r;
+		return "translate(" + arc.centroid(d) + ")";
+	})
+	.attr("text-anchor", "middle")
+	.text( function(d, i) {
+		return data[i].label;
+	});
+
+});
+
+</script>
+

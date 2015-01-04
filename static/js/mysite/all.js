@@ -107,6 +107,19 @@
 
 	//======== Hide & Show js- ====================
 
+	//======== Shrink ====================
+	$(window).scroll( function () {
+		if( $(document).scrollTop() > 100 ){
+			$("nav").removeClass("main-nav");
+		} else {
+			$("nav").addClass("main-nav");
+		}
+
+	});
+
+
+	//======== Shrink- ====================
+
 
 })(jQuery);
 

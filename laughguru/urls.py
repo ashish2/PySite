@@ -32,6 +32,7 @@ urlpatterns = patterns('laughguru.views',
 	
 	# url(r"^create/", "create"), 		# Add post, Add question, add/ , add_new
 	url(r"^questions/r/(\d+)/", "read"), 		# Show Details, of Stpros id
+	url(r"^questions/r/result/", "result"), 		# Show Details, of Stpros id
 	# url(r"^read/(\d+)/", "read_pts_n_answers"), 		# Show Details, of Stpros id
 	# url(r"^pts/d/(\d+)/", "ptsD"),
 	

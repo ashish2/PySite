@@ -109,23 +109,49 @@
 
 # ==============================================
 
-s="aaab"
+# s="aaab"
 
-N = int( raw_input() )
-for i in xrange(N):
-	s = raw_input()
-	if s != s[::-1]:
-		d = {}
-		for i in s: 
-			d.update({i: int( d.get(i) or 0)+1})
-		for i in d:
-			if d[i] == 1:
-				vr = i
-		ss = s.replace(vr, '')
-		if ss == ss[::-1]:
-			print s.index(vr)
-	else:
-		print -1
+# N = int( raw_input() )
+# for i in xrange(N):
+# 	s = raw_input()
+# 	if s != s[::-1]:
+# 		d = {}
+# 		for i in s: 
+# 			d.update({i: int( d.get(i) or 0)+1})
+# 		for i in d:
+# 			if d[i] == 1:
+# 				vr = i
+# 		ss = s.replace(vr, '')
+# 		if ss == ss[::-1]:
+# 			print s.index(vr)
+# 	else:
+# 		print -1
+
+
+# ==============================================
+
+endnm = 1000000
+findnm = 5000000
+li = range(0, endnm)
+
+import time
+
+t0 = time.time()
+findnm in li
+t1 = time.time()
+total = t1-t0
+print total
+
+s = set(li)
+t0 = time.time()
+5000000 in s
+t1 = time.time()
+total = t1-t0
+print total
+
+
+
+
 
 
 

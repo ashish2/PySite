@@ -73,6 +73,22 @@ body{
 	font-size: 20px;
 }
 
+
+/*.canvas{
+	width: 278; 
+	height: 400;
+	background-image: url('http://localhost:8000/media/frontend/ff.png');
+	background-size: contain;
+}
+*/
+
+canvas{
+/*	background-image: url('http://localhost:8000/media/frontend/ff.png');
+	background-size: contain;
+*/	width: 278 !important; 
+	height: 400 !important;
+}
+
 /*General-*/
 
 

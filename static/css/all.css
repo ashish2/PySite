@@ -123,6 +123,18 @@ a:hover, a:focus {
 	margin-top: 10px;
 }
 
+.margin-bottom-20{
+	margin-bottom: 20px;
+}
+
+.margin-tp-90{
+	margin-top: 90px;
+}
+
+.margin-bt-100{
+	margin-bottom: 100px;
+}
+
 .c-color-777{
 	color: #777;
 }
@@ -139,6 +151,14 @@ a:hover, a:focus {
 	height: 16px;
 }
 
+.ht-90{
+	height: 90px;
+}
+
+.ht-100px{
+	height: 100px;
+}
+
 .disp_none_show_on_parent_hover {
 	display: none;
 }
@@ -147,7 +167,43 @@ a:hover, a:focus {
 	color: #4A4A4A;
 }
 
+.c-fixed{
+	position: fixed;
+}
 
+.content{
+}
+
+
+.main-nav > div {
+	padding: 10px !important;
+}
+.main-nav a {
+	font-size: 18px;
+}
+nav, header, a, img, li, div {
+	-webkit-transition : all 1s ease 0s;
+}
+
+
+/*.main-nav > div {
+	padding: 24px !important;
+	font-size: 19px;
+}
+
+nav, header, a, img, li, div {
+	-webkit-transition : all 1s ease 0s;
+}
+*/
+
+/*.main-nav > div {
+	padding: 20px !important;
+	font-size: 18px;
+}
+nav, .main-nav li, .main-nav a, .main-nav div {
+	-webkit-transition : all 1s ease 0s;
+}
+*/
 
 /*General-*/
 

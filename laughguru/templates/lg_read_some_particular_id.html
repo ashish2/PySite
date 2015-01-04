@@ -3,8 +3,6 @@
 
 {% block content %}
 
-
-
 	<!-- .row starts -->
 	<div class="row content">
 
@@ -90,6 +88,11 @@
 						but we will surely play it on the computer.
 						-->
 					</h5>
+					
+					<div class="canvas">
+						<canvas id="myCanvas" style="height:'400'; width:'278'"></canvas>
+					</div>
+
 				</div>
 				<!-- /-->
 
@@ -101,6 +104,7 @@
 						<div class="main-pos">
 
 							<div class="row">
+								
 								<div class="col-lg-8">
 									<div class="page-heade post-titl qlassik-bold">
 										<!--<h4>Votes: ({{some_id.vote_count}})</h4>-->
@@ -109,6 +113,7 @@
 										</span>
 									</div>
 								</div>
+
 								<div class="col-lg-2">
 									<img src="{{MEDIA_URL}}frontend/icon_help_dark.png" alt="Help">
 								</div>
@@ -191,7 +196,7 @@
 		 							Next Question
 		 							<i class="fa fa-arrow-circle-o-right"></i>
 		 						</button>
- -->								<a href="#" class="m-btn blue rnd pull-right">
+ -->								<a href="{{some_id.nextnode}}" class="m-btn blue rnd pull-right">
 										Next Question
 									<i class="m-icon-swapright m-icon-white"></i>
 								</a>
@@ -209,6 +214,70 @@
 		</div>
 
 	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="chart">
+			</div>
+		</div>
+	</div>
 	<!-- .row ends -->
+
+	<script type="text/javascript">
+		// Canvas
+
+		// Drawing Football
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		var centerX = canvas.width / 2;
+		var centerY = canvas.height / 2;
+		var radius = 10;
+		context.beginPath();
+		context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+		context.fillStyle = 'green';
+		context.fill();
+
+		// Drawing Arc
+		nra = 30;
+		nx = centerX + 30;
+		ny = centerY - 10;
+		sa = Math.PI;
+		ea = 1.5 * Math.PI;
+		counterClockwise = false;
+		context.beginPath();
+		context.arc(nx, ny, nra, sa, ea, counterClockwise);
+		context.lineWidth = 3;
+		context.strokeStyle = 'red';
+		context.stroke();
+
+	</script>
 {% endblock %}
 
+
+<!--
+// Canvas
+
+// Drawing Football
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+var centerX = canvas.width / 2;
+var centerY = canvas.height / 2;
+var radius = 10;
+context.beginPath();
+context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+context.fillStyle = 'green';
+context.fill();
+
+// Drawing Arc
+nra = 20;
+nx = centerX + 20;
+ny = centerY - 10;
+sa = Math.PI;
+ea = 1.5 * Math.PI;
+counterClockwise = false;
+context.beginPath();
+context.arc(nx, ny, nra, sa, ea, counterClockwise);
+context.lineWidth = 3;
+context.strokeStyle = 'black';
+context.stroke();
+
+-->
