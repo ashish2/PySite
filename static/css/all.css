@@ -181,6 +181,9 @@ a:hover, a:focus {
 .main-nav a {
 	font-size: 18px;
 }
+.main-nav #title{
+	margin-top: -3px;
+}
 nav, header, a, img, li, div {
 	-moz-transition : all 1s ease 0s;
 	-webkit-transition : all 1s ease 0s;

@@ -110,8 +110,8 @@
 		{% if not request.user.is_authenticated %}
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a href="{% url login %}" title="Login">
-				<i class="glyphicon glyphicon-log-in"></i>
+				<a id="title" href="{% url login %}" title="Login">
+					<i class="glyphicon glyphicon-log-in"></i>
 					Login
 				</a>
 			</li>
