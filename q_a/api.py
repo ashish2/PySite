@@ -23,8 +23,9 @@ class UserResource(ModelResource):
 		#~resource_name = 'auth/user'
 		exclude = ['email', 'password', 'is_active', 'is_staff', 'is_superuser']
 		#~allowed_methods = ['get']
-		# Authentication
-		authentication = ApiKeyAuthentication()
+		# Authentication, If you need email/pass in headers when a call to this
+		# endpoint is made
+		#authentication = ApiKeyAuthentication()
 		
 	
 

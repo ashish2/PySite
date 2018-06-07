@@ -37,8 +37,15 @@ from django.contrib.auth.models import User, Group
 #~router.register(r'users', UserViewSet)
 #~router.register(r'groups', GroupViewSet)
 
+### Rest_framework-
 
 ### Tastypie
+from tastypie.api import Api
+from q_a.api import UserResource, PostResource
+v1_api = Api(api_name="v1")
+v1_api.register(UserResource(), PostResource())
+
+### Tastypie-
 
 
 
@@ -151,10 +158,15 @@ urlpatterns = patterns('',
 	# Login/Logout-
 	
 	# RESTAPI
+	# rest_framework
 	#url("^api/auth/", include('rest_framework.urls', namespace='rest_framework')),
 	#~url(r'^api/', include(router.urls)),
 	
 	#url("^api/", "q_a.views.view_all_post" ),
+	# rest_framework-
+	# Tastypie
+	url(r"^api/", include(v1_api.urls)),
+	# Tastypie-
 	
 	
 	# RESTAPI-

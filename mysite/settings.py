@@ -203,7 +203,9 @@ INSTALLED_APPS = (
     # Accounts
     'accounts',
     
-    #'polls',
+    # Enabling polls just for testing
+    'polls',
+
     #'qna',
     'q_a',
     
