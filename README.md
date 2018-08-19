@@ -1,6 +1,6 @@
 PySite MySite, MySite PySite
 
 ## Description ##
-A QnA app.
+A QnA app
 
-[PySite Live] (https://secure-badlands-6298.herokuapp.com/)
+[PySite Live](https://secure-badlands-6298.herokuapp.com/)
